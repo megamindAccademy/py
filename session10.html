@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Megaminds AI - السيشن 10: حارس الغرفة والمكتب الذكي (Smart AI Security Guard)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0b0f19;
+            --card-bg: #161e2e;
+            --card-border: #233044;
+            --accent-cyan: #38bdf8;
+            --accent-purple: #a855f7;
+            --accent-orange: #f97316;
+            --accent-green: #22c55e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.8; padding-bottom: 60px; }
+        
+        .navbar {
+            background: rgba(22, 30, 46, 0.85); backdrop-filter: blur(12px);
+            position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--card-border);
+            padding: 15px 40px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo-box { display: flex; align-items: center; gap: 12px; }
+        .logo-icon {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; color: white; box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+        }
+        .logo-text { font-weight: 900; font-size: 1.4rem; }
+        .logo-text span { color: var(--accent-cyan); }
+        .nav-btn {
+            background: rgba(56, 189, 248, 0.1); color: var(--accent-cyan); border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 8px 18px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: all 0.3s ease;
+        }
+        .nav-btn:hover { background: var(--accent-cyan); color: #000; transform: translateY(-2px); }
+        
+        .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
+        
+        .hero {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop');
+            background-size: cover; background-position: center; border: 1px solid var(--card-border);
+            border-radius: 24px; padding: 45px; margin-bottom: 40px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); position: relative; overflow: hidden;
+        }
+        .hero::before { content: ''; position: absolute; top: 0; right: 0; width: 6px; height: 100%; background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple)); }
+        .session-tag { display: inline-block; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple)); color: white; padding: 4px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 800; margin-bottom: 15px; }
+        .hero h1 { font-size: 2.3rem; font-weight: 900; margin-bottom: 15px; color: #ffffff; line-height: 1.3; }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 800px; }
+        
+        .agenda-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 30px; margin-bottom: 40px; }
+        .agenda-title { font-size: 1.5rem; font-weight: 800; color: var(--accent-cyan); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+        .agenda-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+        .agenda-item { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.05); padding: 16px 20px; border-radius: 14px; display: flex; align-items: center; gap: 15px; transition: all 0.3s ease; }
+        .agenda-item:hover { border-color: var(--accent-cyan); transform: translateX(-5px); }
+        .agenda-num { background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; flex-shrink: 0; }
+        .agenda-text { font-size: 1.05rem; font-weight: 600; color: var(--text-main); }
+        
+        .section-block { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 35px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); }
+        .section-header { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 2px solid rgba(255, 255, 255, 0.05); }
+        .section-icon { background: rgba(168, 85, 247, 0.15); color: var(--accent-purple); width: 50px; height: 50px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+        .section-header h2 { font-size: 1.7rem; font-weight: 800; color: white; }
+        
+        .lab-box { background: linear-gradient(135deg, #131c2e, #0d1322); border: 2px dashed var(--accent-cyan); border-radius: 18px; padding: 30px; margin-top: 20px; text-align: center; }
+        .lab-btn { background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple)); color: white; border: none; padding: 14px 32px; border-radius: 12px; font-size: 1.1rem; font-weight: 800; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(56, 189, 248, 0.4); margin-top: 15px; }
+        .lab-btn:hover { transform: scale(1.05); box-shadow: 0 6px 25px rgba(168, 85, 247, 0.5); }
+        .demo-result-box { margin-top: 20px; padding: 15px; background: #090d16; border-radius: 12px; min-height: 70px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: var(--accent-green); font-weight: 700; }
+        
+        .code-header { background: #1e293b; color: #cbd5e1; padding: 10px 20px; border-top-left-radius: 12px; border-top-right-radius: 12px; display: flex; justify-content: space-between; align-items: center; font-family: monospace; font-size: 0.9rem; border-bottom: 1px solid #334155; }
+        .code-content { background: #090d16; color: #38bdf8; direction: ltr; text-align: left; padding: 20px; border-bottom-left-radius: 12px; border-bottom-right-radius: 12px; font-family: 'Consolas', 'Courier New', monospace; font-size: 1rem; line-height: 1.6; overflow-x: auto; white-space: pre-wrap; }
+        
+        .quiz-container { background: rgba(15, 23, 42, 0.8); border-radius: 16px; padding: 25px; margin-top: 20px; }
+        .quiz-q { font-size: 1.2rem; font-weight: 700; color: white; margin-bottom: 15px; }
+        .quiz-opt { display: block; width: 100%; background: rgba(30, 41, 59, 0.7); border: 1px solid var(--card-border); color: var(--text-main); padding: 14px 20px; border-radius: 12px; margin-bottom: 10px; text-align: right; font-size: 1.05rem; cursor: pointer; transition: all 0.2s ease; }
+        .quiz-opt:hover { border-color: var(--accent-cyan); background: rgba(56, 189, 248, 0.1); }
+        .quiz-opt.correct { background: rgba(34, 197, 94, 0.2) !important; border-color: var(--accent-green) !important; color: #4ade80 !important; font-weight: bold; }
+        .quiz-opt.wrong { background: rgba(239, 68, 68, 0.2) !important; border-color: #ef4444 !important; color: #fca5a5 !important; }
+        
+        .hw-card { background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(168, 85, 247, 0.1)); border: 2px solid var(--accent-orange); border-radius: 18px; padding: 25px; margin-top: 30px; }
+        .hw-title { font-size: 1.4rem; font-weight: 800; color: var(--accent-orange); display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+        
+        .footer-navigation { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding: 20px 0; border-top: 1px solid var(--card-border); }
+        .nav-link-btn { background: var(--card-bg); border: 1px solid var(--card-border); color: white; padding: 12px 26px; border-radius: 12px; text-decoration: none; font-weight: 700; display: flex; align-items: center; gap: 10px; transition: all 0.3s ease; }
+        .nav-link-btn:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); transform: translateY(-2px); }
+        .nav-link-btn.primary { background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple)); border: none; }
+        .nav-link-btn.primary:hover { color: white; box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4); }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo-box">
+            <div class="logo-icon"><i class="fa-solid fa-brain"></i></div>
+            <div class="logo-text">MEGAMINDS <span>AI ACADEMY</span></div>
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="nav-btn"><i class="fa-solid fa-house"></i> الرئيسية</a>
+            <span style="color: var(--text-muted); font-weight: bold;">السيشن 10 / 12</span>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="hero">
+            <span class="session-tag">السيشن العاشر 🚨</span>
+            <h1>حارس الغرفة والمكتب الذكي (Smart AI Security Guard)</h1>
+            <p>نظام حراسة ذكي يراقب الغرفة ويطلق صفارات الإنذار عند الدخول! 🚨🛡️</p>
+        </div>
+
+        <div class="agenda-card">
+            <div class="agenda-title">
+                <i class="fa-solid fa-list-check"></i>
+                جدول أعمال اليوم (ماذا سنأخذ في هذه الحصة؟)
+            </div>
+            <div class="agenda-grid">
+                
+        <div class="agenda-item">
+            <div class="agenda-num">1</div>
+            <div class="agenda-text">مفهوم الأنظمة المتكاملة (Vision + Audio Multi-modal AI).</div>
+        </div>
+        
+        <div class="agenda-item">
+            <div class="agenda-num">2</div>
+            <div class="agenda-text">رصد التغير في الصورة والإحساس بالحركة الغريبة.</div>
+        </div>
+        
+        <div class="agenda-item">
+            <div class="agenda-num">3</div>
+            <div class="agenda-text">تلوين الشاشة بالأحمر وتشغيل صوت الإنذار التلقائي.</div>
+        </div>
+        
+        <div class="agenda-item">
+            <div class="agenda-num">4</div>
+            <div class="agenda-text">تجربة محاكي نظام الحراسة الذكي على الويب.</div>
+        </div>
+        
+        <div class="agenda-item">
+            <div class="agenda-num">5</div>
+            <div class="agenda-text">كتابة كود AI Security Guard المباشر بـ Python.</div>
+        </div>
+        
+        <div class="agenda-item">
+            <div class="agenda-num">6</div>
+            <div class="agenda-text">تحدي تأمين غرفتك في المنزل بالنظام الجديد!</div>
+        </div>
+        
+            </div>
+        </div>
+
+        <div class="section-block">
+            <div class="section-header">
+                <div class="section-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <div>
+                    <h2>1. الذكاء الاصطناعي متعدد الوسائط (Multi-modal AI)</h2>
+                </div>
+            </div>
+            <p style="font-size: 1.15rem;">دمج الرؤية الحاسوبية مع الإنذار الصوتي لخلق نظام أمني متكامل لحماية الممتلكات والغرف.</p>
+        </div>
+
+        <div class="section-block">
+            <div class="section-header">
+                <div class="section-icon" style="background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan);"><i class="fa-solid fa-lightbulb"></i></div>
+                <div>
+                    <h2>2. كشف الدخلاء (Intruder Detection)</h2>
+                </div>
+            </div>
+            <p style="font-size: 1.15rem;">عندما يقترب شخص غريب من الكاميرا ولا يتعرف الموديل عليه، يتم إرسال التنبيه فوراً!</p>
+        </div>
+
+        <div class="section-block">
+            <div class="section-header">
+                <div class="section-icon" style="background: rgba(249, 115, 22, 0.15); color: var(--accent-orange);"><i class="fa-solid fa-layer-group"></i></div>
+                <div>
+                    <h2>3. التنبيهات المرئية والصوتية (Visual & Sound Alarms)</h2>
+                </div>
+            </div>
+            <p style="font-size: 1.15rem;">تتحول شاشة الكاميرا للون الأحمر الساطع مع تشغيل صوت تحذيري عالي 'Warning! Intruder Detected!'.</p>
+        </div>
+
+        <div class="section-block">
+            <div class="section-header">
+                <div class="section-icon" style="background: rgba(34, 197, 94, 0.15); color: var(--accent-green);"><i class="fa-solid fa-flask"></i></div>
+                <div>
+                    <h2>التجربة العملية التفاعلية المباشرة 🧪</h2>
+                </div>
+            </div>
+
+            <div class="lab-box">
+                <h3 style="font-size: 1.4rem; color: white; margin-bottom: 10px;">محاكي نظام الحراسة التفاعلي (Security Guard Sim)</h3>
+                <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">اضغط زر تفعيل الحراسة واختبر ماذا يحدث عند رصد أي حركة مريبة!</p>
+                
+                <div style="margin-top: 20px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                    <input type="text" id="userInputText" placeholder="اكتب هنا لتجربة المعمل التفاعلي..." style="width: 70%; max-width: 450px; padding: 14px 20px; border-radius: 12px; border: 1px solid var(--accent-cyan); background: #0f172a; color: white; font-size: 1.1rem; outline: none;">
+                    <button class="lab-btn" onclick="runSim()"><i class="fa-solid fa-play"></i> تشغيل التجربة</button>
+                </div>
+
+                <div class="demo-result-box" id="resultDisplay">
+                    ✨ في انتظار مدخلاتك واختبار النظام الذكي...
+                </div>
+            </div>
+        </div>
+
+        <div class="section-block">
+            <div class="section-header">
+                <div class="section-icon"><i class="fa-brands fa-python"></i></div>
+                <div>
+                    <h2>تطبيق الكود بـ Python 🐍</h2>
+                </div>
+            </div>
+
+            <div class="code-header">
+                <span>ai_security_guard.py</span>
+                <span>Python 3.x</span>
+            </div>
+            <div class="code-content">import cv2
+import winsound
+
+print("🚨 نظام الحارس الذكي نشط ومستعد للمراقبة...")
+
+# عند رصد دخول شخص غير معروف:
+# winsound.Beep(2000, 1000) # تشغيل صفارة إنذار
+print("⚠️ تنبيه: تم رصد حركة مريبة! جاري تشغيل صفارة الإنذار!")</div>
+        </div>
+
+        <div class="section-block">
+            <div class="section-header">
+                <div class="section-icon" style="background: rgba(234, 179, 8, 0.15); color: #eab308;"><i class="fa-solid fa-gamepad"></i></div>
+                <div>
+                    <h2>اختبر معلوماتك (تحدي السيشن) 🧩</h2>
+                </div>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-q">ماذا يسمى النظام الذي يدمج الكاميرا والصوت معاً لإنشاء نظام ذكي؟</div>
+                <button class="quiz-opt" onclick="checkAnswer(this, true)">Multi-modal AI System</button>
+                <button class="quiz-opt" onclick="checkAnswer(this, false)">Single Output Code</button>
+            </div>
+        </div>
+
+        <div class="hw-card">
+            <div class="hw-title">
+                <i class="fa-solid fa-rocket"></i>
+                واجب السيشن والمشروع الممتع في البيت 🏠
+            </div>
+            <p style="font-size: 1.1rem; color: #f1f5f9; margin-bottom: 12px;">شغل كود الحراسة الذكي على لابتوبك وجرب الدخول لغرفتك واختبر صفارة الإنذار! 🚨</p>
+        </div>
+
+        <div class="footer-navigation">
+            <a href="session9.html" class="nav-link-btn"><i class="fa-solid fa-arrow-right"></i> السيشن 9</a>
+            <a href="session11.html" class="nav-link-btn primary">السيشن 11 <i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+
+    </div>
+
+    <script>
+        function runSim() {
+            const input = document.getElementById('userInputText').value.trim();
+            const resultBox = document.getElementById('resultDisplay');
+            if (!input) {
+                resultBox.innerHTML = "⚠️ أدخل نصاً أو أمراً أولاً في الصندوق!";
+                resultBox.style.color = "#f97316";
+                return;
+            }
+            resultBox.innerHTML = "🧠 جاري تنفيذ التجربة التفاعلية بواسطة الذكاء الاصطناعي...";
+            resultBox.style.color = "#38bdf8";
+            setTimeout(() => {
+                resultBox.innerHTML = `✅ تم التنفيذ بنجاح! المدخل: "${input}" ➔ النتيجة: تم الاستجابة وتوليد النمط الذكي المطلوبة! 🎉`;
+                resultBox.style.color = "#22c55e";
+            }, 600);
+        }
+
+        function checkAnswer(button, isCorrect) {
+            const parent = button.parentElement;
+            const options = parent.querySelectorAll('.quiz-opt');
+            options.forEach(opt => { opt.disabled = true; opt.style.cursor = 'default'; });
+            if (isCorrect) {
+                button.classList.add('correct');
+                button.innerHTML += '  ✅ (إجابة صحيحة بطل!)';
+            } else {
+                button.classList.add('wrong');
+                button.innerHTML += '  ❌ (حاول مرة أخرى)';
+            }
+        }
+    </script>
+</body>
+</html>
