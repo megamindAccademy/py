@@ -107,7 +107,16 @@
         .app-card-title { font-size: 1.2rem; font-weight: 800; color: white; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
         .app-card-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
 
-        /* Logic Step Box */
+        /* Goal & Logic Step Boxes for Practical Section */
+        .practical-goal-card {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(251, 191, 36, 0.1));
+            border: 2px solid var(--accent-orange);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        .practical-goal-title { font-size: 1.3rem; font-weight: 800; color: var(--accent-orange); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+
         .logic-step-box {
             background: rgba(15, 19, 29, 0.7);
             border: 1px solid var(--card-border);
@@ -117,7 +126,7 @@
             margin-bottom: 15px;
         }
         html[lang="en"] .logic-step-box { border-right: none; border-left: 4px solid var(--accent-orange); }
-        .logic-step-title { font-size: 1.15rem; font-weight: 800; color: var(--accent-orange); margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+        .logic-step-title { font-size: 1.15rem; font-weight: 800; color: var(--accent-amber); margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
         .logic-step-desc { font-size: 1rem; color: #cbd5e1; }
 
         /* VS Code Style Real Code Editor Frame */
@@ -136,6 +145,8 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #30363d;
+            flex-wrap: wrap;
+            gap: 10px;
         }
         .editor-dots { display: flex; gap: 8px; align-items: center; }
         .dot { width: 12px; height: 12px; border-radius: 50%; }
@@ -156,12 +167,19 @@
             border: 1px solid #30363d;
             border-bottom: none;
         }
-        .editor-actions { display: flex; gap: 10px; }
+        .editor-actions { display: flex; gap: 10px; flex-wrap: wrap; }
         .run-code-btn {
             background: linear-gradient(90deg, #22c55e, #16a34a);
             color: white; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 800; font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
         }
         .run-code-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(34, 197, 94, 0.5); }
+        
+        .solution-code-btn {
+            background: linear-gradient(90deg, var(--accent-orange), var(--accent-amber));
+            color: #000; border: none; padding: 8px 18px; border-radius: 8px; font-weight: 800; font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+        }
+        .solution-code-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(249, 115, 22, 0.5); }
+
         .reset-code-btn {
             background: rgba(249, 115, 22, 0.15); color: var(--accent-orange); border: 1px solid rgba(249, 115, 22, 0.4); padding: 8px 16px; border-radius: 8px; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;
         }
@@ -169,7 +187,7 @@
         
         .code-textarea {
             width: 100%;
-            height: 280px;
+            height: 290px;
             background: #070a10;
             color: #ffedd5;
             padding: 20px;
@@ -286,8 +304,8 @@
                 <div class="agenda-item">
                     <div class="agenda-num">1</div>
                     <div class="agenda-text">
-                        <span class="lang-ar">ما هو الذكاء الاصطناعي والفرق بينه وبين البرمجة التقليدية؟</span>
-                        <span class="lang-en">What is AI & contrast with traditional programming?</span>
+                        <span class="lang-ar">ما هو الذكاء الاصطناعي والفرق بينه وبين البرمجة التقليدية؟ (أمثلة وتشبيه الشيف).</span>
+                        <span class="lang-en">What is AI & contrast with traditional programming? (Chef analogy).</span>
                     </div>
                 </div>
                 <div class="agenda-item">
@@ -307,15 +325,15 @@
                 <div class="agenda-item">
                     <div class="agenda-num">4</div>
                     <div class="agenda-text">
-                        <span class="lang-ar">شرح فكرة ومنطق كود تحليل المشاعر قبل تنفيذه خطوة بخطوة.</span>
-                        <span class="lang-en">Step-by-step logic breakdown before executing code.</span>
+                        <span class="lang-ar">الجزء التطبيقي: الفكرة العامة للمشروع وخطوات التخطيط المنطقي قبل البرمجة.</span>
+                        <span class="lang-en">Practical Section: Project Overview & Logical Planning Steps.</span>
                     </div>
                 </div>
                 <div class="agenda-item">
                     <div class="agenda-num">5</div>
                     <div class="agenda-text">
-                        <span class="lang-ar">محرر بايثون التفاعلي المباشر (تعديل وتجغيل الكود الحقيقي).</span>
-                        <span class="lang-en">Interactive Python IDE Editor Frame to write & run real code.</span>
+                        <span class="lang-ar">محرر بايثون التفاعلي المباشر (تحدي المحاولة أولاً + زر إظهار الكود الإرشادي).</span>
+                        <span class="lang-en">Interactive Python IDE Editor Frame (Try first + Show Solution button).</span>
                     </div>
                 </div>
                 <div class="agenda-item">
@@ -334,26 +352,35 @@
                 <div class="section-icon"><i class="fa-solid fa-microchip"></i></div>
                 <div>
                     <h2>
-                        <span class="lang-ar">1. ما هو الذكاء الاصطناعي؟ (الشرح التفسيري العميق)</span>
-                        <span class="lang-en">1. What is Artificial Intelligence? (Deep Explanation)</span>
+                        <span class="lang-ar">1. ما هو الذكاء الاصطناعي؟ (الشرح التفسيري العميق وأمثلة الخيال)</span>
+                        <span class="lang-en">1. What is Artificial Intelligence? (Deep Explanation & Analogies)</span>
                     </h2>
                 </div>
             </div>
             
             <p style="font-size: 1.15rem; margin-bottom: 20px;">
-                <span class="lang-ar">في <b>البرمجة التقليدية (Traditional Programming)</b>، يقوم المبرمج بكتابة جميع القواعد والتعليمات بنفسه بشكل صريح باستخدام `if/else`. إذا ظهر للمستقبل أمر جديد لم يكتبه المبرمج، يفشل البرنامج فوراً! أما في <b>تعلّم الآلة (Machine Learning)</b>، نحن نغذي الكمبيوتر بألف مثال وبيانات، والكمبيوتر يكتشف النمط والقاعدة بنفسه! 💡</span>
-                <span class="lang-en">In <b>Traditional Programming</b>, developers write every single rule manually using `if/else`. If an unexpected case arrives, the program crashes! In <b>Machine Learning</b>, we feed the computer thousands of examples, and it automatically learns the underlying patterns! 💡</span>
+                <span class="lang-ar">تخيل معي الفرق بين <b>"الطاهي الذي يتبع وصفة مكتوبة حرفياً"</b> و <b>"الطاهي العالمي المبتكر"</b>! في <b>البرمجة التقليدية (Traditional Programming)</b>، المبرمج يكتب كل القواعد والتعليمات بنفسه بشكل صريح مثل الوصفة المكتوبة بحرفيتها (`if/else`). إذا ظهر للمستقبل أمر جديد لم يكتبه المبرمج، يفشل البرنامج فوراً! أما في <b>تعلّم الآلة (Machine Learning)</b>، نحن نغذي الكمبيوتر بألف مثال وبيانات (أطعمة وأطباق مختلفة)، والكمبيوتر يستنتج النمط والقواعد بنفسه تماماً كالشيف المبتكر! 💡</span>
+                <span class="lang-en">Imagine the contrast between a <b>cook following a rigid recipe card</b> vs a <b>master chef innovating dishes</b>! In <b>Traditional Programming</b>, developers write every single rule manually using `if/else`. If an unexpected case arrives, the program crashes! In <b>Machine Learning</b>, we feed the computer thousands of examples, and it automatically learns the underlying patterns! 💡</span>
             </p>
 
+            <!-- Detailed Contrast Cards -->
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
                 <div style="background: rgba(15, 19, 29, 0.7); padding: 22px; border-radius: 16px; border: 1px solid var(--card-border); border-top: 4px solid var(--accent-amber);">
                     <h3 style="color: var(--accent-amber); font-size: 1.25rem; margin-bottom: 10px;"><i class="fa-solid fa-code"></i> 
                         <span class="lang-ar">البرمجة التقليدية (Traditional Code)</span>
                         <span class="lang-en">Traditional Programming</span>
                     </h3>
-                    <p style="font-size: 1rem; color: #cbd5e1;">
+                    <p style="font-size: 1rem; color: #cbd5e1; margin-bottom: 10px;">
                         <span class="lang-ar">المدخلات (Data) + القواعد (Rules) ➔ النتيجة (Output). المبرمج هو مصدر الذكاء الوحيد.</span>
                         <span class="lang-en">Data + Hardcoded Rules ➔ Output. The programmer is the sole brain behind logic.</span>
+                    </p>
+                    <div style="background: #090d16; padding: 12px; border-radius: 8px; font-family: monospace; font-size: 0.9rem; color: #f59e0b; direction: ltr; text-align: left;">
+                        if word == "happy": return "Positive"<br>
+                        elif word == "sad": return "Negative"
+                    </div>
+                    <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 8px;">
+                        <span class="lang-ar">⚠️ إذا كتب المستخدم "joyful" يجهلها البرنامج!</span>
+                        <span class="lang-en">⚠️ If user types "joyful", hardcoded rules fail!</span>
                     </p>
                 </div>
 
@@ -362,9 +389,17 @@
                         <span class="lang-ar">الذكاء الاصطناعي (Machine Learning)</span>
                         <span class="lang-en">Machine Learning (AI)</span>
                     </h3>
-                    <p style="font-size: 1rem; color: #cbd5e1;">
+                    <p style="font-size: 1rem; color: #cbd5e1; margin-bottom: 10px;">
                         <span class="lang-ar">المدخلات (Data) + الأمثلة (Answers) ➔ نموذج ذكي (Model). الآلة هي من تكتشف القواعد!</span>
                         <span class="lang-en">Data + Example Answers ➔ Smart Model. The machine infers the rules automatically!</span>
+                    </p>
+                    <div style="background: #090d16; padding: 12px; border-radius: 8px; font-family: monospace; font-size: 0.9rem; color: #f97316; direction: ltr; text-align: left;">
+                        model.fit(thousands_of_sentences)<br>
+                        result = model.predict("joyful") # 99% Positive!
+                    </div>
+                    <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 8px;">
+                        <span class="lang-ar">✨ يفهم السرد والمعنى الضمني تلقائياً!</span>
+                        <span class="lang-en">✨ Understands context and semantics automatically!</span>
                     </p>
                 </div>
             </div>
@@ -492,75 +527,93 @@
                     <span class="lang-en">AI Ethics Guidelines:</span>
                 </h4>
                 <ul style="margin-right: 25px; color: #e2e8f0; font-size: 1rem; line-height: 1.8;">
-                    <li><b>عدم التحيز (Unbiased Data):</b> تغذية النموذج ببيانات متنوعة وصحيحة بدون تمييز.</li>
+                    <li><b>عدم التحيز (Unbiased Data):</b> تغذية النموذج ببيانات متوازنة وصحيحة بدون تمييز.</li>
                     <li><b>حماية الخصوصية (Privacy):</b> عدم استخدام صور وبيانات الأشخاص دون إذنهم.</li>
                     <li><b>أداة مساعدة للبشر:</b> جعل الذكاء الاصطناعي يخدم الإنسان ويسهل حياته بمسؤولية.</li>
                 </ul>
             </div>
         </div>
 
-        <!-- Section 4: Code Walkthrough Explanation BEFORE Execution -->
+        <!-- Section 4: Practical Section: Project Overview & Planning Steps (الجزء التطبيقي) -->
         <div class="section-block">
             <div class="section-header">
-                <div class="section-icon" style="background: rgba(251, 191, 36, 0.15); color: var(--accent-amber); border-color: rgba(251, 191, 36, 0.3);"><i class="fa-solid fa-book-open"></i></div>
+                <div class="section-icon" style="background: rgba(251, 191, 36, 0.15); color: var(--accent-amber); border-color: rgba(251, 191, 36, 0.3);"><i class="fa-solid fa-laptop-code"></i></div>
                 <div>
                     <h2>
-                        <span class="lang-ar">4. الشرح المفصل لمنطق الكود البرمجي (قبل التنفيذ) 💡</span>
-                        <span class="lang-en">4. Code Logic Breakdown (Before Execution) 💡</span>
+                        <span class="lang-ar">4. الجزء التطبيقي: فكرة المشروع وخطوات التخطيط البرمجي 🎯</span>
+                        <span class="lang-en">4. Practical Implementation: Project Goal & Planning Steps 🎯</span>
                     </h2>
                     <p style="color: var(--text-muted);">
-                        <span class="lang-ar">اقرأ كيف يشتغل الكود خطوة بخطوة قبل أن تقوم بتعديله وتجربته في المحرر:</span>
-                        <span class="lang-en">Read how the Python code works step-by-step before editing & running it below:</span>
+                        <span class="lang-ar">اقرأ الفكرة العامة والخطوات التنفيذية للمشروع قبل أن تبدأ في كتابة الكود بنفسك في المحرر:</span>
+                        <span class="lang-en">Read the project goal and execution plan before writing the code yourself in the IDE:</span>
                     </p>
                 </div>
             </div>
 
+            <!-- Practical Goal Overview -->
+            <div class="practical-goal-card">
+                <div class="practical-goal-title"><i class="fa-solid fa-bullseye"></i> 
+                    <span class="lang-ar">أولاً: الفكرة العامة والهدف من التطبيق</span>
+                    <span class="lang-en">Part 1: High-Level Project Goal</span>
+                </div>
+                <p style="font-size: 1.05rem; color: #f8fafc; line-height: 1.7;">
+                    <span class="lang-ar"><b>الهدف من مشروع اليوم:</b> نريد بناء خبير ذكاء اصطناعي نصي بسيط باسم (Sentiment Detector)، يستمع للجملة التي يكتبها المستخدم، ويحلل مشاعره ونبرته ليعرف هل المستخدم 😃 <b>سعيد ومتحمس</b>، أم 😢 <b>حزين ومحبط</b>، أم 😐 <b>محايد ينقل أرقاماً ومعلومات جافة</b>!</span>
+                    <span class="lang-en"><b>Today's Goal:</b> Build a text-based AI Sentiment Detector that reads user sentences and detects if the user is 😃 <b>Happy</b>, 😢 <b>Sad</b>, or 😐 <b>Neutral</b>!</span>
+                </p>
+            </div>
+
+            <!-- Step-by-step Planning Steps -->
+            <h3 style="color: white; font-size: 1.3rem; margin-bottom: 15px;"><i class="fa-solid fa-list-check" style="color: var(--accent-orange);"></i> 
+                <span class="lang-ar">ثانياً: خطوات التخطيط البرمجي والنمط المنطقي (Execution Plan):</span>
+                <span class="lang-en">Part 2: Step-by-Step Logical Execution Plan:</span>
+            </h3>
+
             <div class="logic-step-box">
-                <div class="logic-step-title"><i class="fa-solid fa-list-ol"></i> 
-                    <span class="lang-ar">الخطوة 1: إنشاء دالة تحليل المشاعر `ai_sentiment_detector(text)`</span>
-                    <span class="lang-en">Step 1: Defining sentiment function `ai_sentiment_detector(text)`</span>
+                <div class="logic-step-title"><i class="fa-solid fa-terminal"></i> 
+                    <span class="lang-ar">الخطوة 1: تعريف الدالة وتنظيف النص `text.lower()`</span>
+                    <span class="lang-en">Step 1: Define Function & Normalize Text via `text.lower()`</span>
                 </div>
                 <div class="logic-step-desc">
-                    <span class="lang-ar">الدالة تستقبل جملة من المستخدم وتحولها إلى أحرف صغيرة باستخدام `text.lower()` حتى لا تتأثر بالكلمات الكبيرة أو الصغيرة.</span>
-                    <span class="lang-en">The function receives a sentence and converts it to lowercase using `text.lower()` for clean string matching.</span>
+                    <span class="lang-ar">نعرف دالة باسم `ai_sentiment_detector(text)` ونحول النص لأحرف صغيرة لمنع أخطاء مطابقة الحروف الكبيرة والصغيرة.</span>
+                    <span class="lang-en">Define function `ai_sentiment_detector(text)` and convert text to lowercase for string matching.</span>
                 </div>
             </div>
 
             <div class="logic-step-box">
-                <div class="logic-step-title"><i class="fa-solid fa-font"></i> 
-                    <span class="lang-ar">الخطوة 2: تجهيز قائمتي الكلمات الإيجابية والسلبية</span>
-                    <span class="lang-en">Step 2: Defining Positive & Negative Word Lists</span>
+                <div class="logic-step-title"><i class="fa-solid fa-list"></i> 
+                    <span class="lang-ar">الخطوة 2: إنشاء قائمتي المعرفة للكلمات الإيجابية والسلبية</span>
+                    <span class="lang-en">Step 2: Build Positive & Negative Keyword Lists</span>
                 </div>
                 <div class="logic-step-desc">
-                    <span class="lang-ar">نصنع قائمة تحتوي على الكلمات السعيدة مثل `["سعيد", "رائع", "happy"]` وقائمة للكلمات المحبطة مثل `["حزين", "سيء", "sad"]`.</span>
-                    <span class="lang-en">We create lists containing happy words `["سعيد", "happy"]` and negative words `["حزين", "sad"]`.</span>
+                    <span class="lang-ar">نصنع قائمة `positive = ["سعيد", "رائع", "happy"]` وقائمة `negative = ["حزين", "سيء", "sad"]`.</span>
+                    <span class="lang-en">Create `positive = ["سعيد", "happy"]` and `negative = ["حزين", "sad"]` lists.</span>
                 </div>
             </div>
 
             <div class="logic-step-box">
                 <div class="logic-step-title"><i class="fa-solid fa-magnifying-glass"></i> 
-                    <span class="lang-ar">الخطوة 3: مطابقة الكلمات واستنتاج النتيجة</span>
-                    <span class="lang-en">Step 3: Pattern Matching & Returning Result</span>
+                    <span class="lang-ar">الخطوة 3: التكرار بـ `for` والشروط `if` لإرجاع النتيجة</span>
+                    <span class="lang-en">Step 3: Loop & Evaluate Sentiment Result</span>
                 </div>
                 <div class="logic-step-desc">
-                    <span class="lang-ar">باستخدام تكرار `for` ونظام الشروط `if`: إذا وجد الكود كلمة إيجابية يرجع 😃، وإذا وجد كلمة سلبية يرجع 😢، وإلا يرجّع 😐 مشاعر محايدة.</span>
-                    <span class="lang-en">Using `for` loop and `if` conditions: matching happy words returns 😃, sad words returns 😢, else returns 😐 Neutral.</span>
+                    <span class="lang-ar">نفحص هل الجملة تحتوي على كلمة إيجابية ليرجع 😃، أو سلبية ليرجع 😢، وإلا يرجع 😐 مشاعر محايدة.</span>
+                    <span class="lang-en">Check if sentence contains positive word (return 😃), negative word (return 😢), else return 😐 Neutral.</span>
                 </div>
             </div>
         </div>
 
-        <!-- Section 5: Embedded Real Python Code Editor Frame (VS Code Style) -->
+        <!-- Section 5: Embedded Real Python Code Editor Frame (VS Code Style with Try First!) -->
         <div class="section-block">
             <div class="section-header">
                 <div class="section-icon"><i class="fa-brands fa-python"></i></div>
                 <div>
                     <h2>
-                        <span class="lang-ar">5. محرر كود بايثون التفاعلي المباشر (Python IDE Frame) 🐍</span>
-                        <span class="lang-en">5. Interactive Python IDE Code Editor Frame 🐍</span>
+                        <span class="lang-ar">5. محرر كود بايثون التفاعلي المباشر (تحدي المحاولة أولاً!) 🐍</span>
+                        <span class="lang-en">5. Interactive Python IDE Frame (Try Coding First!) 🐍</span>
                     </h2>
                     <p style="color: var(--text-muted);">
-                        <span class="lang-ar">يمكنك الآن كتابة وتعديل الكود الحقيقي بنفسك، واضغط زر (تشغيل الكود ▶) لرؤية المخرجات المباشرة في الشل!</span>
-                        <span class="lang-en">Write, edit real Python code, and click (Run Code ▶) to view live terminal console output!</span>
+                        <span class="lang-ar">المحرر أدناه جاهز لمكابدة المحاولة بنفسك! جرب كتابة الكود طبقاً للخطوات أعلاه، وإن احتجت مساعدة اضغط زر (إظهار الكود الإرشادي 💡)!</span>
+                        <span class="lang-en">Try coding the solution yourself based on planning steps above! If stuck, click (Show Solution 💡)!</span>
                     </p>
                 </div>
             </div>
@@ -579,9 +632,13 @@
                         </div>
                     </div>
                     <div class="editor-actions">
+                        <button class="solution-code-btn" onclick="loadSolution()"><i class="fa-solid fa-lightbulb"></i> 
+                            <span class="lang-ar">إظهار الكود الإرشادي 💡</span>
+                            <span class="lang-en">Show Solution 💡</span>
+                        </button>
                         <button class="reset-code-btn" onclick="resetEditor()"><i class="fa-solid fa-rotate-left"></i> 
-                            <span class="lang-ar">إعادة الكود الأصلي</span>
-                            <span class="lang-en">Reset Code</span>
+                            <span class="lang-ar">إعادة المحاولة</span>
+                            <span class="lang-en">Reset</span>
                         </button>
                         <button class="run-code-btn" onclick="executePython()"><i class="fa-solid fa-play"></i> 
                             <span class="lang-ar">تشغيل الكود ▶</span>
@@ -590,22 +647,16 @@
                     </div>
                 </div>
 
-                <textarea id="pythonEditor" class="code-textarea" spellcheck="false"># محرر بايثون التفاعلي - اكتب وكود وغيّر بنفسك وشغل فورياً!
-def ai_sentiment_detector(text):
-    text = text.lower()
-    positive = ["سعيد", "رائع", "ممتاز", "أحب", "happy", "great", "awesome"]
-    negative = ["حزين", "سيء", "غاضب", "صعب", "sad", "bad", "angry"]
-    
-    for word in positive:
-        if word in text:
-            return "😃 مشاعر إيجابية وسعيدة (Positive Mood)"
-    for word in negative:
-        if word in text:
-            return "😢 مشاعر حزينة أو محبطة (Negative Mood)"
-    return "😐 مشاعر محايدة (Neutral)"
+                <textarea id="pythonEditor" class="code-textarea" spellcheck="false"># 🎯 تحدي المطور الصغير: حاول كتابة كود تحليل المشاعر بنفسك أولاً!
+# 1. أنشئ دالة باسم ai_sentiment_detector(text)
+# 2. أنشئ قائمة positive وقائمة negative
+# 3. افحص الكلمات واستنتج مشاعر 😃 أو 😢 أو 😐
 
-# اختبر الكود بنفسك واكتب جملتك:
-user_text = "أنا سعيد جدا بكتشاف الذكاء الاصطناعي اليوم"
+def ai_sentiment_detector(text):
+    # ✍️ اكتب كودك هنا بناءً على خطوات التخطيط أعلاه...
+    pass
+
+user_text = "أنا سعيد بالتعلم اليوم"
 print("نص المدخلات:", user_text)
 print("النتيجة:", ai_sentiment_detector(user_text))
 </textarea>
@@ -616,8 +667,8 @@ print("النتيجة:", ai_sentiment_detector(user_text))
                         <span class="lang-ar">شاشة المخرجات والشل (Python Console Output)</span>
                         <span class="lang-en">Python Console Output Terminal</span>
                     </div>
-                    <div id="terminalConsole" class="terminal-console"># اضغط زر (تشغيل الكود ▶) لرؤية المخرجات هنا...
-# Click (Run Code ▶) to execute real Python code live...</div>
+                    <div id="terminalConsole" class="terminal-console"># اكتب كودك واضغط زر (تشغيل الكود ▶) لرؤية المخرجات هنا...
+# Write your code and click (Run Code ▶) to view output...</div>
                 </div>
             </div>
         </div>
@@ -757,11 +808,25 @@ print("النتيجة:", ai_sentiment_detector(user_text))
     </div>
 
     <script>
-        const initialCode = `# محرر بايثون التفاعلي - اكتب وكود وغيّر بنفسك وشغل فورياً!
+        const starterCode = `# 🎯 تحدي المطور الصغير: حاول كتابة كود تحليل المشاعر بنفسك أولاً!
+# 1. أنشئ دالة باسم ai_sentiment_detector(text)
+# 2. أنشئ قائمة positive وقائمة negative
+# 3. افحص الكلمات واستنتج مشاعر 😃 أو 😢 أو 😐
+
+def ai_sentiment_detector(text):
+    # ✍️ اكتب كودك هنا بناءً على خطوات التخطيط أعلاه...
+    pass
+
+user_text = "أنا سعيد بالتعلم اليوم"
+print("نص المدخلات:", user_text)
+print("النتيجة:", ai_sentiment_detector(user_text))
+`;
+
+        const solutionCode = `# 💡 النموذج الإرشادي لكود تحليل المشاعر (Sentiment Analyzer)
 def ai_sentiment_detector(text):
     text = text.lower()
-    positive = ["سعيد", "رائع", "ممتاز", "أحب", "happy", "great", "awesome"]
-    negative = ["حزين", "سيء", "غاضب", "صعب", "sad", "bad", "angry"]
+    positive = ["سعيد", "رائع", "ممتاز", "أحب", "happy", "great", "awesome", "مبدع"]
+    negative = ["حزين", "سيء", "غاضب", "صعب", "sad", "bad", "angry", "ممل"]
     
     for word in positive:
         if word in text:
@@ -800,10 +865,17 @@ print("النتيجة:", ai_sentiment_detector(user_text))
         });
 
         function resetEditor() {
-            document.getElementById('pythonEditor').value = initialCode;
+            document.getElementById('pythonEditor').value = starterCode;
             document.getElementById('terminalConsole').innerHTML = (document.documentElement.lang === 'ar') 
-                ? "🔄 تم إعادة الكود إلى الحالة الأصلية بنجاح." 
-                : "🔄 Code reset to original template.";
+                ? "🔄 تم إعادة المحرر إلى قالب التحدي الأولي." 
+                : "🔄 Editor reset to challenge template.";
+        }
+
+        function loadSolution() {
+            document.getElementById('pythonEditor').value = solutionCode;
+            document.getElementById('terminalConsole').innerHTML = (document.documentElement.lang === 'ar') 
+                ? "💡 تم تحميل النموذج الإرشادي في المحرر! يمكنك قراءته وتعديله ثم الضغط على (تشغيل الكود ▶)." 
+                : "💡 Solution code loaded in editor! You can modify it and click (Run Code ▶).";
         }
 
         function executePython() {
