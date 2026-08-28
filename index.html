@@ -33,6 +33,15 @@
             padding-bottom: 60px;
         }
 
+        /* Language visibility controls */
+        html[lang="ar"] .lang-en { display: none !important; }
+        html[lang="ar"] .lang-ar { display: inline !important; }
+        html[lang="ar"] div.lang-ar, html[lang="ar"] p.lang-ar, html[lang="ar"] h1.lang-ar, html[lang="ar"] h2.lang-ar, html[lang="ar"] h3.lang-ar { display: block !important; }
+
+        html[lang="en"] .lang-ar { display: none !important; }
+        html[lang="en"] .lang-en { display: inline !important; }
+        html[lang="en"] div.lang-en, html[lang="en"] p.lang-en, html[lang="en"] h1.lang-en, html[lang="en"] h2.lang-en, html[lang="en"] h3.lang-en { display: block !important; }
+
         /* Navbar */
         .navbar {
             background: rgba(22, 30, 46, 0.85);
@@ -71,6 +80,18 @@
         .logo-text span {
             color: var(--accent-cyan);
         }
+
+        .nav-right-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .lang-btn {
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            color: white; border: none; padding: 8px 18px; border-radius: 10px; font-weight: 800; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+        }
+        .lang-btn:hover { transform: scale(1.05); box-shadow: 0 6px 18px rgba(56, 189, 248, 0.4); }
 
         /* Container */
         .container {
@@ -242,26 +263,48 @@
             <div class="logo-icon"><i class="fa-solid fa-brain"></i></div>
             <div class="logo-text">MEGAMINDS <span>AI ACADEMY</span></div>
         </div>
-        <div class="info-badge">الفئة العمرية: 10 - 16 سنة 🚀</div>
+        <div class="nav-right-box">
+            <button class="lang-btn" onclick="toggleLanguage()"><i class="fa-solid fa-globe"></i> <span id="langBtnLabel">English</span></button>
+            <div class="info-badge">
+                <span class="lang-ar">الفئة العمرية: 10 - 16 سنة 🚀</span>
+                <span class="lang-en">Age Group: 10 - 16 Years 🚀</span>
+            </div>
+        </div>
     </nav>
 
     <div class="container">
 
         <!-- Hero Section -->
         <div class="portal-hero">
-            <h1>منهج الذكاء الاصطناعي التفاعلي المطور 🤖✨</h1>
-            <p>منصة الحصص التفاعلية المصممة لبناء مهندسي ومبتكري المستقبل. تعلم، جرب بنفسك، وابنِ مشاريعك الخاصة بـ Python والـ AI!</p>
+            <h1>
+                <span class="lang-ar">منهج الذكاء الاصطناعي التفاعلي المطور 🤖✨</span>
+                <span class="lang-en">Interactive AI Curriculum Portal 🤖✨</span>
+            </h1>
+            <p>
+                <span class="lang-ar">منصة الحصص التفاعلية المصممة لبناء مهندسي ومبتكري المستقبل. تعلم، جرب بنفسك، وابنِ مشاريعك الخاصة بـ Python والـ AI!</span>
+                <span class="lang-en">The interactive curriculum platform designed for future AI engineers & innovators. Learn, test live, and build your Python AI projects!</span>
+            </p>
             <div class="badge-bar">
-                <span class="info-badge"><i class="fa-solid fa-clock"></i> المدة: 3 شهور (12 السيشن)</span>
-                <span class="info-badge"><i class="fa-solid fa-code"></i> التركيز: التطبيق العملي التفاعلي</span>
-                <span class="info-badge"><i class="fa-solid fa-trophy"></i> النتيجة: Demo Day ومشاريع حية</span>
+                <span class="info-badge"><i class="fa-solid fa-clock"></i> 
+                    <span class="lang-ar">المدة: 3 شهور (12 سيشن)</span>
+                    <span class="lang-en">Duration: 3 Months (12 Sessions)</span>
+                </span>
+                <span class="info-badge"><i class="fa-solid fa-code"></i> 
+                    <span class="lang-ar">التركيز: التطبيق العملي التفاعلي</span>
+                    <span class="lang-en">Focus: Interactive Hands-on Labs</span>
+                </span>
+                <span class="info-badge"><i class="fa-solid fa-trophy"></i> 
+                    <span class="lang-ar">النتيجة: Demo Day ومشاريع حية</span>
+                    <span class="lang-en">Outcome: Demo Day & Live Projects</span>
+                </span>
             </div>
         </div>
 
         <!-- Sessions List -->
         <div class="section-title">
             <i class="fa-solid fa-layer-group" style="color: var(--accent-cyan);"></i>
-            جدول الحصص والصفحات التفاعلية (12 السيشن)
+            <span class="lang-ar">جدول الحصص والصفحات التفاعلية (12 سيشن)</span>
+            <span class="lang-en">Session Directory & Interactive Pages (12 Sessions)</span>
         </div>
 
         <div class="sessions-grid">
@@ -273,10 +316,19 @@
                         <span class="session-num">Session 1</span>
                         <i class="fa-solid fa-lightbulb" style="color: var(--accent-cyan);"></i>
                     </div>
-                    <h3>1. مدخل إلى عالم الذكاء الاصطناعي</h3>
-                    <p>ما هو الـ AI؟ الفرق بينه وبين البرمجة العادية، أين نستخدمه، وأول برنامج تحليل مشاعر تفاعلي بـ Python.</p>
+                    <h3>
+                        <span class="lang-ar">1. مدخل إلى عالم الذكاء الاصطناعي</span>
+                        <span class="lang-en">1. Introduction to AI</span>
+                    </h3>
+                    <p>
+                        <span class="lang-ar">ما هو الـ AI؟ الفرق بينه وبين البرمجة العادية، أين نستخدمه، وأول برنامج تحليل مشاعر تفاعلي بـ Python.</span>
+                        <span class="lang-en">What is AI? Trad vs ML differences, everyday uses, and your first Python sentiment classifier.</span>
+                    </p>
                 </div>
-                <div class="card-btn">افتح صفحة السيشن التفاعلية <i class="fa-solid fa-arrow-left"></i></div>
+                <div class="card-btn">
+                    <span class="lang-ar">افتح صفحة السيشن التفاعلية <i class="fa-solid fa-arrow-left"></i></span>
+                    <span class="lang-en">Open Interactive Session <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
             </a>
 
             <!-- Session 2 -->
@@ -286,10 +338,19 @@
                         <span class="session-num">Session 2</span>
                         <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--accent-purple);"></i>
                     </div>
-                    <h3>2. Generative AI & Prompt Engineering</h3>
-                    <p>فهم الذكاء الاصطناعي التوليدي، تعلم قاعدة C-T-C لكتابة الأوامر، وبناء مولد قصص خيالية ذكي بـ Python.</p>
+                    <h3>
+                        <span class="lang-ar">2. Generative AI & Prompt Engineering</span>
+                        <span class="lang-en">2. Generative AI & Prompt Engineering</span>
+                    </h3>
+                    <p>
+                        <span class="lang-ar">فهم الذكاء الاصطناعي التوليدي، تعلم قاعدة C-T-C لكتابة الأوامر، وبناء مولد قصص خيالية ذكي بـ Python.</span>
+                        <span class="lang-en">Understand Generative AI, C-T-C prompt framework, and Python fantasy story generator.</span>
+                    </p>
                 </div>
-                <div class="card-btn">افتح صفحة السيشن التفاعلية <i class="fa-solid fa-arrow-left"></i></div>
+                <div class="card-btn">
+                    <span class="lang-ar">افتح صفحة السيشن التفاعلية <i class="fa-solid fa-arrow-left"></i></span>
+                    <span class="lang-en">Open Interactive Session <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
             </a>
 
             <!-- Session 3 -->
@@ -299,10 +360,19 @@
                         <span class="session-num">Session 3</span>
                         <i class="fa-solid fa-comments" style="color: var(--accent-green);"></i>
                     </div>
-                    <h3>3. بناء الشات بوت الذكي (AI Chatbot)</h3>
-                    <p>كيف يفهم الكمبيوتر الجمل؟ تصميم Intent Tree وبناء مساعد محادثة يتفاعل معك برمجياً.</p>
+                    <h3>
+                        <span class="lang-ar">3. بناء الشات بوت الذكي (AI Chatbot)</span>
+                        <span class="lang-en">3. Building an AI Chatbot</span>
+                    </h3>
+                    <p>
+                        <span class="lang-ar">كيف يفهم الكمبيوتر الجمل؟ تصميم Intent Tree وبناء مساعد محادثة يتفاعل معك برمجياً.</span>
+                        <span class="lang-en">How computers understand sentences? Designing Intent Trees & Python interactive chatbot.</span>
+                    </p>
                 </div>
-                <div class="card-btn">افتح صفحة السيشن التفاعلية <i class="fa-solid fa-arrow-left"></i></div>
+                <div class="card-btn">
+                    <span class="lang-ar">افتح صفحة السيشن التفاعلية <i class="fa-solid fa-arrow-left"></i></span>
+                    <span class="lang-en">Open Interactive Session <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
             </a>
 
             <!-- Session 4 -->
@@ -312,10 +382,19 @@
                         <span class="session-num">Session 4</span>
                         <i class="fa-solid fa-microphone" style="color: var(--accent-orange);"></i>
                     </div>
-                    <h3>4. الصوت والذكاء الاصطناعي (Siri Clone)</h3>
-                    <p>تحويل الصوت لنص والتحدث بصوت آلي، برمجة مساعدك الصوتي الخاص ليفتح الموقع ويجيبك بصوته.</p>
+                    <h3>
+                        <span class="lang-ar">4. الصوت والذكاء الاصطناعي (Siri Clone)</span>
+                        <span class="lang-en">4. Voice & Audio AI (Siri Clone)</span>
+                    </h3>
+                    <p>
+                        <span class="lang-ar">تحويل الصوت لنص والتحدث بصوت آلي، برمجة مساعدك الصوتي الخاص ليفتح الموقع ويجيبك بصوته.</span>
+                        <span class="lang-en">Speech-to-text & TTS speech synthesis, programming a Python assistant that speaks to you.</span>
+                    </p>
                 </div>
-                <div class="card-btn">افتح صفحة السيشن التفاعلية <i class="fa-solid fa-arrow-left"></i></div>
+                <div class="card-btn">
+                    <span class="lang-ar">افتح صفحة السيشن التفاعلية <i class="fa-solid fa-arrow-left"></i></span>
+                    <span class="lang-en">Open Interactive Session <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
             </a>
 
             <!-- Session 5 -->
@@ -325,10 +404,19 @@
                         <span class="session-num">Session 5</span>
                         <i class="fa-solid fa-eye" style="color: var(--accent-cyan);"></i>
                     </div>
-                    <h3>5. أساسيات الرؤية الحاسوبية (OpenCV)</h3>
-                    <p>كيف يرى الحاسوب الصور والألوان؟ فتح الكاميرا المباشرة وإضافة الفلاتر السحرية وتحديد الحواف.</p>
+                    <h3>
+                        <span class="lang-ar">5. أساسيات الرؤية الحاسوبية (OpenCV)</span>
+                        <span class="lang-en">5. Computer Vision Basics (OpenCV)</span>
+                    </h3>
+                    <p>
+                        <span class="lang-ar">كيف يرى الحاسوب الصور والألوان؟ فتح الكاميرا المباشرة وإضافة الفلاتر السحرية وتحديد الحواف.</span>
+                        <span class="lang-en">How computers see pixels & colors? Live camera streaming, magic filters, and Canny edge detection.</span>
+                    </p>
                 </div>
-                <div class="card-btn">افتح صفحة السيشن التفاعلية <i class="fa-solid fa-arrow-left"></i></div>
+                <div class="card-btn">
+                    <span class="lang-ar">افتح صفحة السيشن التفاعلية <i class="fa-solid fa-arrow-left"></i></span>
+                    <span class="lang-en">Open Interactive Session <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
             </a>
 
             <!-- Session 6 -->
@@ -338,10 +426,19 @@
                         <span class="session-num">Session 6</span>
                         <i class="fa-solid fa-brain" style="color: var(--accent-purple);"></i>
                     </div>
-                    <h3>6. دمج النماذج مع Python (Teachable Machine)</h3>
-                    <p>تدريب نموذج ذكي على الويب وتصديره وتشغيله داخل كود بايثون محلي ليتعرف على الأغراض مباشرة!</p>
+                    <h3>
+                        <span class="lang-ar">6. دمج النماذج مع Python (Teachable Machine)</span>
+                        <span class="lang-en">6. Model Integration (Teachable Machine)</span>
+                    </h3>
+                    <p>
+                        <span class="lang-ar">تدريب نموذج ذكي على الويب وتصديره وتشغيله داخل كود بايثون محلي ليتعرف على الأغراض مباشرة!</span>
+                        <span class="lang-en">Train models on web, export TensorFlow files, and run offline in Python OpenCV.</span>
+                    </p>
                 </div>
-                <div class="card-btn">افتح صفحة السيشن التفاعلية <i class="fa-solid fa-arrow-left"></i></div>
+                <div class="card-btn">
+                    <span class="lang-ar">افتح صفحة السيشن التفاعلية <i class="fa-solid fa-arrow-left"></i></span>
+                    <span class="lang-en">Open Interactive Session <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
             </a>
 
             <!-- Session 7 -->
@@ -351,10 +448,19 @@
                         <span class="session-num">Session 7</span>
                         <i class="fa-solid fa-gamepad" style="color: var(--accent-green);"></i>
                     </div>
-                    <h3>7. الـ AI في الألعاب (Rock Paper Scissors AI)</h3>
-                    <p>جعل الذكاء الاصطناعي يلعب ضد الطالب عن طريق قراءة إشارات اليد بالسرعة وحساب النقاط تلقائياً.</p>
+                    <h3>
+                        <span class="lang-ar">7. الـ AI في الألعاب (Rock Paper Scissors AI)</span>
+                        <span class="lang-en">7. AI in Games (Rock Paper Scissors AI)</span>
+                    </h3>
+                    <p>
+                        <span class="lang-ar">جعل الذكاء الاصطناعي يلعب ضد الطالب عن طريق قراءة إشارات اليد بالسرعة وحساب النقاط تلقائياً.</span>
+                        <span class="lang-en">AI playing against students by reading real-time hand gestures & automated scorekeeping.</span>
+                    </p>
                 </div>
-                <div class="card-btn">افتح صفحة السيشن التفاعلية <i class="fa-solid fa-arrow-left"></i></div>
+                <div class="card-btn">
+                    <span class="lang-ar">افتح صفحة السيشن التفاعلية <i class="fa-solid fa-arrow-left"></i></span>
+                    <span class="lang-en">Open Interactive Session <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
             </a>
 
             <!-- Session 8 -->
@@ -364,10 +470,19 @@
                         <span class="session-num">Session 8</span>
                         <i class="fa-solid fa-hand" style="color: var(--accent-orange);"></i>
                     </div>
-                    <h3>8. التحكم بالكمبيوتر بحركات اليد (Gesture Control)</h3>
-                    <p>ربط الكاميرا بمكتبة PyAutoGUI والتحكم في لعبة سباق سيارات كاملة بإشارة يدك في الهواء!</p>
+                    <h3>
+                        <span class="lang-ar">8. التحكم بالكمبيوتر بحركات اليد (Gesture Control)</span>
+                        <span class="lang-en">8. Gesture-Controlled PC (PyAutoGUI Racing)</span>
+                    </h3>
+                    <p>
+                        <span class="lang-ar">ربط الكاميرا بمكتبة PyAutoGUI والتحكم في لعبة سباق سيارات كاملة بإشارة يدك في الهواء!</span>
+                        <span class="lang-en">Link camera vision to PyAutoGUI keystrokes & steer racing games touchlessly.</span>
+                    </p>
                 </div>
-                <div class="card-btn">افتح صفحة السيشن التفاعلية <i class="fa-solid fa-arrow-left"></i></div>
+                <div class="card-btn">
+                    <span class="lang-ar">افتح صفحة السيشن التفاعلية <i class="fa-solid fa-arrow-left"></i></span>
+                    <span class="lang-en">Open Interactive Session <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
             </a>
 
             <!-- Session 9 -->
@@ -377,10 +492,19 @@
                         <span class="session-num">Session 9</span>
                         <i class="fa-solid fa-desktop" style="color: var(--accent-cyan);"></i>
                     </div>
-                    <h3>9. المساعد المكتبي الشامل (Desktop Assistant)</h3>
-                    <p>دمج البرمجيات وأوامر الصوت في تطبيق ذكي واحد يستجيب لأوامرك ويفتح برامج لابتوبك.</p>
+                    <h3>
+                        <span class="lang-ar">9. المساعد المكتبي الشامل (Desktop Assistant)</span>
+                        <span class="lang-en">9. Comprehensive Desktop Assistant</span>
+                    </h3>
+                    <p>
+                        <span class="lang-ar">دمج البرمجيات وأوامر الصوت في تطبيق ذكي واحد يستجيب لأوامرك ويفتح برامج لابتوبك.</span>
+                        <span class="lang-en">Combine voice, chatbot, & OS automation into a unified smart desktop application.</span>
+                    </p>
                 </div>
-                <div class="card-btn">افتح صفحة السيشن التفاعلية <i class="fa-solid fa-arrow-left"></i></div>
+                <div class="card-btn">
+                    <span class="lang-ar">افتح صفحة السيشن التفاعلية <i class="fa-solid fa-arrow-left"></i></span>
+                    <span class="lang-en">Open Interactive Session <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
             </a>
 
             <!-- Session 10 -->
@@ -390,10 +514,19 @@
                         <span class="session-num">Session 10</span>
                         <i class="fa-solid fa-shield-halved" style="color: var(--accent-purple);"></i>
                     </div>
-                    <h3>10. حارس الغرفة والمكتب الذكي (AI Security Guard)</h3>
-                    <p>دمج الرؤية والصوت لرصد أي حركة مريبة وتأمين غرفتك بنظام إنذار تفاعلي متكامل.</p>
+                    <h3>
+                        <span class="lang-ar">10. حارس الغرفة والمكتب الذكي (AI Security Guard)</span>
+                        <span class="lang-en">10. Smart AI Security Guard</span>
+                    </h3>
+                    <p>
+                        <span class="lang-ar">دمج الرؤية والصوت لرصد أي حركة مريبة وتأمين غرفتك بنظام إنذار تفاعلي متكامل.</span>
+                        <span class="lang-en">Multi-modal AI vision & sound alarms detecting room intruders in real time.</span>
+                    </p>
                 </div>
-                <div class="card-btn">افتح صفحة السيشن التفاعلية <i class="fa-solid fa-arrow-left"></i></div>
+                <div class="card-btn">
+                    <span class="lang-ar">افتح صفحة السيشن التفاعلية <i class="fa-solid fa-arrow-left"></i></span>
+                    <span class="lang-en">Open Interactive Session <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
             </a>
 
             <!-- Session 11 -->
@@ -403,10 +536,19 @@
                         <span class="session-num">Session 11</span>
                         <i class="fa-solid fa-tools" style="color: var(--accent-green);"></i>
                     </div>
-                    <h3>11. ورشة عمل مشروع التخرج (Capstone Workshop)</h3>
-                    <p>اختيار الفكرة الحرة وتجميع الكود بمساعدة المدرب والتجهيز ليوم التخرج والعرض الحي.</p>
+                    <h3>
+                        <span class="lang-ar">11. ورشة عمل مشروع التخرج (Capstone Workshop)</span>
+                        <span class="lang-en">11. Capstone Project Workshop</span>
+                    </h3>
+                    <p>
+                        <span class="lang-ar">اختيار الفكرة الحرة وتجميع الكود بمساعدة المدرب والتجهيز ليوم التخرج والعرض الحي.</span>
+                        <span class="lang-en">Custom project ideation, live code debugging, and rehearsal for Demo Day presentations.</span>
+                    </p>
                 </div>
-                <div class="card-btn">افتح صفحة السيشن التفاعلية <i class="fa-solid fa-arrow-left"></i></div>
+                <div class="card-btn">
+                    <span class="lang-ar">افتح صفحة السيشن التفاعلية <i class="fa-solid fa-arrow-left"></i></span>
+                    <span class="lang-en">Open Interactive Session <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
             </a>
 
             <!-- Session 12 -->
@@ -416,15 +558,47 @@
                         <span class="session-num">Session 12</span>
                         <i class="fa-solid fa-graduation-cap" style="color: var(--accent-orange);"></i>
                     </div>
-                    <h3>12. احتفالية يوم التخرج (Demo Day)</h3>
-                    <p>استضافة أولياء الأمور والعروض الحية لمشاريع الطلاب وتكريم مهندسي المستقبل واحتفالية الشهادات!</p>
+                    <h3>
+                        <span class="lang-ar">12. احتفالية يوم التخرج (Demo Day)</span>
+                        <span class="lang-en">12. Demo Day & Graduation Ceremony</span>
+                    </h3>
+                    <p>
+                        <span class="lang-ar">استضافة أولياء الأمور والعروض الحية لمشاريع الطلاب وتكريم مهندسي المستقبل واحتفالية الشهادات!</span>
+                        <span class="lang-en">Hosting parents, live student project demos, Junior AI Developer certification ceremony!</span>
+                    </p>
                 </div>
-                <div class="card-btn">افتح صفحة السيشن التفاعلية <i class="fa-solid fa-arrow-left"></i></div>
+                <div class="card-btn">
+                    <span class="lang-ar">افتح صفحة السيشن التفاعلية <i class="fa-solid fa-arrow-left"></i></span>
+                    <span class="lang-en">Open Interactive Session <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
             </a>
 
         </div>
 
     </div>
 
+    <script>
+        function toggleLanguage() {
+            const currentLang = document.documentElement.lang || 'ar';
+            const newLang = (currentLang === 'ar') ? 'en' : 'ar';
+            setLanguage(newLang);
+        }
+
+        function setLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+            localStorage.setItem('megaminds_lang', lang);
+            
+            const btnLabel = document.getElementById('langBtnLabel');
+            if (btnLabel) {
+                btnLabel.innerText = (lang === 'ar') ? 'English' : 'العربية';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('megaminds_lang') || 'ar';
+            setLanguage(savedLang);
+        });
+    </script>
 </body>
 </html>

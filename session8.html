@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Megaminds AI - السيشن 8: التحكم بالكمبيوتر بحركات اليد (Gesture Control)</title>
+    <title>Megaminds AI - Session 8</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -21,6 +21,18 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
         body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.8; padding-bottom: 60px; }
         
+        /* Language visibility controls */
+        html[lang="ar"] .lang-en { display: none !important; }
+        html[lang="ar"] .lang-ar { display: inline !important; }
+        html[lang="ar"] div.lang-ar, html[lang="ar"] p.lang-ar, html[lang="ar"] h1.lang-ar, html[lang="ar"] h2.lang-ar, html[lang="ar"] h3.lang-ar, html[lang="ar"] h4.lang-ar { display: block !important; }
+
+        html[lang="en"] .lang-ar { display: none !important; }
+        html[lang="en"] .lang-en { display: inline !important; }
+        html[lang="en"] div.lang-en, html[lang="en"] p.lang-en, html[lang="en"] h1.lang-en, html[lang="en"] h2.lang-en, html[lang="en"] h3.lang-en, html[lang="en"] h4.lang-en { display: block !important; }
+        
+        html[lang="en"] .quiz-opt { text-align: left !important; }
+        html[lang="ar"] .quiz-opt { text-align: right !important; }
+
         .navbar {
             background: rgba(22, 30, 46, 0.85); backdrop-filter: blur(12px);
             position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--card-border);
@@ -34,11 +46,18 @@
         }
         .logo-text { font-weight: 900; font-size: 1.4rem; }
         .logo-text span { color: var(--accent-cyan); }
+        .nav-links { display: flex; align-items: center; gap: 15px; }
         .nav-btn {
             background: rgba(56, 189, 248, 0.1); color: var(--accent-cyan); border: 1px solid rgba(56, 189, 248, 0.3);
             padding: 8px 18px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: all 0.3s ease;
         }
         .nav-btn:hover { background: var(--accent-cyan); color: #000; transform: translateY(-2px); }
+        
+        .lang-btn {
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            color: white; border: none; padding: 8px 18px; border-radius: 10px; font-weight: 800; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+        }
+        .lang-btn:hover { transform: scale(1.05); box-shadow: 0 6px 18px rgba(56, 189, 248, 0.4); }
         
         .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
         
@@ -75,7 +94,7 @@
         
         .quiz-container { background: rgba(15, 23, 42, 0.8); border-radius: 16px; padding: 25px; margin-top: 20px; }
         .quiz-q { font-size: 1.2rem; font-weight: 700; color: white; margin-bottom: 15px; }
-        .quiz-opt { display: block; width: 100%; background: rgba(30, 41, 59, 0.7); border: 1px solid var(--card-border); color: var(--text-main); padding: 14px 20px; border-radius: 12px; margin-bottom: 10px; text-align: right; font-size: 1.05rem; cursor: pointer; transition: all 0.2s ease; }
+        .quiz-opt { display: block; width: 100%; background: rgba(30, 41, 59, 0.7); border: 1px solid var(--card-border); color: var(--text-main); padding: 14px 20px; border-radius: 12px; margin-bottom: 10px; font-size: 1.05rem; cursor: pointer; transition: all 0.2s ease; }
         .quiz-opt:hover { border-color: var(--accent-cyan); background: rgba(56, 189, 248, 0.1); }
         .quiz-opt.correct { background: rgba(34, 197, 94, 0.2) !important; border-color: var(--accent-green) !important; color: #4ade80 !important; font-weight: bold; }
         .quiz-opt.wrong { background: rgba(239, 68, 68, 0.2) !important; border-color: #ef4444 !important; color: #fca5a5 !important; }
@@ -98,54 +117,89 @@
             <div class="logo-text">MEGAMINDS <span>AI ACADEMY</span></div>
         </div>
         <div class="nav-links">
-            <a href="index.html" class="nav-btn"><i class="fa-solid fa-house"></i> الرئيسية</a>
-            <span style="color: var(--text-muted); font-weight: bold;">السيشن 8 / 12</span>
+            <button class="lang-btn" onclick="toggleLanguage()"><i class="fa-solid fa-globe"></i> <span id="langBtnLabel">English</span></button>
+            <a href="index.html" class="nav-btn">
+                <span class="lang-ar"><i class="fa-solid fa-house"></i> الرئيسية</span>
+                <span class="lang-en"><i class="fa-solid fa-house"></i> Home</span>
+            </a>
+            <span style="color: var(--text-muted); font-weight: bold;">
+                <span class="lang-ar">السيشن 8 / 12</span>
+                <span class="lang-en">Session 8 / 12</span>
+            </span>
         </div>
     </nav>
 
     <div class="container">
 
         <div class="hero">
-            <span class="session-tag">السيشن الثامن 🕹️</span>
-            <h1>التحكم بالكمبيوتر بحركات اليد (Gesture Control)</h1>
-            <p>لعب لعبة سباق سيارات كاملة بإشارة يدك أمام الكاميرا! 🕹️🖐️</p>
+            <span class="session-tag">
+                <span class="lang-ar">السيشن الثامن 🕹️</span>
+                <span class="lang-en">Session 8 🕹️</span>
+            </span>
+            <h1>
+                <span class="lang-ar">التحكم بالكمبيوتر بحركات اليد (Gesture Control)</span>
+                <span class="lang-en">Gesture-Controlled PC (PyAutoGUI Racing)</span>
+            </h1>
+            <p>
+                <span class="lang-ar">لعب لعبة سباق سيارات كاملة بإشارة يدك أمام الكاميرا! 🕹️🖐️</span>
+                <span class="lang-en">Playing a complete racing game by waving your hands in front of camera! 🕹️🖐️</span>
+            </p>
         </div>
 
         <div class="agenda-card">
             <div class="agenda-title">
                 <i class="fa-solid fa-list-check"></i>
-                جدول أعمال اليوم (ماذا سنأخذ في هذه الحصة؟)
+                <span class="lang-ar">جدول أعمال اليوم (ماذا سنأخذ في هذه الحصة؟)</span>
+                <span class="lang-en">Today's Agenda (What will we cover today?)</span>
             </div>
             <div class="agenda-grid">
                 
         <div class="agenda-item">
             <div class="agenda-num">1</div>
-            <div class="agenda-text">كيف نربط الرؤية الحاسوبية بمحاكاة زر الكيبورد؟</div>
+            <div class="agenda-text">
+                <span class="lang-ar">كيف نربط الرؤية الحاسوبية بمحاكاة زر الكيبورد؟</span>
+                <span class="lang-en">Connecting computer vision outputs to keyboard keystrokes.</span>
+            </div>
         </div>
         
         <div class="agenda-item">
             <div class="agenda-num">2</div>
-            <div class="agenda-text">مكتبة PyAutoGUI للتحكم بالماوس والأسهم برمجياً.</div>
+            <div class="agenda-text">
+                <span class="lang-ar">مكتبة PyAutoGUI للتحكم بالماوس والأسهم برمجياً.</span>
+                <span class="lang-en">PyAutoGUI library for controlling mouse & arrow keys.</span>
+            </div>
         </div>
         
         <div class="agenda-item">
             <div class="agenda-num">3</div>
-            <div class="agenda-text">تحويل موقع اليد إلى أمر (Left Arrow / Right Arrow).</div>
+            <div class="agenda-text">
+                <span class="lang-ar">تحويل موقع اليد إلى أمر (Left Arrow / Right Arrow).</span>
+                <span class="lang-en">Mapping hand X-coordinates to Left/Right key presses.</span>
+            </div>
         </div>
         
         <div class="agenda-item">
             <div class="agenda-num">4</div>
-            <div class="agenda-text">تجربة محاكي التحكم الإشاري على الويب.</div>
+            <div class="agenda-text">
+                <span class="lang-ar">تجربة محاكي التحكم الإشاري على الويب.</span>
+                <span class="lang-en">Interactive Gesture Steering Simulator.</span>
+            </div>
         </div>
         
         <div class="agenda-item">
             <div class="agenda-num">5</div>
-            <div class="agenda-text">كتابة كود بايثون لتشغيل لعبة سباق باليد بدون لمس الكيبورد!</div>
+            <div class="agenda-text">
+                <span class="lang-ar">كتابة كود بايثون لتشغيل لعبة سباق باليد بدون لمس الكيبورد!</span>
+                <span class="lang-en">Writing Python code to control car racing without touching keyboard!</span>
+            </div>
         </div>
         
         <div class="agenda-item">
             <div class="agenda-num">6</div>
-            <div class="agenda-text">تحدي الحصة وسباق السيارات الإشاري.</div>
+            <div class="agenda-text">
+                <span class="lang-ar">تحدي الحصة وسباق السيارات الإشاري.</span>
+                <span class="lang-en">Session challenge: Touchless Racing Tournament!</span>
+            </div>
         </div>
         
             </div>
@@ -155,51 +209,82 @@
             <div class="section-header">
                 <div class="section-icon"><i class="fa-solid fa-graduation-cap"></i></div>
                 <div>
-                    <h2>1. محاكاة الكيبورد (PyAutoGUI)</h2>
+                    <h2>
+                        <span class="lang-ar">1. محاكاة الكيبورد (PyAutoGUI)</span>
+                        <span class="lang-en">1. Keyboard Automation (PyAutoGUI)</span>
+                    </h2>
                 </div>
             </div>
-            <p style="font-size: 1.15rem;">مكتبة PyAutoGUI تسمح للبايثون بالضغط على أي زر في الكيبورد تلقائياً كأن هناك إنسان يضغط عليه!</p>
+            <p style="font-size: 1.15rem;">
+                <span class="lang-ar">مكتبة PyAutoGUI تسمح للبايثون بالضغط على أي زر في الكيبورد تلقائياً كأن هناك إنسان يضغط عليه!</span>
+                <span class="lang-en">PyAutoGUI allows Python to trigger virtual key presses automatically as if a human pressed them!</span>
+            </p>
         </div>
 
         <div class="section-block">
             <div class="section-header">
                 <div class="section-icon" style="background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan);"><i class="fa-solid fa-lightbulb"></i></div>
                 <div>
-                    <h2>2. تقسيم شاشة الكاميرا إلى مناطق تحكم</h2>
+                    <h2>
+                        <span class="lang-ar">2. تقسيم شاشة الكاميرا إلى مناطق تحكم</span>
+                        <span class="lang-en">2. Camera Zone Partitioning</span>
+                    </h2>
                 </div>
             </div>
-            <p style="font-size: 1.15rem;">إذا كانت اليد في الناحية اليسرى من الشاشة نرسل أمر `press('left')` وإذا كانت في اليمين نرسل `press('right')`!</p>
+            <p style="font-size: 1.15rem;">
+                <span class="lang-ar">إذا كانت اليد في الناحية اليسرى من الشاشة نرسل أمر `press('left')` وإذا كانت في اليمين نرسل `press('right')`!</span>
+                <span class="lang-en">If hand is on left side of camera, we send `press('left')`; if on right side, `press('right')`!</span>
+            </p>
         </div>
 
         <div class="section-block">
             <div class="section-header">
                 <div class="section-icon" style="background: rgba(249, 115, 22, 0.15); color: var(--accent-orange);"><i class="fa-solid fa-layer-group"></i></div>
                 <div>
-                    <h2>3. تجربة اللعب بدون لمس (Touchless Gaming)</h2>
+                    <h2>
+                        <span class="lang-ar">3. تجربة اللعب بدون لمس (Touchless Gaming)</span>
+                        <span class="lang-en">3. Touchless Interactive Gaming</span>
+                    </h2>
                 </div>
             </div>
-            <p style="font-size: 1.15rem;">تقنية مدهشة تستخدم في ألعاب المستقبليين وفي المستشفيات للتحكم بالأجهزة دون لمسها.</p>
+            <p style="font-size: 1.15rem;">
+                <span class="lang-ar">تقنية مدهشة تستخدم في ألعاب المستقبليين وفي المستشفيات للتحكم بالأجهزة دون لمسها.</span>
+                <span class="lang-en">Futuristic touchless interaction tech used in modern gaming and surgical room controls.</span>
+            </p>
         </div>
 
         <div class="section-block">
             <div class="section-header">
                 <div class="section-icon" style="background: rgba(34, 197, 94, 0.15); color: var(--accent-green);"><i class="fa-solid fa-flask"></i></div>
                 <div>
-                    <h2>التجربة العملية التفاعلية المباشرة 🧪</h2>
+                    <h2>
+                        <span class="lang-ar">التجربة العملية التفاعلية المباشرة 🧪</span>
+                        <span class="lang-en">Live Interactive Hands-on Lab 🧪</span>
+                    </h2>
                 </div>
             </div>
 
             <div class="lab-box">
-                <h3 style="font-size: 1.4rem; color: white; margin-bottom: 10px;">محاكي التحكم الإشاري في عجلة القيادة (Gesture Steering Sim)</h3>
-                <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">حرك المؤشر يميناً ويساراً لمحاكاة حركة يدك أمام كاميرا لابتوبك!</p>
+                <h3 style="font-size: 1.4rem; color: white; margin-bottom: 10px;">
+                    <span class="lang-ar">محاكي التحكم الإشاري في عجلة القيادة (Gesture Steering Sim)</span>
+                    <span class="lang-en">Gesture Steering Simulator</span>
+                </h3>
+                <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">
+                    <span class="lang-ar">حرك المؤشر يميناً ويساراً لمحاكاة حركة يدك أمام كاميرا لابتوبك!</span>
+                    <span class="lang-en">Move your cursor left and right to simulate hand steering live!</span>
+                </p>
                 
                 <div style="margin-top: 20px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
-                    <input type="text" id="userInputText" placeholder="اكتب هنا لتجربة المعمل التفاعلي..." style="width: 70%; max-width: 450px; padding: 14px 20px; border-radius: 12px; border: 1px solid var(--accent-cyan); background: #0f172a; color: white; font-size: 1.1rem; outline: none;">
-                    <button class="lab-btn" onclick="runSim()"><i class="fa-solid fa-play"></i> تشغيل التجربة</button>
+                    <input type="text" id="userInputText" placeholder="اكتب هنا لتجربة المعمل التفاعلي / Type here for live lab..." style="width: 70%; max-width: 450px; padding: 14px 20px; border-radius: 12px; border: 1px solid var(--accent-cyan); background: #0f172a; color: white; font-size: 1.1rem; outline: none;">
+                    <button class="lab-btn" onclick="runSim()"><i class="fa-solid fa-play"></i> 
+                        <span class="lang-ar">تشغيل التجربة</span>
+                        <span class="lang-en">Run Lab</span>
+                    </button>
                 </div>
 
                 <div class="demo-result-box" id="resultDisplay">
-                    ✨ في انتظار مدخلاتك واختبار النظام الذكي...
+                    <span class="lang-ar">✨ في انتظار مدخلاتك واختبار النظام الذكي...</span>
+                    <span class="lang-en">✨ Awaiting your input to test AI live...</span>
                 </div>
             </div>
         </div>
@@ -208,7 +293,10 @@
             <div class="section-header">
                 <div class="section-icon"><i class="fa-brands fa-python"></i></div>
                 <div>
-                    <h2>تطبيق الكود بـ Python 🐍</h2>
+                    <h2>
+                        <span class="lang-ar">تطبيق الكود بـ Python 🐍</span>
+                        <span class="lang-en">Python Code Implementation 🐍</span>
+                    </h2>
                 </div>
             </div>
 
@@ -231,45 +319,95 @@ print("تم إرسال أمر الانعطاف بنجاح!")</div>
             <div class="section-header">
                 <div class="section-icon" style="background: rgba(234, 179, 8, 0.15); color: #eab308;"><i class="fa-solid fa-gamepad"></i></div>
                 <div>
-                    <h2>اختبر معلوماتك (تحدي السيشن) 🧩</h2>
+                    <h2>
+                        <span class="lang-ar">اختبر معلوماتك (تحدي السيشن) 🧩</span>
+                        <span class="lang-en">Test Your Knowledge (Session Quiz) 🧩</span>
+                    </h2>
                 </div>
             </div>
 
             <div class="quiz-container">
-                <div class="quiz-q">ما هي المكتبة المسؤولة عن إرسال ضغطات الكيبورد برمجياً في بايثون؟</div>
-                <button class="quiz-opt" onclick="checkAnswer(this, true)">PyAutoGUI</button>
-                <button class="quiz-opt" onclick="checkAnswer(this, false)">Math</button>
+                <div class="quiz-q">
+                    <span class="lang-ar">ما هي المكتبة المسؤولة عن إرسال ضغطات الكيبورد برمجياً في بايثون؟</span>
+                    <span class="lang-en">Which Python library automates keyboard key presses?</span>
+                </div>
+                <button class="quiz-opt" onclick="checkAnswer(this, true)">
+                    <span class="lang-ar">PyAutoGUI</span>
+                    <span class="lang-en">PyAutoGUI</span>
+                </button>
+                <button class="quiz-opt" onclick="checkAnswer(this, false)">
+                    <span class="lang-ar">Math</span>
+                    <span class="lang-en">Math</span>
+                </button>
             </div>
         </div>
 
         <div class="hw-card">
             <div class="hw-title">
                 <i class="fa-solid fa-rocket"></i>
-                واجب السيشن والمشروع الممتع في البيت 🏠
+                <span class="lang-ar">واجب السيشن والمشروع الممتع في البيت 🏠</span>
+                <span class="lang-en">Session Homework & Home Project 🏠</span>
             </div>
-            <p style="font-size: 1.1rem; color: #f1f5f9; margin-bottom: 12px;">شغل لعبة سباق بسيطة على الويب واجعل كود بايثون يتحكم فيها بيدك! 🏎️</p>
+            <p style="font-size: 1.1rem; color: #f1f5f9; margin-bottom: 12px;">
+                <span class="lang-ar">شغل لعبة سباق بسيطة على الويب واجعل كود بايثون يتحكم فيها بيدك! 🏎️</span>
+                <span class="lang-en">Launch a web racing game and control the car with Python hand gestures! 🏎️</span>
+            </p>
         </div>
 
         <div class="footer-navigation">
-            <a href="session7.html" class="nav-link-btn"><i class="fa-solid fa-arrow-right"></i> السيشن 7</a>
-            <a href="session9.html" class="nav-link-btn primary">السيشن 9 <i class="fa-solid fa-arrow-left"></i></a>
+            <a href="session7.html" class="nav-link-btn">
+                <i class="fa-solid fa-arrow-right"></i>
+                <span class="lang-ar">السيشن 7</span>
+                <span class="lang-en">Session 7</span>
+            </a>
+            <a href="session9.html" class="nav-link-btn primary">
+                <span class="lang-ar">السيشن 9</span>
+                <span class="lang-en">Session 9</span>
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
         </div>
 
     </div>
 
     <script>
+        function toggleLanguage() {
+            const currentLang = document.documentElement.lang || 'ar';
+            const newLang = (currentLang === 'ar') ? 'en' : 'ar';
+            setLanguage(newLang);
+        }
+
+        function setLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+            localStorage.setItem('megaminds_lang', lang);
+            
+            const btnLabel = document.getElementById('langBtnLabel');
+            if (btnLabel) {
+                btnLabel.innerText = (lang === 'ar') ? 'English' : 'العربية';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('megaminds_lang') || 'ar';
+            setLanguage(savedLang);
+        });
+
         function runSim() {
             const input = document.getElementById('userInputText').value.trim();
             const resultBox = document.getElementById('resultDisplay');
+            const isAr = (document.documentElement.lang === 'ar');
+            
             if (!input) {
-                resultBox.innerHTML = "⚠️ أدخل نصاً أو أمراً أولاً في الصندوق!";
+                resultBox.innerHTML = isAr ? "⚠️ أدخل نصاً أو أمراً أولاً في الصندوق!" : "⚠️ Please enter text or a command first!";
                 resultBox.style.color = "#f97316";
                 return;
             }
-            resultBox.innerHTML = "🧠 جاري تنفيذ التجربة التفاعلية بواسطة الذكاء الاصطناعي...";
+            resultBox.innerHTML = isAr ? "🧠 جاري تنفيذ التجربة التفاعلية بواسطة الذكاء الاصطناعي..." : "🧠 Running live AI interactive simulation...";
             resultBox.style.color = "#38bdf8";
             setTimeout(() => {
-                resultBox.innerHTML = `✅ تم التنفيذ بنجاح! المدخل: "${input}" ➔ النتيجة: تم الاستجابة وتوليد النمط الذكي المطلوبة! 🎉`;
+                resultBox.innerHTML = isAr 
+                    ? `✅ تم التنفيذ بنجاح! المدخل: "${input}" ➔ النتيجة: تم الاستجابة وتوليد النمط الذكي المطلوبة! 🎉`
+                    : `✅ Success! Input: "${input}" ➔ Result: AI pattern response generated! 🎉`;
                 resultBox.style.color = "#22c55e";
             }, 600);
         }
@@ -277,13 +415,15 @@ print("تم إرسال أمر الانعطاف بنجاح!")</div>
         function checkAnswer(button, isCorrect) {
             const parent = button.parentElement;
             const options = parent.querySelectorAll('.quiz-opt');
+            const isAr = (document.documentElement.lang === 'ar');
+
             options.forEach(opt => { opt.disabled = true; opt.style.cursor = 'default'; });
             if (isCorrect) {
                 button.classList.add('correct');
-                button.innerHTML += '  ✅ (إجابة صحيحة بطل!)';
+                button.innerHTML += isAr ? '  ✅ (إجابة صحيحة بطل!)' : '  ✅ (Correct Answer!)';
             } else {
                 button.classList.add('wrong');
-                button.innerHTML += '  ❌ (حاول مرة أخرى)';
+                button.innerHTML += isAr ? '  ❌ (حاول مرة أخرى)' : '  ❌ (Try Again)';
             }
         }
     </script>

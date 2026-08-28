@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Megaminds AI - السيشن 7: الذكاء الاصطناعي في الألعاب (Rock Paper Scissors AI)</title>
+    <title>Megaminds AI - Session 7</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -21,6 +21,18 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
         body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.8; padding-bottom: 60px; }
         
+        /* Language visibility controls */
+        html[lang="ar"] .lang-en { display: none !important; }
+        html[lang="ar"] .lang-ar { display: inline !important; }
+        html[lang="ar"] div.lang-ar, html[lang="ar"] p.lang-ar, html[lang="ar"] h1.lang-ar, html[lang="ar"] h2.lang-ar, html[lang="ar"] h3.lang-ar, html[lang="ar"] h4.lang-ar { display: block !important; }
+
+        html[lang="en"] .lang-ar { display: none !important; }
+        html[lang="en"] .lang-en { display: inline !important; }
+        html[lang="en"] div.lang-en, html[lang="en"] p.lang-en, html[lang="en"] h1.lang-en, html[lang="en"] h2.lang-en, html[lang="en"] h3.lang-en, html[lang="en"] h4.lang-en { display: block !important; }
+        
+        html[lang="en"] .quiz-opt { text-align: left !important; }
+        html[lang="ar"] .quiz-opt { text-align: right !important; }
+
         .navbar {
             background: rgba(22, 30, 46, 0.85); backdrop-filter: blur(12px);
             position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--card-border);
@@ -34,11 +46,18 @@
         }
         .logo-text { font-weight: 900; font-size: 1.4rem; }
         .logo-text span { color: var(--accent-cyan); }
+        .nav-links { display: flex; align-items: center; gap: 15px; }
         .nav-btn {
             background: rgba(56, 189, 248, 0.1); color: var(--accent-cyan); border: 1px solid rgba(56, 189, 248, 0.3);
             padding: 8px 18px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: all 0.3s ease;
         }
         .nav-btn:hover { background: var(--accent-cyan); color: #000; transform: translateY(-2px); }
+        
+        .lang-btn {
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            color: white; border: none; padding: 8px 18px; border-radius: 10px; font-weight: 800; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+        }
+        .lang-btn:hover { transform: scale(1.05); box-shadow: 0 6px 18px rgba(56, 189, 248, 0.4); }
         
         .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
         
@@ -75,7 +94,7 @@
         
         .quiz-container { background: rgba(15, 23, 42, 0.8); border-radius: 16px; padding: 25px; margin-top: 20px; }
         .quiz-q { font-size: 1.2rem; font-weight: 700; color: white; margin-bottom: 15px; }
-        .quiz-opt { display: block; width: 100%; background: rgba(30, 41, 59, 0.7); border: 1px solid var(--card-border); color: var(--text-main); padding: 14px 20px; border-radius: 12px; margin-bottom: 10px; text-align: right; font-size: 1.05rem; cursor: pointer; transition: all 0.2s ease; }
+        .quiz-opt { display: block; width: 100%; background: rgba(30, 41, 59, 0.7); border: 1px solid var(--card-border); color: var(--text-main); padding: 14px 20px; border-radius: 12px; margin-bottom: 10px; font-size: 1.05rem; cursor: pointer; transition: all 0.2s ease; }
         .quiz-opt:hover { border-color: var(--accent-cyan); background: rgba(56, 189, 248, 0.1); }
         .quiz-opt.correct { background: rgba(34, 197, 94, 0.2) !important; border-color: var(--accent-green) !important; color: #4ade80 !important; font-weight: bold; }
         .quiz-opt.wrong { background: rgba(239, 68, 68, 0.2) !important; border-color: #ef4444 !important; color: #fca5a5 !important; }
@@ -98,54 +117,89 @@
             <div class="logo-text">MEGAMINDS <span>AI ACADEMY</span></div>
         </div>
         <div class="nav-links">
-            <a href="index.html" class="nav-btn"><i class="fa-solid fa-house"></i> الرئيسية</a>
-            <span style="color: var(--text-muted); font-weight: bold;">السيشن 7 / 12</span>
+            <button class="lang-btn" onclick="toggleLanguage()"><i class="fa-solid fa-globe"></i> <span id="langBtnLabel">English</span></button>
+            <a href="index.html" class="nav-btn">
+                <span class="lang-ar"><i class="fa-solid fa-house"></i> الرئيسية</span>
+                <span class="lang-en"><i class="fa-solid fa-house"></i> Home</span>
+            </a>
+            <span style="color: var(--text-muted); font-weight: bold;">
+                <span class="lang-ar">السيشن 7 / 12</span>
+                <span class="lang-en">Session 7 / 12</span>
+            </span>
         </div>
     </nav>
 
     <div class="container">
 
         <div class="hero">
-            <span class="session-tag">السيشن السابع 🎮</span>
-            <h1>الذكاء الاصطناعي في الألعاب (Rock Paper Scissors AI)</h1>
-            <p>جعل الـ AI يلعب ضد الإنسان ويقرأ حركات يده! 🎮✊</p>
+            <span class="session-tag">
+                <span class="lang-ar">السيشن السابع 🎮</span>
+                <span class="lang-en">Session 7 🎮</span>
+            </span>
+            <h1>
+                <span class="lang-ar">الذكاء الاصطناعي في الألعاب (Rock Paper Scissors AI)</span>
+                <span class="lang-en">AI in Games (Rock Paper Scissors AI)</span>
+            </h1>
+            <p>
+                <span class="lang-ar">جعل الـ AI يلعب ضد الإنسان ويقرأ حركات يده! 🎮✊</span>
+                <span class="lang-en">Making AI play against humans by reading hand gestures live! 🎮✊</span>
+            </p>
         </div>
 
         <div class="agenda-card">
             <div class="agenda-title">
                 <i class="fa-solid fa-list-check"></i>
-                جدول أعمال اليوم (ماذا سنأخذ في هذه الحصة؟)
+                <span class="lang-ar">جدول أعمال اليوم (ماذا سنأخذ في هذه الحصة؟)</span>
+                <span class="lang-en">Today's Agenda (What will we cover today?)</span>
             </div>
             <div class="agenda-grid">
                 
         <div class="agenda-item">
             <div class="agenda-num">1</div>
-            <div class="agenda-text">كيف يقرأ الذكاء الاصطناعي إيماءات اليد (Rock ✊, Paper ✋, Scissors ✌️)؟</div>
+            <div class="agenda-text">
+                <span class="lang-ar">كيف يقرأ الذكاء الاصطناعي إيماءات اليد (Rock ✊, Paper ✋, Scissors ✌️)؟</span>
+                <span class="lang-en">How AI reads hand gestures (Rock ✊, Paper ✋, Scissors ✌️).</span>
+            </div>
         </div>
         
         <div class="agenda-item">
             <div class="agenda-num">2</div>
-            <div class="agenda-text">بناء منطق اللعبة والعد التنازلي.</div>
+            <div class="agenda-text">
+                <span class="lang-ar">بناء منطق اللعبة والعد التنازلي.</span>
+                <span class="lang-en">Building game logic & round countdowns.</span>
+            </div>
         </div>
         
         <div class="agenda-item">
             <div class="agenda-num">3</div>
-            <div class="agenda-text">حساب النقاط تلقائياً (Player Score vs AI Score).</div>
+            <div class="agenda-text">
+                <span class="lang-ar">حساب النقاط تلقائياً (Player Score vs AI Score).</span>
+                <span class="lang-en">Automatic score tracking (Player vs AI Score).</span>
+            </div>
         </div>
         
         <div class="agenda-item">
             <div class="agenda-num">4</div>
-            <div class="agenda-text">تجربة محاكي اللعبة التفاعلي المباشر.</div>
+            <div class="agenda-text">
+                <span class="lang-ar">تجربة محاكي اللعبة التفاعلي المباشر.</span>
+                <span class="lang-en">Interactive Rock Paper Scissors AI Simulator.</span>
+            </div>
         </div>
         
         <div class="agenda-item">
             <div class="agenda-num">5</div>
-            <div class="agenda-text">كتابة كود اللعبة التنافسي بـ Python.</div>
+            <div class="agenda-text">
+                <span class="lang-ar">كتابة كود اللعبة التنافسي بـ Python.</span>
+                <span class="lang-en">Writing competitive game code in Python.</span>
+            </div>
         </div>
         
         <div class="agenda-item">
             <div class="agenda-num">6</div>
-            <div class="agenda-text">بطولة القاعة وتحدي هزم الذكاء الاصطناعي!</div>
+            <div class="agenda-text">
+                <span class="lang-ar">بطولة القاعة وتحدي هزم الذكاء الاصطناعي!</span>
+                <span class="lang-en">Class championship: Beat the AI Challenge!</span>
+            </div>
         </div>
         
             </div>
@@ -155,51 +209,82 @@
             <div class="section-header">
                 <div class="section-icon"><i class="fa-solid fa-graduation-cap"></i></div>
                 <div>
-                    <h2>1. قراءة إيماءات اليد (Gesture Recognition)</h2>
+                    <h2>
+                        <span class="lang-ar">1. قراءة إيماءات اليد (Gesture Recognition)</span>
+                        <span class="lang-en">1. Hand Gesture Recognition</span>
+                    </h2>
                 </div>
             </div>
-            <p style="font-size: 1.15rem;">النموذج يتعرف على قبضتك (حجر)، كفك المفتوح (ورقة)، أو أصبعيك (مقص) في التو واللحظة.</p>
+            <p style="font-size: 1.15rem;">
+                <span class="lang-ar">النموذج يتعرف على قبضتك (حجر)، كفك المفتوح (ورقة)، أو أصبعيك (مقص) في التو واللحظة.</span>
+                <span class="lang-en">The model detects your fist (Rock), open palm (Paper), or V-sign (Scissors) in real time.</span>
+            </p>
         </div>
 
         <div class="section-block">
             <div class="section-header">
                 <div class="section-icon" style="background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan);"><i class="fa-solid fa-lightbulb"></i></div>
                 <div>
-                    <h2>2. عشوائية الكمبيوتر ومنطق الفوز</h2>
+                    <h2>
+                        <span class="lang-ar">2. عشوائية الكمبيوتر ومنطق الفوز</span>
+                        <span class="lang-en">2. AI Decision Logic & Winner Check</span>
+                    </h2>
                 </div>
             </div>
-            <p style="font-size: 1.15rem;">الكمبيوتر يختار حركة حرة باستخدام `random.choice` ثم يقارن حركته بحركة يدك أمام الكاميرا ويحدد الفائز صريحاً.</p>
+            <p style="font-size: 1.15rem;">
+                <span class="lang-ar">الكمبيوتر يختار حركة حرة باستخدام `random.choice` ثم يقارن حركته بحركة يدك أمام الكاميرا ويحدد الفائز صريحاً.</span>
+                <span class="lang-en">AI picks a random move via `random.choice`, compares it to your camera gesture, and determines winner.</span>
+            </p>
         </div>
 
         <div class="section-block">
             <div class="section-header">
                 <div class="section-icon" style="background: rgba(249, 115, 22, 0.15); color: var(--accent-orange);"><i class="fa-solid fa-layer-group"></i></div>
                 <div>
-                    <h2>3. لوحة النتيجة الرقمية (Live Score Board)</h2>
+                    <h2>
+                        <span class="lang-ar">3. لوحة النتيجة الرقمية (Live Score Board)</span>
+                        <span class="lang-en">3. On-Screen Live Scoreboard</span>
+                    </h2>
                 </div>
             </div>
-            <p style="font-size: 1.15rem;">إظهار النتيجة مباشرة فوق شاشة الكاميرا باستخدام أمر `cv2.putText` لتجربة ممتعة للغاية!</p>
+            <p style="font-size: 1.15rem;">
+                <span class="lang-ar">إظهار النتيجة مباشرة فوق شاشة الكاميرا باستخدام أمر `cv2.putText` لتجربة ممتعة للغاية!</span>
+                <span class="lang-en">Displaying live scores directly on top of camera stream using `cv2.putText` for ultimate gaming fun!</span>
+            </p>
         </div>
 
         <div class="section-block">
             <div class="section-header">
                 <div class="section-icon" style="background: rgba(34, 197, 94, 0.15); color: var(--accent-green);"><i class="fa-solid fa-flask"></i></div>
                 <div>
-                    <h2>التجربة العملية التفاعلية المباشرة 🧪</h2>
+                    <h2>
+                        <span class="lang-ar">التجربة العملية التفاعلية المباشرة 🧪</span>
+                        <span class="lang-en">Live Interactive Hands-on Lab 🧪</span>
+                    </h2>
                 </div>
             </div>
 
             <div class="lab-box">
-                <h3 style="font-size: 1.4rem; color: white; margin-bottom: 10px;">محاكي لعبة حجر ورقة مقص ضد الـ AI (RPS Interactive Sim)</h3>
-                <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">اختر حركتك وشاهد اختيار الذكاء الاصطناعي ومن سيكسب الجولة!</p>
+                <h3 style="font-size: 1.4rem; color: white; margin-bottom: 10px;">
+                    <span class="lang-ar">محاكي لعبة حجر ورقة مقص ضد الـ AI (RPS Interactive Sim)</span>
+                    <span class="lang-en">Rock Paper Scissors AI Simulator</span>
+                </h3>
+                <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">
+                    <span class="lang-ar">اختر حركتك وشاهد اختيار الذكاء الاصطناعي ومن سيكسب الجولة!</span>
+                    <span class="lang-en">Choose your gesture and see AI's counter move and who wins the round!</span>
+                </p>
                 
                 <div style="margin-top: 20px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
-                    <input type="text" id="userInputText" placeholder="اكتب هنا لتجربة المعمل التفاعلي..." style="width: 70%; max-width: 450px; padding: 14px 20px; border-radius: 12px; border: 1px solid var(--accent-cyan); background: #0f172a; color: white; font-size: 1.1rem; outline: none;">
-                    <button class="lab-btn" onclick="runSim()"><i class="fa-solid fa-play"></i> تشغيل التجربة</button>
+                    <input type="text" id="userInputText" placeholder="اكتب هنا لتجربة المعمل التفاعلي / Type here for live lab..." style="width: 70%; max-width: 450px; padding: 14px 20px; border-radius: 12px; border: 1px solid var(--accent-cyan); background: #0f172a; color: white; font-size: 1.1rem; outline: none;">
+                    <button class="lab-btn" onclick="runSim()"><i class="fa-solid fa-play"></i> 
+                        <span class="lang-ar">تشغيل التجربة</span>
+                        <span class="lang-en">Run Lab</span>
+                    </button>
                 </div>
 
                 <div class="demo-result-box" id="resultDisplay">
-                    ✨ في انتظار مدخلاتك واختبار النظام الذكي...
+                    <span class="lang-ar">✨ في انتظار مدخلاتك واختبار النظام الذكي...</span>
+                    <span class="lang-en">✨ Awaiting your input to test AI live...</span>
                 </div>
             </div>
         </div>
@@ -208,7 +293,10 @@
             <div class="section-header">
                 <div class="section-icon"><i class="fa-brands fa-python"></i></div>
                 <div>
-                    <h2>تطبيق الكود بـ Python 🐍</h2>
+                    <h2>
+                        <span class="lang-ar">تطبيق الكود بـ Python 🐍</span>
+                        <span class="lang-en">Python Code Implementation 🐍</span>
+                    </h2>
                 </div>
             </div>
 
@@ -224,7 +312,6 @@ def play_round(user_choice):
     ai_choice = random.choice(choices)
     print(f"أنت اخترت: {user_choice} | الـ AI اختار: {ai_choice}")
     if user_choice == ai_choice: return "تعادل! 🤝"
-    # منطق الفوز
     return "مبروك! لقد هزمت الذكاء الاصطناعي! 🎉"
 
 print(play_round("حجر ✊"))</div>
@@ -234,45 +321,95 @@ print(play_round("حجر ✊"))</div>
             <div class="section-header">
                 <div class="section-icon" style="background: rgba(234, 179, 8, 0.15); color: #eab308;"><i class="fa-solid fa-gamepad"></i></div>
                 <div>
-                    <h2>اختبر معلوماتك (تحدي السيشن) 🧩</h2>
+                    <h2>
+                        <span class="lang-ar">اختبر معلوماتك (تحدي السيشن) 🧩</span>
+                        <span class="lang-en">Test Your Knowledge (Session Quiz) 🧩</span>
+                    </h2>
                 </div>
             </div>
 
             <div class="quiz-container">
-                <div class="quiz-q">كيف يحدد البرنامج الحركة الفائزة في لعبة حجر ورقة مقص؟</div>
-                <button class="quiz-opt" onclick="checkAnswer(this, true)">بمقارنة حركة حركة المستخدم مع اختيار الـ AI عبر الشروط المنطقية.</button>
-                <button class="quiz-opt" onclick="checkAnswer(this, false)">بالتخمين العشوائي بدون كود.</button>
+                <div class="quiz-q">
+                    <span class="lang-ar">كيف يحدد البرنامج الحركة الفائزة في لعبة حجر ورقة مقص؟</span>
+                    <span class="lang-en">How does the Python game evaluate the round winner?</span>
+                </div>
+                <button class="quiz-opt" onclick="checkAnswer(this, true)">
+                    <span class="lang-ar">بمقارنة حركة المستخدم مع اختيار الـ AI عبر الشروط المنطقية.</span>
+                    <span class="lang-en">By comparing user gesture to AI move using conditional logic.</span>
+                </button>
+                <button class="quiz-opt" onclick="checkAnswer(this, false)">
+                    <span class="lang-ar">بالتخمين العشوائي بدون كود.</span>
+                    <span class="lang-en">By random guess without code logic.</span>
+                </button>
             </div>
         </div>
 
         <div class="hw-card">
             <div class="hw-title">
                 <i class="fa-solid fa-rocket"></i>
-                واجب السيشن والمشروع الممتع في البيت 🏠
+                <span class="lang-ar">واجب السيشن والمشروع الممتع في البيت 🏠</span>
+                <span class="lang-en">Session Homework & Home Project 🏠</span>
             </div>
-            <p style="font-size: 1.1rem; color: #f1f5f9; margin-bottom: 12px;">شغل كود بايثون للعبة حجر ورقة مقص وتحدى أخاك أو صديقك ورني مين هيكسب! 🏆</p>
+            <p style="font-size: 1.1rem; color: #f1f5f9; margin-bottom: 12px;">
+                <span class="lang-ar">شغل كود بايثون للعبة حجر ورقة مقص وتحدى أخاك أو صديقك ورني مين هيكسب! 🏆</span>
+                <span class="lang-en">Run your RPS Python game and challenge your friends to beat your AI! 🏆</span>
+            </p>
         </div>
 
         <div class="footer-navigation">
-            <a href="session6.html" class="nav-link-btn"><i class="fa-solid fa-arrow-right"></i> السيشن 6</a>
-            <a href="session8.html" class="nav-link-btn primary">السيشن 8 <i class="fa-solid fa-arrow-left"></i></a>
+            <a href="session6.html" class="nav-link-btn">
+                <i class="fa-solid fa-arrow-right"></i>
+                <span class="lang-ar">السيشن 6</span>
+                <span class="lang-en">Session 6</span>
+            </a>
+            <a href="session8.html" class="nav-link-btn primary">
+                <span class="lang-ar">السيشن 8</span>
+                <span class="lang-en">Session 8</span>
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
         </div>
 
     </div>
 
     <script>
+        function toggleLanguage() {
+            const currentLang = document.documentElement.lang || 'ar';
+            const newLang = (currentLang === 'ar') ? 'en' : 'ar';
+            setLanguage(newLang);
+        }
+
+        function setLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+            localStorage.setItem('megaminds_lang', lang);
+            
+            const btnLabel = document.getElementById('langBtnLabel');
+            if (btnLabel) {
+                btnLabel.innerText = (lang === 'ar') ? 'English' : 'العربية';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('megaminds_lang') || 'ar';
+            setLanguage(savedLang);
+        });
+
         function runSim() {
             const input = document.getElementById('userInputText').value.trim();
             const resultBox = document.getElementById('resultDisplay');
+            const isAr = (document.documentElement.lang === 'ar');
+            
             if (!input) {
-                resultBox.innerHTML = "⚠️ أدخل نصاً أو أمراً أولاً في الصندوق!";
+                resultBox.innerHTML = isAr ? "⚠️ أدخل نصاً أو أمراً أولاً في الصندوق!" : "⚠️ Please enter text or a command first!";
                 resultBox.style.color = "#f97316";
                 return;
             }
-            resultBox.innerHTML = "🧠 جاري تنفيذ التجربة التفاعلية بواسطة الذكاء الاصطناعي...";
+            resultBox.innerHTML = isAr ? "🧠 جاري تنفيذ التجربة التفاعلية بواسطة الذكاء الاصطناعي..." : "🧠 Running live AI interactive simulation...";
             resultBox.style.color = "#38bdf8";
             setTimeout(() => {
-                resultBox.innerHTML = `✅ تم التنفيذ بنجاح! المدخل: "${input}" ➔ النتيجة: تم الاستجابة وتوليد النمط الذكي المطلوبة! 🎉`;
+                resultBox.innerHTML = isAr 
+                    ? `✅ تم التنفيذ بنجاح! المدخل: "${input}" ➔ النتيجة: تم الاستجابة وتوليد النمط الذكي المطلوبة! 🎉`
+                    : `✅ Success! Input: "${input}" ➔ Result: AI pattern response generated! 🎉`;
                 resultBox.style.color = "#22c55e";
             }, 600);
         }
@@ -280,13 +417,15 @@ print(play_round("حجر ✊"))</div>
         function checkAnswer(button, isCorrect) {
             const parent = button.parentElement;
             const options = parent.querySelectorAll('.quiz-opt');
+            const isAr = (document.documentElement.lang === 'ar');
+
             options.forEach(opt => { opt.disabled = true; opt.style.cursor = 'default'; });
             if (isCorrect) {
                 button.classList.add('correct');
-                button.innerHTML += '  ✅ (إجابة صحيحة بطل!)';
+                button.innerHTML += isAr ? '  ✅ (إجابة صحيحة بطل!)' : '  ✅ (Correct Answer!)';
             } else {
                 button.classList.add('wrong');
-                button.innerHTML += '  ❌ (حاول مرة أخرى)';
+                button.innerHTML += isAr ? '  ❌ (حاول مرة أخرى)' : '  ❌ (Try Again)';
             }
         }
     </script>

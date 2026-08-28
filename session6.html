@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Megaminds AI - السيشن 6: دمج النماذج مع Python (Teachable Machine)</title>
+    <title>Megaminds AI - Session 6</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -21,6 +21,18 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
         body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.8; padding-bottom: 60px; }
         
+        /* Language visibility controls */
+        html[lang="ar"] .lang-en { display: none !important; }
+        html[lang="ar"] .lang-ar { display: inline !important; }
+        html[lang="ar"] div.lang-ar, html[lang="ar"] p.lang-ar, html[lang="ar"] h1.lang-ar, html[lang="ar"] h2.lang-ar, html[lang="ar"] h3.lang-ar, html[lang="ar"] h4.lang-ar { display: block !important; }
+
+        html[lang="en"] .lang-ar { display: none !important; }
+        html[lang="en"] .lang-en { display: inline !important; }
+        html[lang="en"] div.lang-en, html[lang="en"] p.lang-en, html[lang="en"] h1.lang-en, html[lang="en"] h2.lang-en, html[lang="en"] h3.lang-en, html[lang="en"] h4.lang-en { display: block !important; }
+        
+        html[lang="en"] .quiz-opt { text-align: left !important; }
+        html[lang="ar"] .quiz-opt { text-align: right !important; }
+
         .navbar {
             background: rgba(22, 30, 46, 0.85); backdrop-filter: blur(12px);
             position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--card-border);
@@ -34,11 +46,18 @@
         }
         .logo-text { font-weight: 900; font-size: 1.4rem; }
         .logo-text span { color: var(--accent-cyan); }
+        .nav-links { display: flex; align-items: center; gap: 15px; }
         .nav-btn {
             background: rgba(56, 189, 248, 0.1); color: var(--accent-cyan); border: 1px solid rgba(56, 189, 248, 0.3);
             padding: 8px 18px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: all 0.3s ease;
         }
         .nav-btn:hover { background: var(--accent-cyan); color: #000; transform: translateY(-2px); }
+        
+        .lang-btn {
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            color: white; border: none; padding: 8px 18px; border-radius: 10px; font-weight: 800; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+        }
+        .lang-btn:hover { transform: scale(1.05); box-shadow: 0 6px 18px rgba(56, 189, 248, 0.4); }
         
         .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
         
@@ -75,7 +94,7 @@
         
         .quiz-container { background: rgba(15, 23, 42, 0.8); border-radius: 16px; padding: 25px; margin-top: 20px; }
         .quiz-q { font-size: 1.2rem; font-weight: 700; color: white; margin-bottom: 15px; }
-        .quiz-opt { display: block; width: 100%; background: rgba(30, 41, 59, 0.7); border: 1px solid var(--card-border); color: var(--text-main); padding: 14px 20px; border-radius: 12px; margin-bottom: 10px; text-align: right; font-size: 1.05rem; cursor: pointer; transition: all 0.2s ease; }
+        .quiz-opt { display: block; width: 100%; background: rgba(30, 41, 59, 0.7); border: 1px solid var(--card-border); color: var(--text-main); padding: 14px 20px; border-radius: 12px; margin-bottom: 10px; font-size: 1.05rem; cursor: pointer; transition: all 0.2s ease; }
         .quiz-opt:hover { border-color: var(--accent-cyan); background: rgba(56, 189, 248, 0.1); }
         .quiz-opt.correct { background: rgba(34, 197, 94, 0.2) !important; border-color: var(--accent-green) !important; color: #4ade80 !important; font-weight: bold; }
         .quiz-opt.wrong { background: rgba(239, 68, 68, 0.2) !important; border-color: #ef4444 !important; color: #fca5a5 !important; }
@@ -98,54 +117,89 @@
             <div class="logo-text">MEGAMINDS <span>AI ACADEMY</span></div>
         </div>
         <div class="nav-links">
-            <a href="index.html" class="nav-btn"><i class="fa-solid fa-house"></i> الرئيسية</a>
-            <span style="color: var(--text-muted); font-weight: bold;">السيشن 6 / 12</span>
+            <button class="lang-btn" onclick="toggleLanguage()"><i class="fa-solid fa-globe"></i> <span id="langBtnLabel">English</span></button>
+            <a href="index.html" class="nav-btn">
+                <span class="lang-ar"><i class="fa-solid fa-house"></i> الرئيسية</span>
+                <span class="lang-en"><i class="fa-solid fa-house"></i> Home</span>
+            </a>
+            <span style="color: var(--text-muted); font-weight: bold;">
+                <span class="lang-ar">السيشن 6 / 12</span>
+                <span class="lang-en">Session 6 / 12</span>
+            </span>
         </div>
     </nav>
 
     <div class="container">
 
         <div class="hero">
-            <span class="session-tag">السيشن السادس 🎯</span>
-            <h1>دمج النماذج مع Python (Teachable Machine)</h1>
-            <p>تدريب النموذج على الويب وتشغيله داخل كود بايثون محلياً! 🎯💻</p>
+            <span class="session-tag">
+                <span class="lang-ar">السيشن السادس 🎯</span>
+                <span class="lang-en">Session 6 🎯</span>
+            </span>
+            <h1>
+                <span class="lang-ar">دمج النماذج مع Python (Teachable Machine)</span>
+                <span class="lang-en">Model Integration with Python (Teachable Machine)</span>
+            </h1>
+            <p>
+                <span class="lang-ar">تدريب النموذج على الويب وتشغيله داخل كود بايثون محلياً! 🎯💻</span>
+                <span class="lang-en">Training models on the web and running them inside Python locally! 🎯💻</span>
+            </p>
         </div>
 
         <div class="agenda-card">
             <div class="agenda-title">
                 <i class="fa-solid fa-list-check"></i>
-                جدول أعمال اليوم (ماذا سنأخذ في هذه الحصة؟)
+                <span class="lang-ar">جدول أعمال اليوم (ماذا سنأخذ في هذه الحصة؟)</span>
+                <span class="lang-en">Today's Agenda (What will we cover today?)</span>
             </div>
             <div class="agenda-grid">
                 
         <div class="agenda-item">
             <div class="agenda-num">1</div>
-            <div class="agenda-text">كيف ندرب نموذج AI بدون تعقيد باستخدام Google Teachable Machine؟</div>
+            <div class="agenda-text">
+                <span class="lang-ar">كيف ندرب نموذج AI بدون تعقيد باستخدام Google Teachable Machine؟</span>
+                <span class="lang-en">Training AI models effortlessly with Google Teachable Machine.</span>
+            </div>
         </div>
         
         <div class="agenda-item">
             <div class="agenda-num">2</div>
-            <div class="agenda-text">تصدير النموذج (Keras / TensorFlow Model).</div>
+            <div class="agenda-text">
+                <span class="lang-ar">تصدير النموذج (Keras / TensorFlow Model).</span>
+                <span class="lang-en">Exporting model files (Keras / TensorFlow format).</span>
+            </div>
         </div>
         
         <div class="agenda-item">
             <div class="agenda-num">3</div>
-            <div class="agenda-text">مفهوم درجة الثقة (Confidence Score %).</div>
+            <div class="agenda-text">
+                <span class="lang-ar">مفهوم درجة الثقة (Confidence Score %).</span>
+                <span class="lang-en">Understanding Confidence Score percentages.</span>
+            </div>
         </div>
         
         <div class="agenda-item">
             <div class="agenda-num">4</div>
-            <div class="agenda-text">تجربة محاكي التعرف على العناصر المباشر.</div>
+            <div class="agenda-text">
+                <span class="lang-ar">تجربة محاكي التعرف على العناصر المباشر.</span>
+                <span class="lang-en">Live object detection confidence simulator.</span>
+            </div>
         </div>
         
         <div class="agenda-item">
             <div class="agenda-num">5</div>
-            <div class="agenda-text">ربط نموذج Teachable Machine بكود OpenCV في بايثون.</div>
+            <div class="agenda-text">
+                <span class="lang-ar">ربط نموذج Teachable Machine بكود OpenCV في بايثون.</span>
+                <span class="lang-en">Connecting Teachable Machine model to OpenCV in Python.</span>
+            </div>
         </div>
         
         <div class="agenda-item">
             <div class="agenda-num">6</div>
-            <div class="agenda-text">تحدي الحصة ونظام التنبيه الذكي.</div>
+            <div class="agenda-text">
+                <span class="lang-ar">تحدي الحصة ونظام التنبيه الذكي.</span>
+                <span class="lang-en">Session challenge: Smart object detection alarm!</span>
+            </div>
         </div>
         
             </div>
@@ -155,51 +209,82 @@
             <div class="section-header">
                 <div class="section-icon"><i class="fa-solid fa-graduation-cap"></i></div>
                 <div>
-                    <h2>1. التدريب على الويب (Teachable Machine)</h2>
+                    <h2>
+                        <span class="lang-ar">1. التدريب على الويب (Teachable Machine)</span>
+                        <span class="lang-en">1. Web Model Training</span>
+                    </h2>
                 </div>
             </div>
-            <p style="font-size: 1.15rem;">نلتقط 30 صورة للغرض الأول و 30 صورة للغرض الثاني، والضغط على Train ليقوم الموقع بإنشاء النموذج في ثوانٍ!</p>
+            <p style="font-size: 1.15rem;">
+                <span class="lang-ar">نلتقط 30 صورة للغرض الأول و 30 صورة للغرض الثاني، والضغط على Train ليقوم الموقع بإنشاء النموذج في ثوانٍ!</span>
+                <span class="lang-en">We snap 30 images of Object A and 30 of Object B, click Train, and get an AI model in seconds!</span>
+            </p>
         </div>
 
         <div class="section-block">
             <div class="section-header">
                 <div class="section-icon" style="background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan);"><i class="fa-solid fa-lightbulb"></i></div>
                 <div>
-                    <h2>2. نقل النموذج لكود Python</h2>
+                    <h2>
+                        <span class="lang-ar">2. نقل النموذج لكود Python</span>
+                        <span class="lang-en">2. Exporting Model to Python</span>
+                    </h2>
                 </div>
             </div>
-            <p style="font-size: 1.15rem;">نقوم بتحميل ملف `keras_model.h5` وملف `labels.txt` وقراءتهما داخل بايثون لاستخدامه محلياً بدون إنترنت.</p>
+            <p style="font-size: 1.15rem;">
+                <span class="lang-ar">نقوم بتحميل ملف `keras_model.h5` وملف `labels.txt` وقراءتهما داخل بايثون لاستخدامه محلياً بدون إنترنت.</span>
+                <span class="lang-en">We download `keras_model.h5` and `labels.txt` and load them into Python to run offline.</span>
+            </p>
         </div>
 
         <div class="section-block">
             <div class="section-header">
                 <div class="section-icon" style="background: rgba(249, 115, 22, 0.15); color: var(--accent-orange);"><i class="fa-solid fa-layer-group"></i></div>
                 <div>
-                    <h2>3. نسبة الثقة (Confidence Percentage)</h2>
+                    <h2>
+                        <span class="lang-ar">3. نسبة الثقة (Confidence Percentage)</span>
+                        <span class="lang-en">3. Confidence Score Threshold</span>
+                    </h2>
                 </div>
             </div>
-            <p style="font-size: 1.15rem;">النموذج يعطينا نسبة مئوية (مثلاً: 97% موبايل)، ونحن نضع شرطاً في الكود: إذا تجاوزت 90% ننفذ الإجراء!</p>
+            <p style="font-size: 1.15rem;">
+                <span class="lang-ar">النموذج يعطينا نسبة مئوية (مثلاً: 97% موبايل)، ونحن نضع شرطاً في الكود: إذا تجاوزت 90% ننفذ الإجراء!</span>
+                <span class="lang-en">The model outputs a probability percentage (e.g. 97% Phone). We execute actions if confidence > 90%!</span>
+            </p>
         </div>
 
         <div class="section-block">
             <div class="section-header">
                 <div class="section-icon" style="background: rgba(34, 197, 94, 0.15); color: var(--accent-green);"><i class="fa-solid fa-flask"></i></div>
                 <div>
-                    <h2>التجربة العملية التفاعلية المباشرة 🧪</h2>
+                    <h2>
+                        <span class="lang-ar">التجربة العملية التفاعلية المباشرة 🧪</span>
+                        <span class="lang-en">Live Interactive Hands-on Lab 🧪</span>
+                    </h2>
                 </div>
             </div>
 
             <div class="lab-box">
-                <h3 style="font-size: 1.4rem; color: white; margin-bottom: 10px;">محاكي التعرف على الأغراض (Object Detection Confidence Sim)</h3>
-                <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">اختبر كيف تتغير نسبة ثقة النموذج الذكي فوريا عند رؤية عناصر مختلفة!</p>
+                <h3 style="font-size: 1.4rem; color: white; margin-bottom: 10px;">
+                    <span class="lang-ar">محاكي التعرف على الأغراض (Object Detection Confidence Sim)</span>
+                    <span class="lang-en">Object Detection Confidence Simulator</span>
+                </h3>
+                <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">
+                    <span class="lang-ar">اختبر كيف تتغير نسبة ثقة النموذج الذكي فورياً عند رؤية عناصر مختلفة!</span>
+                    <span class="lang-en">Test how AI model confidence changes live when detecting various items!</span>
+                </p>
                 
                 <div style="margin-top: 20px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
-                    <input type="text" id="userInputText" placeholder="اكتب هنا لتجربة المعمل التفاعلي..." style="width: 70%; max-width: 450px; padding: 14px 20px; border-radius: 12px; border: 1px solid var(--accent-cyan); background: #0f172a; color: white; font-size: 1.1rem; outline: none;">
-                    <button class="lab-btn" onclick="runSim()"><i class="fa-solid fa-play"></i> تشغيل التجربة</button>
+                    <input type="text" id="userInputText" placeholder="اكتب هنا لتجربة المعمل التفاعلي / Type here for live lab..." style="width: 70%; max-width: 450px; padding: 14px 20px; border-radius: 12px; border: 1px solid var(--accent-cyan); background: #0f172a; color: white; font-size: 1.1rem; outline: none;">
+                    <button class="lab-btn" onclick="runSim()"><i class="fa-solid fa-play"></i> 
+                        <span class="lang-ar">تشغيل التجربة</span>
+                        <span class="lang-en">Run Lab</span>
+                    </button>
                 </div>
 
                 <div class="demo-result-box" id="resultDisplay">
-                    ✨ في انتظار مدخلاتك واختبار النظام الذكي...
+                    <span class="lang-ar">✨ في انتظار مدخلاتك واختبار النظام الذكي...</span>
+                    <span class="lang-en">✨ Awaiting your input to test AI live...</span>
                 </div>
             </div>
         </div>
@@ -208,7 +293,10 @@
             <div class="section-header">
                 <div class="section-icon"><i class="fa-brands fa-python"></i></div>
                 <div>
-                    <h2>تطبيق الكود بـ Python 🐍</h2>
+                    <h2>
+                        <span class="lang-ar">تطبيق الكود بـ Python 🐍</span>
+                        <span class="lang-en">Python Code Implementation 🐍</span>
+                    </h2>
                 </div>
             </div>
 
@@ -227,45 +315,95 @@ print("النتيجة: تم التعرف على الغرض بنسبة ثقة 96.
             <div class="section-header">
                 <div class="section-icon" style="background: rgba(234, 179, 8, 0.15); color: #eab308;"><i class="fa-solid fa-gamepad"></i></div>
                 <div>
-                    <h2>اختبر معلوماتك (تحدي السيشن) 🧩</h2>
+                    <h2>
+                        <span class="lang-ar">اختبر معلوماتك (تحدي السيشن) 🧩</span>
+                        <span class="lang-en">Test Your Knowledge (Session Quiz) 🧩</span>
+                    </h2>
                 </div>
             </div>
 
             <div class="quiz-container">
-                <div class="quiz-q">ماذا يفعل الكود عندما تكون نسبة الثقة (Confidence Score) عالية جداً؟</div>
-                <button class="quiz-opt" onclick="checkAnswer(this, true)">ينفذ القرار المطلوب بثقة عالية.</button>
-                <button class="quiz-opt" onclick="checkAnswer(this, false)">يغلق البرنامج فوراً.</button>
+                <div class="quiz-q">
+                    <span class="lang-ar">ماذا يفعل الكود عندما تكون نسبة الثقة (Confidence Score) عالية جداً؟</span>
+                    <span class="lang-en">What does the code do when the model Confidence Score exceeds threshold?</span>
+                </div>
+                <button class="quiz-opt" onclick="checkAnswer(this, true)">
+                    <span class="lang-ar">ينفذ القرار المطلوب بثقة عالية.</span>
+                    <span class="lang-en">Executes target action with high certainty.</span>
+                </button>
+                <button class="quiz-opt" onclick="checkAnswer(this, false)">
+                    <span class="lang-ar">يغلق البرنامج فوراً.</span>
+                    <span class="lang-en">Closes the application immediately.</span>
+                </button>
             </div>
         </div>
 
         <div class="hw-card">
             <div class="hw-title">
                 <i class="fa-solid fa-rocket"></i>
-                واجب السيشن والمشروع الممتع في البيت 🏠
+                <span class="lang-ar">واجب السيشن والمشروع الممتع في البيت 🏠</span>
+                <span class="lang-en">Session Homework & Home Project 🏠</span>
             </div>
-            <p style="font-size: 1.1rem; color: #f1f5f9; margin-bottom: 12px;">قم بدراسة نموذج Teachable Machine على الويب ودرب فصلين (مثلاً: نظارة / بدون نظارة)! 👓</p>
+            <p style="font-size: 1.1rem; color: #f1f5f9; margin-bottom: 12px;">
+                <span class="lang-ar">قم بدراسة نموذج Teachable Machine على الويب ودرب فصلين (مثلاً: نظارة / بدون نظارة)! 👓</span>
+                <span class="lang-en">Train a 2-class model on Teachable Machine (e.g., Glasses ON vs OFF) and test it! 👓</span>
+            </p>
         </div>
 
         <div class="footer-navigation">
-            <a href="session5.html" class="nav-link-btn"><i class="fa-solid fa-arrow-right"></i> السيشن 5</a>
-            <a href="session7.html" class="nav-link-btn primary">السيشن 7 <i class="fa-solid fa-arrow-left"></i></a>
+            <a href="session5.html" class="nav-link-btn">
+                <i class="fa-solid fa-arrow-right"></i>
+                <span class="lang-ar">السيشن 5</span>
+                <span class="lang-en">Session 5</span>
+            </a>
+            <a href="session7.html" class="nav-link-btn primary">
+                <span class="lang-ar">السيشن 7</span>
+                <span class="lang-en">Session 7</span>
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
         </div>
 
     </div>
 
     <script>
+        function toggleLanguage() {
+            const currentLang = document.documentElement.lang || 'ar';
+            const newLang = (currentLang === 'ar') ? 'en' : 'ar';
+            setLanguage(newLang);
+        }
+
+        function setLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+            localStorage.setItem('megaminds_lang', lang);
+            
+            const btnLabel = document.getElementById('langBtnLabel');
+            if (btnLabel) {
+                btnLabel.innerText = (lang === 'ar') ? 'English' : 'العربية';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('megaminds_lang') || 'ar';
+            setLanguage(savedLang);
+        });
+
         function runSim() {
             const input = document.getElementById('userInputText').value.trim();
             const resultBox = document.getElementById('resultDisplay');
+            const isAr = (document.documentElement.lang === 'ar');
+            
             if (!input) {
-                resultBox.innerHTML = "⚠️ أدخل نصاً أو أمراً أولاً في الصندوق!";
+                resultBox.innerHTML = isAr ? "⚠️ أدخل نصاً أو أمراً أولاً في الصندوق!" : "⚠️ Please enter text or a command first!";
                 resultBox.style.color = "#f97316";
                 return;
             }
-            resultBox.innerHTML = "🧠 جاري تنفيذ التجربة التفاعلية بواسطة الذكاء الاصطناعي...";
+            resultBox.innerHTML = isAr ? "🧠 جاري تنفيذ التجربة التفاعلية بواسطة الذكاء الاصطناعي..." : "🧠 Running live AI interactive simulation...";
             resultBox.style.color = "#38bdf8";
             setTimeout(() => {
-                resultBox.innerHTML = `✅ تم التنفيذ بنجاح! المدخل: "${input}" ➔ النتيجة: تم الاستجابة وتوليد النمط الذكي المطلوبة! 🎉`;
+                resultBox.innerHTML = isAr 
+                    ? `✅ تم التنفيذ بنجاح! المدخل: "${input}" ➔ النتيجة: تم الاستجابة وتوليد النمط الذكي المطلوبة! 🎉`
+                    : `✅ Success! Input: "${input}" ➔ Result: AI pattern response generated! 🎉`;
                 resultBox.style.color = "#22c55e";
             }, 600);
         }
@@ -273,13 +411,15 @@ print("النتيجة: تم التعرف على الغرض بنسبة ثقة 96.
         function checkAnswer(button, isCorrect) {
             const parent = button.parentElement;
             const options = parent.querySelectorAll('.quiz-opt');
+            const isAr = (document.documentElement.lang === 'ar');
+
             options.forEach(opt => { opt.disabled = true; opt.style.cursor = 'default'; });
             if (isCorrect) {
                 button.classList.add('correct');
-                button.innerHTML += '  ✅ (إجابة صحيحة بطل!)';
+                button.innerHTML += isAr ? '  ✅ (إجابة صحيحة بطل!)' : '  ✅ (Correct Answer!)';
             } else {
                 button.classList.add('wrong');
-                button.innerHTML += '  ❌ (حاول مرة أخرى)';
+                button.innerHTML += isAr ? '  ❌ (حاول مرة أخرى)' : '  ❌ (Try Again)';
             }
         }
     </script>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Megaminds AI - السيشن 12: احتفالية يوم التخرج (Demo Day & Graduation)</title>
+    <title>Megaminds AI - Session 12</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -21,6 +21,18 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
         body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.8; padding-bottom: 60px; }
         
+        /* Language visibility controls */
+        html[lang="ar"] .lang-en { display: none !important; }
+        html[lang="ar"] .lang-ar { display: inline !important; }
+        html[lang="ar"] div.lang-ar, html[lang="ar"] p.lang-ar, html[lang="ar"] h1.lang-ar, html[lang="ar"] h2.lang-ar, html[lang="ar"] h3.lang-ar, html[lang="ar"] h4.lang-ar { display: block !important; }
+
+        html[lang="en"] .lang-ar { display: none !important; }
+        html[lang="en"] .lang-en { display: inline !important; }
+        html[lang="en"] div.lang-en, html[lang="en"] p.lang-en, html[lang="en"] h1.lang-en, html[lang="en"] h2.lang-en, html[lang="en"] h3.lang-en, html[lang="en"] h4.lang-en { display: block !important; }
+        
+        html[lang="en"] .quiz-opt { text-align: left !important; }
+        html[lang="ar"] .quiz-opt { text-align: right !important; }
+
         .navbar {
             background: rgba(22, 30, 46, 0.85); backdrop-filter: blur(12px);
             position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--card-border);
@@ -34,11 +46,18 @@
         }
         .logo-text { font-weight: 900; font-size: 1.4rem; }
         .logo-text span { color: var(--accent-cyan); }
+        .nav-links { display: flex; align-items: center; gap: 15px; }
         .nav-btn {
             background: rgba(56, 189, 248, 0.1); color: var(--accent-cyan); border: 1px solid rgba(56, 189, 248, 0.3);
             padding: 8px 18px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: all 0.3s ease;
         }
         .nav-btn:hover { background: var(--accent-cyan); color: #000; transform: translateY(-2px); }
+        
+        .lang-btn {
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            color: white; border: none; padding: 8px 18px; border-radius: 10px; font-weight: 800; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+        }
+        .lang-btn:hover { transform: scale(1.05); box-shadow: 0 6px 18px rgba(56, 189, 248, 0.4); }
         
         .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
         
@@ -75,7 +94,7 @@
         
         .quiz-container { background: rgba(15, 23, 42, 0.8); border-radius: 16px; padding: 25px; margin-top: 20px; }
         .quiz-q { font-size: 1.2rem; font-weight: 700; color: white; margin-bottom: 15px; }
-        .quiz-opt { display: block; width: 100%; background: rgba(30, 41, 59, 0.7); border: 1px solid var(--card-border); color: var(--text-main); padding: 14px 20px; border-radius: 12px; margin-bottom: 10px; text-align: right; font-size: 1.05rem; cursor: pointer; transition: all 0.2s ease; }
+        .quiz-opt { display: block; width: 100%; background: rgba(30, 41, 59, 0.7); border: 1px solid var(--card-border); color: var(--text-main); padding: 14px 20px; border-radius: 12px; margin-bottom: 10px; font-size: 1.05rem; cursor: pointer; transition: all 0.2s ease; }
         .quiz-opt:hover { border-color: var(--accent-cyan); background: rgba(56, 189, 248, 0.1); }
         .quiz-opt.correct { background: rgba(34, 197, 94, 0.2) !important; border-color: var(--accent-green) !important; color: #4ade80 !important; font-weight: bold; }
         .quiz-opt.wrong { background: rgba(239, 68, 68, 0.2) !important; border-color: #ef4444 !important; color: #fca5a5 !important; }
@@ -98,54 +117,89 @@
             <div class="logo-text">MEGAMINDS <span>AI ACADEMY</span></div>
         </div>
         <div class="nav-links">
-            <a href="index.html" class="nav-btn"><i class="fa-solid fa-house"></i> الرئيسية</a>
-            <span style="color: var(--text-muted); font-weight: bold;">السيشن 12 / 12</span>
+            <button class="lang-btn" onclick="toggleLanguage()"><i class="fa-solid fa-globe"></i> <span id="langBtnLabel">English</span></button>
+            <a href="index.html" class="nav-btn">
+                <span class="lang-ar"><i class="fa-solid fa-house"></i> الرئيسية</span>
+                <span class="lang-en"><i class="fa-solid fa-house"></i> Home</span>
+            </a>
+            <span style="color: var(--text-muted); font-weight: bold;">
+                <span class="lang-ar">السيشن 12 / 12</span>
+                <span class="lang-en">Session 12 / 12</span>
+            </span>
         </div>
     </nav>
 
     <div class="container">
 
         <div class="hero">
-            <span class="session-tag">السيشن الثاني عشر 🏆</span>
-            <h1>احتفالية يوم التخرج (Demo Day & Graduation)</h1>
-            <p>عروض المشاريع الحية أمام أولياء الأمور وتوزيع الشهادات! 🏆🎓</p>
+            <span class="session-tag">
+                <span class="lang-ar">السيشن الثاني عشر 🏆</span>
+                <span class="lang-en">Session 12 🏆</span>
+            </span>
+            <h1>
+                <span class="lang-ar">احتفالية يوم التخرج (Demo Day & Graduation)</span>
+                <span class="lang-en">Demo Day & Graduation Ceremony</span>
+            </h1>
+            <p>
+                <span class="lang-ar">عروض المشاريع الحية أمام أولياء الأمور وتوزيع الشهادات! 🏆🎓</span>
+                <span class="lang-en">Live student project showcases for parents & certificate ceremony! 🏆🎓</span>
+            </p>
         </div>
 
         <div class="agenda-card">
             <div class="agenda-title">
                 <i class="fa-solid fa-list-check"></i>
-                جدول أعمال اليوم (ماذا سنأخذ في هذه الحصة؟)
+                <span class="lang-ar">جدول أعمال اليوم (ماذا سنأخذ في هذه الحصة؟)</span>
+                <span class="lang-en">Today's Agenda (What will we cover today?)</span>
             </div>
             <div class="agenda-grid">
                 
         <div class="agenda-item">
             <div class="agenda-num">1</div>
-            <div class="agenda-text">استقبال أولياء الأمور والترحيب بالحضور الكريم.</div>
+            <div class="agenda-text">
+                <span class="lang-ar">استقبال أولياء الأمور والترحيب بالحضور الكريم.</span>
+                <span class="lang-en">Welcoming parents and guest attendees.</span>
+            </div>
         </div>
         
         <div class="agenda-item">
             <div class="agenda-num">2</div>
-            <div class="agenda-text">العروض المباشرة الحية (Live Student Demos) لكل طالب.</div>
+            <div class="agenda-text">
+                <span class="lang-ar">العروض المباشرة الحية (Live Student Demos) لكل طالب.</span>
+                <span class="lang-en">Live student project demonstrations.</span>
+            </div>
         </div>
         
         <div class="agenda-item">
             <div class="agenda-num">3</div>
-            <div class="agenda-text">اختبار المشاريع التفاعلية وتصفيق الحضور.</div>
+            <div class="agenda-text">
+                <span class="lang-ar">اختبار المشاريع التفاعلية وتصفيق الحضور.</span>
+                <span class="lang-en">Interactive project testing & audience applause.</span>
+            </div>
         </div>
         
         <div class="agenda-item">
             <div class="agenda-num">4</div>
-            <div class="agenda-text">كلمة المدرب وإشادة بأبطال الدفعة.</div>
+            <div class="agenda-text">
+                <span class="lang-ar">كلمة المدرب وإشادة بأبطال الدفعة.</span>
+                <span class="lang-en">Instructor keynote & student cohort honors.</span>
+            </div>
         </div>
         
         <div class="agenda-item">
             <div class="agenda-num">5</div>
-            <div class="agenda-text">مراسم توزيع شهادات Junior AI Developer والتصوير التذكاري.</div>
+            <div class="agenda-text">
+                <span class="lang-ar">مراسم توزيع شهادات Junior AI Developer والتصوير التذكاري.</span>
+                <span class="lang-en">Junior AI Developer certificate ceremony & photos.</span>
+            </div>
         </div>
         
         <div class="agenda-item">
             <div class="agenda-num">6</div>
-            <div class="agenda-text">الاحتفال بالانتقال للمستوى القادم!</div>
+            <div class="agenda-text">
+                <span class="lang-ar">الاحتفال بالانتقال للمستوى القادم!</span>
+                <span class="lang-en">Celebrating graduation & advancement to next level!</span>
+            </div>
         </div>
         
             </div>
@@ -155,51 +209,82 @@
             <div class="section-header">
                 <div class="section-icon"><i class="fa-solid fa-graduation-cap"></i></div>
                 <div>
-                    <h2>1. مرحباً بكم في يوم الإبداع!</h2>
+                    <h2>
+                        <span class="lang-ar">1. مرحباً بكم في يوم الإبداع!</span>
+                        <span class="lang-en">1. Welcome to Innovation Day!</span>
+                    </h2>
                 </div>
             </div>
-            <p style="font-size: 1.15rem;">اليوم هو الحصاد! أولياء الأمور يشاهدون أبناءهم وهم يعرضون مشاريع AI حقيقية قاموا ببنائها بأنفسهم.</p>
+            <p style="font-size: 1.15rem;">
+                <span class="lang-ar">اليوم هو الحصاد! أولياء الأمور يشاهدون أبناءهم وهم يعرضون مشاريع AI حقيقية قاموا ببنائها بأنفسهم.</span>
+                <span class="lang-en">Today is the harvest! Parents watch their children demonstrate real AI applications built from scratch.</span>
+            </p>
         </div>
 
         <div class="section-block">
             <div class="section-header">
                 <div class="section-icon" style="background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan);"><i class="fa-solid fa-lightbulb"></i></div>
                 <div>
-                    <h2>2. العروض المباشرة بثقة (Live Project Presentation)</h2>
+                    <h2>
+                        <span class="lang-ar">2. العروض المباشرة بثقة (Live Project Presentation)</span>
+                        <span class="lang-en">2. Confident Live Demonstrations</span>
+                    </h2>
                 </div>
             </div>
-            <p style="font-size: 1.15rem;">كل طالب يعتلي المنصة، يفتح لابتوبه، ويشغل برنامجه الذكي ويعرض كيف يتفاعل مع الصوت أو الكاميرا أو الألعاب.</p>
+            <p style="font-size: 1.15rem;">
+                <span class="lang-ar">كل طالب يعتلي المنصة، يفتح لابتوبه، ويشغل برنامجه الذكي ويعرض كيف يتفاعل مع الصوت أو الكاميرا أو الألعاب.</span>
+                <span class="lang-en">Each student steps up to stage, runs their Python AI program, and demonstrates live interaction.</span>
+            </p>
         </div>
 
         <div class="section-block">
             <div class="section-header">
                 <div class="section-icon" style="background: rgba(249, 115, 22, 0.15); color: var(--accent-orange);"><i class="fa-solid fa-layer-group"></i></div>
                 <div>
-                    <h2>3. الشهادة والفرص المستقبلية</h2>
+                    <h2>
+                        <span class="lang-ar">3. الشهادة والفرص المستقبلية</span>
+                        <span class="lang-en">3. Certification & Future Horizons</span>
+                    </h2>
                 </div>
             </div>
-            <p style="font-size: 1.15rem;">حصول الطالب على شهادة معتمدة تثبت قدرته على بناء تطبيقات الذكاء الاصطناعي وتجهيزه للمراحل المتقدمة.</p>
+            <p style="font-size: 1.15rem;">
+                <span class="lang-ar">حصول الطالب على شهادة معتمدة تثبت قدرته على بناء تطبيقات الذكاء الاصطناعي وتجهيزه للمراحل المتقدمة.</span>
+                <span class="lang-en">Students receive certified Junior AI Developer credentials preparing them for advanced tracks.</span>
+            </p>
         </div>
 
         <div class="section-block">
             <div class="section-header">
                 <div class="section-icon" style="background: rgba(34, 197, 94, 0.15); color: var(--accent-green);"><i class="fa-solid fa-flask"></i></div>
                 <div>
-                    <h2>التجربة العملية التفاعلية المباشرة 🧪</h2>
+                    <h2>
+                        <span class="lang-ar">التجربة العملية التفاعلية المباشرة 🧪</span>
+                        <span class="lang-en">Live Interactive Hands-on Lab 🧪</span>
+                    </h2>
                 </div>
             </div>
 
             <div class="lab-box">
-                <h3 style="font-size: 1.4rem; color: white; margin-bottom: 10px;">منصة الاحتفال التفاعلية (Graduation Celebration Portal)</h3>
-                <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">اضغط على زر إطلاق الألعاب النارية والاحتفال بتخرج أبطال الذكاء الاصطناعي!</p>
+                <h3 style="font-size: 1.4rem; color: white; margin-bottom: 10px;">
+                    <span class="lang-ar">منصة الاحتفال التفاعلية (Graduation Celebration Portal)</span>
+                    <span class="lang-en">Graduation Celebration Portal</span>
+                </h3>
+                <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">
+                    <span class="lang-ar">اضغط على زر إطلاق الألعاب النارية والاحتفال بتخرج أبطال الذكاء الاصطناعي!</span>
+                    <span class="lang-en">Click the fireworks button to celebrate our Junior AI Developer graduates!</span>
+                </p>
                 
                 <div style="margin-top: 20px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
-                    <input type="text" id="userInputText" placeholder="اكتب هنا لتجربة المعمل التفاعلي..." style="width: 70%; max-width: 450px; padding: 14px 20px; border-radius: 12px; border: 1px solid var(--accent-cyan); background: #0f172a; color: white; font-size: 1.1rem; outline: none;">
-                    <button class="lab-btn" onclick="runSim()"><i class="fa-solid fa-play"></i> تشغيل التجربة</button>
+                    <input type="text" id="userInputText" placeholder="اكتب هنا لتجربة المعمل التفاعلي / Type here for live lab..." style="width: 70%; max-width: 450px; padding: 14px 20px; border-radius: 12px; border: 1px solid var(--accent-cyan); background: #0f172a; color: white; font-size: 1.1rem; outline: none;">
+                    <button class="lab-btn" onclick="runSim()"><i class="fa-solid fa-play"></i> 
+                        <span class="lang-ar">تشغيل التجربة</span>
+                        <span class="lang-en">Run Lab</span>
+                    </button>
                 </div>
 
                 <div class="demo-result-box" id="resultDisplay">
-                    ✨ في انتظار مدخلاتك واختبار النظام الذكي...
+                    <span class="lang-ar">✨ في انتظار مدخلاتك واختبار النظام الذكي...</span>
+                    <span class="lang-en">✨ Awaiting your input to test AI live...</span>
                 </div>
             </div>
         </div>
@@ -208,7 +293,10 @@
             <div class="section-header">
                 <div class="section-icon"><i class="fa-brands fa-python"></i></div>
                 <div>
-                    <h2>تطبيق الكود بـ Python 🐍</h2>
+                    <h2>
+                        <span class="lang-ar">تطبيق الكود بـ Python 🐍</span>
+                        <span class="lang-en">Python Code Implementation 🐍</span>
+                    </h2>
                 </div>
             </div>
 
@@ -225,45 +313,95 @@ print("🚀 نتمنى لكم رحلة مستقبلية مليئة بالابت�
             <div class="section-header">
                 <div class="section-icon" style="background: rgba(234, 179, 8, 0.15); color: #eab308;"><i class="fa-solid fa-gamepad"></i></div>
                 <div>
-                    <h2>اختبر معلوماتك (تحدي السيشن) 🧩</h2>
+                    <h2>
+                        <span class="lang-ar">اختبر معلوماتك (تحدي السيشن) 🧩</span>
+                        <span class="lang-en">Test Your Knowledge (Session Quiz) 🧩</span>
+                    </h2>
                 </div>
             </div>
 
             <div class="quiz-container">
-                <div class="quiz-q">ماذا أصبح الطالب قادر على فعله بعد إتمام هذا الكورس التفاعلي؟</div>
-                <button class="quiz-opt" onclick="checkAnswer(this, true)">بناء تطبيقات ومساعدات ذكاء اصطناعي تفاعلية بنفسه بـ Python وتحكم الكاميرا والصوت.</button>
-                <button class="quiz-opt" onclick="checkAnswer(this, false)">مجرد نقل الأكواد دون فهم.</button>
+                <div class="quiz-q">
+                    <span class="lang-ar">ماذا أصبح الطالب قادر على فعله بعد إتمام هذا الكورس التفاعلي؟</span>
+                    <span class="lang-en">What can students build after completing this interactive AI course?</span>
+                </div>
+                <button class="quiz-opt" onclick="checkAnswer(this, true)">
+                    <span class="lang-ar">بناء تطبيقات ومساعدات ذكاء اصطناعي تفاعلية بنفسه بـ Python وتحكم الكاميرا والصوت.</span>
+                    <span class="lang-en">Build interactive Python AI apps, voice assistants, & vision controls independently.</span>
+                </button>
+                <button class="quiz-opt" onclick="checkAnswer(this, false)">
+                    <span class="lang-ar">مجرد نقل الأكواد دون فهم.</span>
+                    <span class="lang-en">Just copy-pasting code without understanding.</span>
+                </button>
             </div>
         </div>
 
         <div class="hw-card">
             <div class="hw-title">
                 <i class="fa-solid fa-rocket"></i>
-                واجب السيشن والمشروع الممتع في البيت 🏠
+                <span class="lang-ar">واجب السيشن والمشروع الممتع في البيت 🏠</span>
+                <span class="lang-en">Session Homework & Home Project 🏠</span>
             </div>
-            <p style="font-size: 1.1rem; color: #f1f5f9; margin-bottom: 12px;">احتفل بنجاحك مع عائلتك وشارك صور وفيديوهات مشروعك بكل فخر! 📸🎓✨</p>
+            <p style="font-size: 1.1rem; color: #f1f5f9; margin-bottom: 12px;">
+                <span class="lang-ar">احتفل بنجاحك مع عائلتك وشارك صور وفيديوهات مشروعك بكل فخر! 📸🎓✨</span>
+                <span class="lang-en">Celebrate your graduation with family and proudly share your project video! 📸🎓✨</span>
+            </p>
         </div>
 
         <div class="footer-navigation">
-            <a href="session11.html" class="nav-link-btn"><i class="fa-solid fa-arrow-right"></i> السيشن 11</a>
-            <a href="index.html" class="nav-link-btn primary">الرئيسية <i class="fa-solid fa-arrow-left"></i></a>
+            <a href="session11.html" class="nav-link-btn">
+                <i class="fa-solid fa-arrow-right"></i>
+                <span class="lang-ar">السيشن 11</span>
+                <span class="lang-en">Session 11</span>
+            </a>
+            <a href="index.html" class="nav-link-btn primary">
+                <span class="lang-ar">الرئيسية</span>
+                <span class="lang-en">Home</span>
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
         </div>
 
     </div>
 
     <script>
+        function toggleLanguage() {
+            const currentLang = document.documentElement.lang || 'ar';
+            const newLang = (currentLang === 'ar') ? 'en' : 'ar';
+            setLanguage(newLang);
+        }
+
+        function setLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+            localStorage.setItem('megaminds_lang', lang);
+            
+            const btnLabel = document.getElementById('langBtnLabel');
+            if (btnLabel) {
+                btnLabel.innerText = (lang === 'ar') ? 'English' : 'العربية';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('megaminds_lang') || 'ar';
+            setLanguage(savedLang);
+        });
+
         function runSim() {
             const input = document.getElementById('userInputText').value.trim();
             const resultBox = document.getElementById('resultDisplay');
+            const isAr = (document.documentElement.lang === 'ar');
+            
             if (!input) {
-                resultBox.innerHTML = "⚠️ أدخل نصاً أو أمراً أولاً في الصندوق!";
+                resultBox.innerHTML = isAr ? "⚠️ أدخل نصاً أو أمراً أولاً في الصندوق!" : "⚠️ Please enter text or a command first!";
                 resultBox.style.color = "#f97316";
                 return;
             }
-            resultBox.innerHTML = "🧠 جاري تنفيذ التجربة التفاعلية بواسطة الذكاء الاصطناعي...";
+            resultBox.innerHTML = isAr ? "🧠 جاري تنفيذ التجربة التفاعلية بواسطة الذكاء الاصطناعي..." : "🧠 Running live AI interactive simulation...";
             resultBox.style.color = "#38bdf8";
             setTimeout(() => {
-                resultBox.innerHTML = `✅ تم التنفيذ بنجاح! المدخل: "${input}" ➔ النتيجة: تم الاستجابة وتوليد النمط الذكي المطلوبة! 🎉`;
+                resultBox.innerHTML = isAr 
+                    ? `✅ تم التنفيذ بنجاح! المدخل: "${input}" ➔ النتيجة: تم الاستجابة وتوليد النمط الذكي المطلوبة! 🎉`
+                    : `✅ Success! Input: "${input}" ➔ Result: AI pattern response generated! 🎉`;
                 resultBox.style.color = "#22c55e";
             }, 600);
         }
@@ -271,13 +409,15 @@ print("🚀 نتمنى لكم رحلة مستقبلية مليئة بالابت�
         function checkAnswer(button, isCorrect) {
             const parent = button.parentElement;
             const options = parent.querySelectorAll('.quiz-opt');
+            const isAr = (document.documentElement.lang === 'ar');
+
             options.forEach(opt => { opt.disabled = true; opt.style.cursor = 'default'; });
             if (isCorrect) {
                 button.classList.add('correct');
-                button.innerHTML += '  ✅ (إجابة صحيحة بطل!)';
+                button.innerHTML += isAr ? '  ✅ (إجابة صحيحة بطل!)' : '  ✅ (Correct Answer!)';
             } else {
                 button.classList.add('wrong');
-                button.innerHTML += '  ❌ (حاول مرة أخرى)';
+                button.innerHTML += isAr ? '  ❌ (حاول مرة أخرى)' : '  ❌ (Try Again)';
             }
         }
     </script>
