@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Megaminds AI - Session 2</title>
+    <title>Megaminds AI - السيشن الثاني: Generative AI & Prompt Engineering</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -79,21 +79,83 @@
         
         .agenda-card { background: var(--card-bg); border: 1px solid var(--card-border); border-top: 4px solid var(--accent-orange); border-radius: 20px; padding: 30px; margin-bottom: 40px; }
         .agenda-title { font-size: 1.5rem; font-weight: 800; color: var(--accent-orange); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
-        .agenda-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
-        .agenda-item { background: rgba(15, 19, 29, 0.6); border: 1px solid rgba(249, 115, 22, 0.15); padding: 16px 20px; border-radius: 14px; display: flex; align-items: center; gap: 15px; transition: all 0.3s ease; }
+        .agenda-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
+        .agenda-item { background: rgba(15, 19, 29, 0.6); border: 1px solid rgba(249, 115, 22, 0.15); padding: 18px 20px; border-radius: 14px; display: flex; align-items: center; gap: 15px; transition: all 0.3s ease; }
         .agenda-item:hover { border-color: var(--accent-orange); transform: translateX(-5px); background: rgba(249, 115, 22, 0.08); }
-        .agenda-num { background: rgba(249, 115, 22, 0.2); color: var(--accent-orange); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; flex-shrink: 0; }
+        .agenda-num { background: rgba(249, 115, 22, 0.2); color: var(--accent-orange); width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; flex-shrink: 0; }
         .agenda-text { font-size: 1.05rem; font-weight: 600; color: var(--text-main); }
         
         .section-block { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 35px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); }
         .section-header { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 2px solid rgba(255, 255, 255, 0.05); }
         .section-icon { background: rgba(249, 115, 22, 0.15); color: var(--accent-orange); width: 50px; height: 50px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 1px solid rgba(249, 115, 22, 0.3); }
         .section-header h2 { font-size: 1.7rem; font-weight: 800; color: white; }
-        
-        .lab-box { background: linear-gradient(135deg, #1f1a28, #110e17); border: 2px dashed var(--accent-orange); border-radius: 18px; padding: 30px; margin-top: 20px; text-align: center; }
-        .lab-btn { background: linear-gradient(90deg, var(--accent-orange), var(--accent-orange-bright)); color: white; border: none; padding: 14px 32px; border-radius: 12px; font-size: 1.1rem; font-weight: 800; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(249, 115, 22, 0.4); margin-top: 15px; }
-        .lab-btn:hover { transform: scale(1.05); box-shadow: 0 6px 25px rgba(249, 115, 22, 0.6); }
-        .demo-result-box { margin-top: 20px; padding: 15px; background: #0b0f19; border-radius: 12px; min-height: 70px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: var(--accent-amber); font-weight: 700; border: 1px solid rgba(249, 115, 22, 0.2); }
+
+        /* C-T-C Prompt Engineering Cards */
+        .ctc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
+        .ctc-card {
+            background: rgba(15, 19, 29, 0.7);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+        .ctc-card:hover { transform: translateY(-5px); border-color: var(--accent-orange); }
+        .ctc-badge { display: inline-block; padding: 4px 14px; border-radius: 12px; font-weight: 900; font-size: 0.9rem; margin-bottom: 12px; }
+
+        /* Application Cards Grid (8 Standard Applications + 1 Mystery Card) */
+        .apps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 20px; }
+        .app-card {
+            background: rgba(15, 19, 29, 0.7);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .app-card:hover { transform: translateY(-8px); border-color: var(--accent-orange); box-shadow: 0 12px 25px rgba(249, 115, 22, 0.25); }
+        .app-card-img { width: 100%; height: 145px; object-fit: cover; border-bottom: 2px solid rgba(249, 115, 22, 0.3); }
+        .app-card-content { padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .app-card-title { font-size: 1.15rem; font-weight: 800; color: white; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .app-card-desc { font-size: 0.93rem; color: var(--text-muted); line-height: 1.6; }
+
+        /* Mystery Application Card */
+        .mystery-card {
+            background: linear-gradient(135deg, rgba(192, 132, 252, 0.15), rgba(249, 115, 22, 0.15));
+            border: 2px dashed var(--accent-purple);
+            border-radius: 16px;
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .mystery-card:hover { transform: translateY(-8px); border-color: var(--accent-amber); box-shadow: 0 12px 25px rgba(192, 132, 252, 0.3); }
+        .mystery-icon-box { font-size: 2.8rem; color: var(--accent-purple); margin-bottom: 10px; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+
+        /* Goal & Logic Step Boxes for Practical Section */
+        .practical-goal-card {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(251, 191, 36, 0.1));
+            border: 2px solid var(--accent-orange);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        .practical-goal-title { font-size: 1.3rem; font-weight: 800; color: var(--accent-orange); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+
+        .logic-step-box {
+            background: rgba(15, 19, 29, 0.7);
+            border: 1px solid var(--card-border);
+            border-right: 4px solid var(--accent-orange);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+        html[lang="en"] .logic-step-box { border-right: none; border-left: 4px solid var(--accent-orange); }
+        .logic-step-title { font-size: 1.15rem; font-weight: 800; color: var(--accent-amber); margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+        .logic-step-desc { font-size: 1rem; color: #cbd5e1; }
 
         /* VS Code Style Real Code Editor Frame */
         .editor-frame {
@@ -111,6 +173,8 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #30363d;
+            flex-wrap: wrap;
+            gap: 10px;
         }
         .editor-dots { display: flex; gap: 8px; align-items: center; }
         .dot { width: 12px; height: 12px; border-radius: 50%; }
@@ -131,12 +195,19 @@
             border: 1px solid #30363d;
             border-bottom: none;
         }
-        .editor-actions { display: flex; gap: 10px; }
+        .editor-actions { display: flex; gap: 10px; flex-wrap: wrap; }
         .run-code-btn {
             background: linear-gradient(90deg, #22c55e, #16a34a);
             color: white; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 800; font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
         }
         .run-code-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(34, 197, 94, 0.5); }
+        
+        .solution-code-btn {
+            background: linear-gradient(90deg, var(--accent-orange), var(--accent-amber));
+            color: #000; border: none; padding: 8px 18px; border-radius: 8px; font-weight: 800; font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+        }
+        .solution-code-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(249, 115, 22, 0.5); }
+
         .reset-code-btn {
             background: rgba(249, 115, 22, 0.15); color: var(--accent-orange); border: 1px solid rgba(249, 115, 22, 0.4); padding: 8px 16px; border-radius: 8px; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;
         }
@@ -144,7 +215,7 @@
         
         .code-textarea {
             width: 100%;
-            height: 250px;
+            height: 290px;
             background: #070a10;
             color: #ffedd5;
             padding: 20px;
@@ -179,8 +250,8 @@
         .terminal-console {
             color: #4ade80;
             font-size: 1rem;
-            min-height: 80px;
-            max-height: 180px;
+            min-height: 90px;
+            max-height: 200px;
             overflow-y: auto;
             white-space: pre-wrap;
             line-height: 1.5;
@@ -193,6 +264,15 @@
         .quiz-opt.correct { background: rgba(34, 197, 94, 0.2) !important; border-color: var(--accent-green) !important; color: #4ade80 !important; font-weight: bold; }
         .quiz-opt.wrong { background: rgba(239, 68, 68, 0.2) !important; border-color: #ef4444 !important; color: #fca5a5 !important; }
         
+        .challenge-box {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(192, 132, 252, 0.15));
+            border: 2px solid var(--accent-purple);
+            border-radius: 18px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+        .challenge-title { font-size: 1.35rem; font-weight: 800; color: var(--accent-purple); display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+
         .hw-card { background: linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(251, 191, 36, 0.1)); border: 2px solid var(--accent-orange); border-radius: 18px; padding: 25px; margin-top: 30px; box-shadow: 0 10px 30px rgba(249, 115, 22, 0.15); }
         .hw-title { font-size: 1.4rem; font-weight: 800; color: var(--accent-orange); display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
         
@@ -225,176 +305,399 @@
 
     <div class="container">
 
+        <!-- Hero Section -->
         <div class="hero">
             <span class="session-tag">
                 <span class="lang-ar">السيشن الثاني 🎨</span>
                 <span class="lang-en">Session 2 🎨</span>
             </span>
             <h1>
-                <span class="lang-ar">Generative AI & Prompt Engineering</span>
-                <span class="lang-en">Generative AI & Prompt Engineering</span>
+                <span class="lang-ar">Generative AI & Prompt Engineering 🎨✍️</span>
+                <span class="lang-en">Generative AI & Prompt Engineering 🎨✍️</span>
             </h1>
             <p>
-                <span class="lang-ar">كيف تجعل الذكاء الاصطناعي يرسم ويكتب أفكارك وخيالاتك؟ 🎨✍️</span>
-                <span class="lang-en">How to make AI draw and write your creative ideas & imaginations? 🎨✍️</span>
+                <span class="lang-ar">كيف تجعل الذكاء الاصطناعي يكتب القصص ويرسم الأفكار بقاعدة C-T-C وبناء مولد القصص الخيالية الذكي بـ Python؟</span>
+                <span class="lang-en">How to make AI write stories and draw ideas using the C-T-C rule and build a Python fantasy story generator?</span>
             </p>
         </div>
 
+        <!-- Agenda Section -->
         <div class="agenda-card">
             <div class="agenda-title">
                 <i class="fa-solid fa-list-check"></i>
-                <span class="lang-ar">جدول أعمال اليوم (ماذا سنأخذ في هذه الحصة؟)</span>
-                <span class="lang-en">Today's Agenda (What will we cover today?)</span>
+                <span class="lang-ar">جدول أعمال اليوم (ماذا سنأخذ في هذه الحصة بالتفصيل؟)</span>
+                <span class="lang-en">Today's Agenda (Detailed Session Breakdown)</span>
             </div>
             <div class="agenda-grid">
-                
-        <div class="agenda-item">
-            <div class="agenda-num">1</div>
-            <div class="agenda-text">
-                <span class="lang-ar">مفهوم الذكاء الاصطناعي التوليدي (Generative vs Discriminative AI).</span>
-                <span class="lang-en">Generative vs Discriminative AI concepts.</span>
-            </div>
-        </div>
-        
-        <div class="agenda-item">
-            <div class="agenda-num">2</div>
-            <div class="agenda-text">
-                <span class="lang-ar">قواعد هندسة الأوامر (Prompt Engineering C-T-C Framework).</span>
-                <span class="lang-en">Prompt Engineering C-T-C Framework (Context, Task, Constraints).</span>
-            </div>
-        </div>
-        
-        <div class="agenda-item">
-            <div class="agenda-num">3</div>
-            <div class="agenda-text">
-                <span class="lang-ar">تحدي صياغة الأوامر (Prompt Battles) وتجنب هلوسة الذكاء الاصطناعي.</span>
-                <span class="lang-en">Prompt Battles challenge & avoiding AI hallucinations.</span>
-            </div>
-        </div>
-        
-        <div class="agenda-item">
-            <div class="agenda-num">4</div>
-            <div class="agenda-text">
-                <span class="lang-ar">تجربة محاكي توليد القصص التفاعلي على الويب.</span>
-                <span class="lang-en">Interactive Story Generator web simulator.</span>
-            </div>
-        </div>
-        
-        <div class="agenda-item">
-            <div class="agenda-num">5</div>
-            <div class="agenda-text">
-                <span class="lang-ar">محرر كود بايثون التفاعلي لمولد القصص الخيالية.</span>
-                <span class="lang-en">Interactive Python IDE for Fantasy Story Generator.</span>
-            </div>
-        </div>
-        
-        <div class="agenda-item">
-            <div class="agenda-num">6</div>
-            <div class="agenda-text">
-                <span class="lang-ar">تحدي الحصة واختبار المعلومات التفاعلي.</span>
-                <span class="lang-en">Interactive quiz & prompt engineering challenge.</span>
-            </div>
-        </div>
-        
+                <div class="agenda-item">
+                    <div class="agenda-num">1</div>
+                    <div class="agenda-text">
+                        <span class="lang-ar">مفهوم الذكاء الاصطناعي التوليدي مقابل التمييزي (Generative vs Discriminative AI).</span>
+                        <span class="lang-en">Generative AI vs Discriminative AI concepts & differences.</span>
+                    </div>
+                </div>
+                <div class="agenda-item">
+                    <div class="agenda-num">2</div>
+                    <div class="agenda-text">
+                        <span class="lang-ar">قاعدة C-T-C لهندسة الأوامر الاحترافية (Context, Task, Constraints).</span>
+                        <span class="lang-en">The C-T-C Prompt Engineering Framework (Context, Task, Constraints).</span>
+                    </div>
+                </div>
+                <div class="agenda-item">
+                    <div class="agenda-num">3</div>
+                    <div class="agenda-text">
+                        <span class="lang-ar">ظاهرة الهلوسة الرقمية (AI Hallucinations) وكيف نتجنب الأخطاء بالشروط.</span>
+                        <span class="lang-en">AI Hallucinations & avoiding errors using strict constraints.</span>
+                    </div>
+                </div>
+                <div class="agenda-item">
+                    <div class="agenda-num">4</div>
+                    <div class="agenda-text">
+                        <span class="lang-ar">تطبيقات الذكاء التوليدي الـ 8 في العالم + تحدي التطبيق المجهول ❓</span>
+                        <span class="lang-en">8 Real-World Generative AI Apps + Mystery AI Application Challenge ❓</span>
+                    </div>
+                </div>
+                <div class="agenda-item">
+                    <div class="agenda-num">5</div>
+                    <div class="agenda-text">
+                        <span class="lang-ar">الجزء التطبيقي: فكرة مولد القصص الخيالية وخطوات التخطيط البرمجي بـ Python.</span>
+                        <span class="lang-en">Practical Section: Fantasy Story Generator Overview & Python Planning Steps.</span>
+                    </div>
+                </div>
+                <div class="agenda-item">
+                    <div class="agenda-num">6</div>
+                    <div class="agenda-text">
+                        <span class="lang-ar">محرر بايثون التفاعلي (قالب التحدي أولاً + زر إظهار الكود 💡) + 5 أسئلة quiz + التحدي!</span>
+                        <span class="lang-en">Interactive Python IDE (Try first + Show Solution 💡) + 5 Quiz Questions + Challenge!</span>
+                    </div>
+                </div>
             </div>
         </div>
 
+        <!-- Section 1: Generative vs Discriminative AI -->
         <div class="section-block">
             <div class="section-header">
-                <div class="section-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <div class="section-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
                 <div>
                     <h2>
-                        <span class="lang-ar">1. الذكاء الاصطناعي التوليدي (Generative AI)</span>
-                        <span class="lang-en">1. Generative AI</span>
+                        <span class="lang-ar">1. الذكاء الاصطناعي التوليدي (Generative vs Discriminative AI) 🧠🎨</span>
+                        <span class="lang-en">1. Generative vs Discriminative AI 🧠🎨</span>
                     </h2>
                 </div>
             </div>
-            <p style="font-size: 1.15rem;">
-                <span class="lang-ar">الذكاء الاصطناعي التقليدي يصنف البيانات (هذه صورة قطة)، أما التوليدي فيبتكر محتوى جديد تماماً (نرسم قطة ترتدي نظارة على المريخ)!</span>
-                <span class="lang-en">Traditional AI classifies data (e.g. 'this is a cat photo'), while Generative AI invents completely new content (e.g. 'a cat wearing glasses on Mars')!</span>
+            
+            <p style="font-size: 1.15rem; margin-bottom: 20px;">
+                <span class="lang-ar">تخيل معي الفرق بين <b>"حارس الأمن الذي يراجع البطاقات الشخصية"</b> و <b>"الرسام والكاتب المبتكر"</b>! في <b>الذكاء التمييزي (Discriminative AI)</b>، النموذج فقط ينظر إلى المحتوى ويصنفه (مثلاً: هذه صورة قطة 🐱 أم كلب 🐶). أما في <b>الذكاء الاصطناعي التوليدي (Generative AI)</b>، فالنموذج يبتكر ويخلق نصوصاً وصوراً وموسيقى جديدة تماماً لم تكن موجودة مسبقاً بناءً على فهمه للبيانات! 🌟</span>
+                <span class="lang-en">Imagine the difference between a <b>security guard inspecting IDs</b> vs a <b>creative painter and novelist</b>! <b>Discriminative AI</b> classifies data (e.g. 'Is this a cat photo or dog photo?'). <b>Generative AI</b> invents brand-new text, images, and music from scratch based on learned patterns! 🌟</span>
             </p>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+                <div style="background: rgba(15, 19, 29, 0.7); padding: 22px; border-radius: 16px; border: 1px solid var(--card-border); border-top: 4px solid var(--accent-amber);">
+                    <h3 style="color: var(--accent-amber); font-size: 1.25rem; margin-bottom: 10px;"><i class="fa-solid fa-filter"></i> 
+                        <span class="lang-ar">الذكاء التمييزي (Discriminative AI)</span>
+                        <span class="lang-en">Discriminative AI</span>
+                    </h3>
+                    <p style="font-size: 1rem; color: #cbd5e1; margin-bottom: 10px;">
+                        <span class="lang-ar">يتعرف ويصنف العناصر الموجودة مسبقاً.</span>
+                        <span class="lang-en">Classifies & evaluates pre-existing items.</span>
+                    </p>
+                    <div style="background: #090d16; padding: 12px; border-radius: 8px; font-family: monospace; font-size: 0.9rem; color: #f59e0b; direction: ltr; text-align: left;">
+                        Input: Image ➔ Output: "98% Cat Photo"
+                    </div>
+                </div>
+
+                <div style="background: rgba(15, 19, 29, 0.7); padding: 22px; border-radius: 16px; border: 1px solid var(--card-border); border-top: 4px solid var(--accent-orange);">
+                    <h3 style="color: var(--accent-orange); font-size: 1.25rem; margin-bottom: 10px;"><i class="fa-solid fa-palette"></i> 
+                        <span class="lang-ar">الذكاء الاصطناعي التوليدي (Generative AI)</span>
+                        <span class="lang-en">Generative AI</span>
+                    </h3>
+                    <p style="font-size: 1rem; color: #cbd5e1; margin-bottom: 10px;">
+                        <span class="lang-ar">يبتكر وينتج محتوى جديداً وفريداً كلياً!</span>
+                        <span class="lang-en">Creates brand-new content & original assets!</span>
+                    </p>
+                    <div style="background: #090d16; padding: 12px; border-radius: 8px; font-family: monospace; font-size: 0.9rem; color: #f97316; direction: ltr; text-align: left;">
+                        Prompt: "Draw a astronaut cat on Mars" ➔ New 3D Image!
+                    </div>
+                </div>
+            </div>
         </div>
 
+        <!-- Section 2: Prompt Engineering & C-T-C Rule -->
         <div class="section-block">
             <div class="section-header">
-                <div class="section-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                <div class="section-icon" style="background: rgba(251, 191, 36, 0.15); color: var(--accent-amber); border-color: rgba(251, 191, 36, 0.3);"><i class="fa-solid fa-terminal"></i></div>
                 <div>
                     <h2>
-                        <span class="lang-ar">2. قاعدة C-T-C لهندسة الأوامر الاحترافية</span>
-                        <span class="lang-en">2. The C-T-C Prompt Engineering Rule</span>
+                        <span class="lang-ar">2. قاعدة C-T-C لصياغة الأوامر الاحترافية (Prompt Engineering) ✍️</span>
+                        <span class="lang-en">2. The C-T-C Prompt Engineering Framework ✍️</span>
                     </h2>
                 </div>
             </div>
-            <p style="font-size: 1.15rem;">
-                <span class="lang-ar">للحصول على أفضل نتيجة من ChatGPT أو Midjourney، طبق قاعدة C-T-C: Context (السياق) + Task (المهمة) + Constraint (الشروط).</span>
-                <span class="lang-en">For best results from ChatGPT or Midjourney, use C-T-C: Context + Task + Constraints.</span>
+
+            <p style="font-size: 1.15rem; margin-bottom: 15px;">
+                <span class="lang-ar">الـ Prompt هو الأمر أو السؤال الذي تكتبه للذكاء الاصطناعي. للحصول على أفضل نتيجة من ChatGPT أو Midjourney، استخدم قاعدة <b>C-T-C الثلاثية</b>:</span>
+                <span class="lang-en">A prompt is the instruction you write for AI. To get the best results from ChatGPT, follow the <b>C-T-C Framework</b>:</span>
             </p>
+
+            <div class="ctc-grid">
+                <div class="ctc-card">
+                    <span class="ctc-badge" style="background: rgba(249, 115, 22, 0.2); color: var(--accent-orange);">1. C - Context (السياق)</span>
+                    <h3 style="color: white; font-size: 1.1rem; margin-bottom: 8px;">من أنت وما هي شخصية الـ AI؟</h3>
+                    <p style="font-size: 0.95rem; color: #cbd5e1;">"تخيل أنك كاتب قصص خيالية للأطفال ومطور ذكاء اصطناعي محترف..."</p>
+                </div>
+
+                <div class="ctc-card">
+                    <span class="ctc-badge" style="background: rgba(251, 191, 36, 0.2); color: var(--accent-amber);">2. T - Task (المهمة)</span>
+                    <h3 style="color: white; font-size: 1.1rem; margin-bottom: 8px;">ما الذي تريده بدقة؟</h3>
+                    <p style="font-size: 0.95rem; color: #cbd5e1;">"اكتب قصة مشوقة عن روبوت يدعى بيكسل يتعلم رسم النجوم في السماء..."</p>
+                </div>
+
+                <div class="ctc-card">
+                    <span class="ctc-badge" style="background: rgba(192, 132, 252, 0.2); color: var(--accent-purple);">3. C - Constraints (الشروط)</span>
+                    <h3 style="color: white; font-size: 1.1rem; margin-bottom: 8px;">ما هي القيود والحدود؟</h3>
+                    <p style="font-size: 0.95rem; color: #cbd5e1;">"ألا تتجاوز القصة 100 كلمة، واستخدم نبرة مرحة، وأضف رموزاً تعبيرية 🌟"</p>
+                </div>
+            </div>
         </div>
 
+        <!-- Section 3: AI Hallucinations -->
         <div class="section-block">
             <div class="section-header">
-                <div class="section-icon"><i class="fa-solid fa-layer-group"></i></div>
+                <div class="section-icon" style="background: rgba(239, 68, 68, 0.15); color: #ef4444; border-color: rgba(239, 68, 68, 0.3);"><i class="fa-solid fa-ghost"></i></div>
                 <div>
                     <h2>
-                        <span class="lang-ar">3. أبعاد التوليد والهلوسة (AI Hallucination)</span>
-                        <span class="lang-en">3. AI Hallucinations & Limitations</span>
+                        <span class="lang-ar">3. ظاهرة الهلوسة الرقمية (AI Hallucination) 👻👻</span>
+                        <span class="lang-en">3. Understanding AI Hallucinations 👻</span>
                     </h2>
                 </div>
             </div>
-            <p style="font-size: 1.15rem;">
-                <span class="lang-ar">أحياناً يبتكر الذكاء الاصطناعي معلومات غير صحيحة، ولذلك يجب أن نراجع دائماً ما يكتبه ونستخدم الشروط الدقيقة.</span>
-                <span class="lang-en">AI sometimes invents false facts (hallucinations), so we must double-check output using strict constraints.</span>
+
+            <p style="font-size: 1.1rem; margin-bottom: 15px;">
+                <span class="lang-ar">أحياناً يبتكر الذكاء الاصطناعي معلومات أو تواريخ غير صحيحة بثقة شديدة! يسمى ذلك <b>"الهلوسة الرقمية" (Hallucination)</b> لأن النموذج يحاول إكمال الكلمات الأكثر احتمالية حتى لو لم يمتلك معلومة مؤكدة.</span>
+                <span class="lang-en">Sometimes AI invents false facts with high confidence! This is called <b>AI Hallucination</b> because models predict probable words even without verified data.</span>
             </p>
+
+            <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); padding: 20px; border-radius: 16px;">
+                <h4 style="color: #fca5a5; font-size: 1.1rem; margin-bottom: 8px;"><i class="fa-solid fa-shield-halved"></i> كيف نتجنب الهلوسة الرقمية كمطورين؟</h4>
+                <ul style="margin-right: 25px; color: #e2e8f0; font-size: 0.98rem; line-height: 1.8;">
+                    <li>أضف شرطاً في البرومبت: <i>"إذا لم تكن متأكداً من المعلومة، قل لا أعلم بدلاً من التخمين."</i></li>
+                    <li>راجع دائماً الأرقام والمصادر المهمة بنفسك قبل الاعتماد عليها.</li>
+                </ul>
+            </div>
         </div>
 
+        <!-- Section 4: 8 Real-World Generative AI Apps + Mystery Card -->
         <div class="section-block">
             <div class="section-header">
-                <div class="section-icon" style="background: rgba(34, 197, 94, 0.15); color: var(--accent-green); border-color: rgba(34, 197, 94, 0.3);"><i class="fa-solid fa-flask"></i></div>
+                <div class="section-icon"><i class="fa-solid fa-globe"></i></div>
                 <div>
                     <h2>
-                        <span class="lang-ar">التجربة العملية التفاعلية المباشرة 🧪</span>
-                        <span class="lang-en">Live Interactive Hands-on Lab 🧪</span>
+                        <span class="lang-ar">4. 8 تطبيقات حقيقية للذكاء الاصطناعي التوليدي + التطبيق المجهول 📸❓</span>
+                        <span class="lang-en">4. 8 Real-World Generative AI Apps + Mystery Challenge 📸❓</span>
                     </h2>
                 </div>
             </div>
 
-            <div class="lab-box">
-                <h3 style="font-size: 1.4rem; color: white; margin-bottom: 10px;">
-                    <span class="lang-ar">محاكي توليد القصص الخيالية الذكي (AI Story Generator)</span>
-                    <span class="lang-en">AI Story Generator Simulator</span>
-                </h3>
-                <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">
-                    <span class="lang-ar">اختر بطل القصة والمكان والمشكلة، وشاهد كيف يولد الذكاء الاصطناعي قصة فورية!</span>
-                    <span class="lang-en">Pick a hero, setting, and conflict to see AI craft a story live!</span>
+            <div class="apps-grid">
+                <!-- App 1: ChatGPT Text -->
+                <div class="app-card">
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=600&q=80" class="app-card-img" alt="Text Gen">
+                    <div class="app-card-content">
+                        <div class="app-card-title"><i class="fa-solid fa-pen-nib" style="color: var(--accent-orange);"></i> 
+                            <span class="lang-ar">تأليف النصوص (ChatGPT & Claude)</span>
+                            <span class="lang-en">Text Generation</span>
+                        </div>
+                        <div class="app-card-desc">كتابة المقالات، القصص، وتلخيص الكتب الطويلة في ثوانٍ.</div>
+                    </div>
+                </div>
+
+                <!-- App 2: Midjourney Art -->
+                <div class="app-card">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" class="app-card-img" alt="Image Gen">
+                    <div class="app-card-content">
+                        <div class="app-card-title"><i class="fa-solid fa-image" style="color: var(--accent-amber);"></i> 
+                            <span class="lang-ar">توليد الصور (Midjourney)</span>
+                            <span class="lang-en">Image Generation</span>
+                        </div>
+                        <div class="app-card-desc">تحويل الأفكار النصية إلى لوحات وصور ثلاثية الأبعاد خيالية.</div>
+                    </div>
+                </div>
+
+                <!-- App 3: Suno Music -->
+                <div class="app-card">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" class="app-card-img" alt="Music Gen">
+                    <div class="app-card-content">
+                        <div class="app-card-title"><i class="fa-solid fa-music" style="color: var(--accent-purple);"></i> 
+                            <span class="lang-ar">تأليف الموسيقى (Suno AI)</span>
+                            <span class="lang-en">Music Generation</span>
+                        </div>
+                        <div class="app-card-desc">ابتكار مقاطع غنائية وموسيقى تصويرية بناءً على وصفك.</div>
+                    </div>
+                </div>
+
+                <!-- App 4: Sora Video -->
+                <div class="app-card">
+                    <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=600&q=80" class="app-card-img" alt="Video Gen">
+                    <div class="app-card-content">
+                        <div class="app-card-title"><i class="fa-solid fa-video" style="color: var(--accent-orange);"></i> 
+                            <span class="lang-ar">صناعة الفيديو (Sora & Runway)</span>
+                            <span class="lang-en">Video Generation</span>
+                        </div>
+                        <div class="app-card-desc">توليد مشاهد فيديو سينمائية حركية بالكامل من مجرد وصف نصي!</div>
+                    </div>
+                </div>
+
+                <!-- App 5: Coding Copilot -->
+                <div class="app-card">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" class="app-card-img" alt="Code Gen">
+                    <div class="app-card-content">
+                        <div class="app-card-title"><i class="fa-solid fa-code" style="color: var(--accent-amber);"></i> 
+                            <span class="lang-ar">توليد الكود (GitHub Copilot)</span>
+                            <span class="lang-en">Code Generation</span>
+                        </div>
+                        <div class="app-card-desc">مساعدة المبرمجين في كتابة وتصحيح أكواد بايثون تلقائياً.</div>
+                    </div>
+                </div>
+
+                <!-- App 6: Gaming Gen Assets -->
+                <div class="app-card">
+                    <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=600&q=80" class="app-card-img" alt="Game Gen">
+                    <div class="app-card-content">
+                        <div class="app-card-title"><i class="fa-solid fa-gamepad" style="color: var(--accent-purple);"></i> 
+                            <span class="lang-ar">عوالـم الألعاب (Generative Gaming)</span>
+                            <span class="lang-en">Generative Game Worlds</span>
+                        </div>
+                        <div class="app-card-desc">بناء خرائط وشخصيات ألعاب تفاعلية فريدة لكل لاعب تلقائياً.</div>
+                    </div>
+                </div>
+
+                <!-- App 7: Bio & Drug Design -->
+                <div class="app-card">
+                    <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=600&q=80" class="app-card-img" alt="Bio Gen">
+                    <div class="app-card-content">
+                        <div class="app-card-title"><i class="fa-solid fa-flask" style="color: var(--accent-orange);"></i> 
+                            <span class="lang-ar">توليد الأدوية (Generative Chemistry)</span>
+                            <span class="lang-en">Generative Bio & Chemistry</span>
+                        </div>
+                        <div class="app-card-desc">ابتكار بروتينات ومركبات دوائية جديدة لعلاج الأمراض.</div>
+                    </div>
+                </div>
+
+                <!-- App 8: Product & Fashion Gen -->
+                <div class="app-card">
+                    <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=600&q=80" class="app-card-img" alt="Fashion Gen">
+                    <div class="app-card-content">
+                        <div class="app-card-title"><i class="fa-solid fa-shirt" style="color: var(--accent-amber);"></i> 
+                            <span class="lang-ar">تصميم المنتجات (Generative Fashion)</span>
+                            <span class="lang-en">Generative Fashion</span>
+                        </div>
+                        <div class="app-card-desc">تصاميم أزياء ومجسمات ثلاثية الأبعاد فريدة ومبتكرة.</div>
+                    </div>
+                </div>
+
+                <!-- App 9: Mystery Application Challenge -->
+                <div class="mystery-card">
+                    <div>
+                        <div class="mystery-icon-box">❓✨</div>
+                        <h3 style="color: var(--accent-purple); font-size: 1.25rem; margin-bottom: 8px;">
+                            <span class="lang-ar">التطبيق المجهول رقم 9 🧠</span>
+                            <span class="lang-en">Mystery AI Application #9 🧠</span>
+                        </h3>
+                        <p style="font-size: 0.93rem; color: #cbd5e1; margin-bottom: 15px;">
+                            <span class="lang-ar">فكر مع زملائك: ما الذي تريد من الذكاء التوليدي أن يبتكره لك في المستقبل؟ اكتب فكرتك:</span>
+                            <span class="lang-en">Brainstorm: What custom content do you want Generative AI to create for you?</span>
+                        </p>
+                    </div>
+
+                    <div>
+                        <input type="text" id="mysteryInput" placeholder="اكتب فكرة التطبيق المجهول... / Type mystery app idea..." style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--accent-purple); background: #070a10; color: white; font-size: 0.95rem; outline: none; margin-bottom: 10px;">
+                        <button onclick="submitMysteryIdea()" style="width: 100%; background: linear-gradient(90deg, var(--accent-purple), var(--accent-orange)); color: white; border: none; padding: 10px; border-radius: 10px; font-weight: 800; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease;">
+                            <span class="lang-ar">اعتماد الفكرة المبتكرة ✨</span>
+                            <span class="lang-en">Submit Mystery Idea ✨</span>
+                        </button>
+                        <div id="mysteryFeedback" style="margin-top: 10px; font-weight: 700; font-size: 0.9rem; color: var(--accent-amber); min-height: 25px;"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Section 5: Practical Section: Project Overview & Planning Steps -->
+        <div class="section-block">
+            <div class="section-header">
+                <div class="section-icon" style="background: rgba(251, 191, 36, 0.15); color: var(--accent-amber); border-color: rgba(251, 191, 36, 0.3);"><i class="fa-solid fa-laptop-code"></i></div>
+                <div>
+                    <h2>
+                        <span class="lang-ar">5. الجزء التطبيقي: فكرة المشروع وخطوات التخطيط البرمجي 🎯</span>
+                        <span class="lang-en">5. Practical Implementation: Project Goal & Planning Steps 🎯</span>
+                    </h2>
+                </div>
+            </div>
+
+            <!-- Practical Goal Overview -->
+            <div class="practical-goal-card">
+                <div class="practical-goal-title"><i class="fa-solid fa-bullseye"></i> 
+                    <span class="lang-ar">أولاً: الفكرة العامة والهدف من التطبيق</span>
+                    <span class="lang-en">Part 1: High-Level Project Goal</span>
+                </div>
+                <p style="font-size: 1.05rem; color: #f8fafc; line-height: 1.7;">
+                    <span class="lang-ar"><b>الهدف من مشروع اليوم:</b> نريد بناء مولد قصص خيالية ذكي بـ Python اسمه <code>ai_story_generator</code>، يستقبل اسم البطل والمكان والمشكلة، ويستخدم خوارزمية العشوائية الذكية `random.choice` لتوليد قصة قصيرة فريدة في كل مرة تشغيل!</span>
+                    <span class="lang-en"><b>Today's Goal:</b> Build a Python <code>ai_story_generator</code> that accepts hero, setting, and enemy parameters to generate unique fantasy stories using `random.choice`!</span>
                 </p>
-                
-                <div style="margin-top: 20px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
-                    <input type="text" id="userInputText" placeholder="اكتب هنا لتجربة المعمل التفاعلي / Type here for live lab..." style="width: 70%; max-width: 450px; padding: 14px 20px; border-radius: 12px; border: 1px solid var(--accent-orange); background: #0b0f19; color: white; font-size: 1.1rem; outline: none;">
-                    <button class="lab-btn" onclick="runSim()"><i class="fa-solid fa-play"></i> 
-                        <span class="lang-ar">تشغيل التجربة</span>
-                        <span class="lang-en">Run Lab</span>
-                    </button>
-                </div>
+            </div>
 
-                <div class="demo-result-box" id="resultDisplay">
-                    <span class="lang-ar">✨ في انتظار مدخلاتك واختبار النظام الذكي...</span>
-                    <span class="lang-en">✨ Awaiting your input to test AI live...</span>
+            <!-- Step-by-step Planning Steps -->
+            <h3 style="color: white; font-size: 1.3rem; margin-bottom: 15px;"><i class="fa-solid fa-list-check" style="color: var(--accent-orange);"></i> 
+                <span class="lang-ar">ثانياً: خطوات التخطيط البرمجي والنمط المنطقي (Execution Plan):</span>
+                <span class="lang-en">Part 2: Step-by-Step Logical Execution Plan:</span>
+            </h3>
+
+            <div class="logic-step-box">
+                <div class="logic-step-title"><i class="fa-solid fa-cube"></i> 
+                    <span class="lang-ar">الخطوة 1: استيراد مكتبة العشوائية `import random`</span>
+                    <span class="lang-en">Step 1: Import Random Module (`import random`)</span>
+                </div>
+                <div class="logic-step-desc">
+                    <span class="lang-ar">نستورد مكتبة `random` التي تمكن بايثون من التوليد والترشيح العشوائي بين الجمل والمشاهد.</span>
+                    <span class="lang-en">Import Python's built-in `random` module for generating random storyline variations.</span>
+                </div>
+            </div>
+
+            <div class="logic-step-box">
+                <div class="logic-step-title"><i class="fa-solid fa-layer-group"></i> 
+                    <span class="lang-ar">الخطوة 2: إنشاء قوائم مقدمات القصة والعقدة والذروة</span>
+                    <span class="lang-en">Step 2: Define Story Intros, Conflicts, & Climaxes Lists</span>
+                </div>
+                <div class="logic-step-desc">
+                    <span class="lang-ar">نصنع قائمة `intros` وقائمة `conflicts` وقائمة `climax` تحتوي على قوالب نصية مدمجة بـ `f-strings`.</span>
+                    <span class="lang-en">Create lists for story templates formatted with Python `f-strings`.</span>
+                </div>
+            </div>
+
+            <div class="logic-step-box">
+                <div class="logic-step-title"><i class="fa-solid fa-wand-magic"></i> 
+                    <span class="lang-ar">الخطوة 3: التوليد باستخدام `random.choice()` وإرجاع القصة</span>
+                    <span class="lang-en">Step 3: Generate Story via `random.choice()` & Return Result</span>
+                </div>
+                <div class="logic-step-desc">
+                    <span class="lang-ar">تختار الدالة جملة عشوائية من كل قائمة، وتدمجها لتوليد قصة خيالية جديدة ومبهرة!</span>
+                    <span class="lang-en">Select random phrases from each list using `random.choice()` and assemble the final narrative string!</span>
                 </div>
             </div>
         </div>
 
-        <!-- Embedded Real Python Code Editor Frame (VS Code Style) -->
+        <!-- Section 6: Embedded Real Python Code Editor Frame (VS Code Style with Try First!) -->
         <div class="section-block">
             <div class="section-header">
                 <div class="section-icon"><i class="fa-brands fa-python"></i></div>
                 <div>
                     <h2>
-                        <span class="lang-ar">محرر كود بايثون التفاعلي المباشر (Python IDE Frame) 🐍</span>
-                        <span class="lang-en">Interactive Python IDE Code Editor Frame 🐍</span>
+                        <span class="lang-ar">6. محرر كود بايثون التفاعلي المباشر (تحدي المحاولة أولاً!) 🐍</span>
+                        <span class="lang-en">6. Interactive Python IDE Frame (Try Coding First!) 🐍</span>
                     </h2>
                     <p style="color: var(--text-muted);">
-                        <span class="lang-ar">يمكن للطالب تعديل الكود الحقيقي بنفسه واختبار النتائج والتشغيل المباشر داخل المتصفح!</span>
-                        <span class="lang-en">Students can edit real Python code, modify parameters, and run it live in the browser!</span>
+                        <span class="lang-ar">المحرر أدناه جاهز لمكابدة المحاولة بنفسك! جرب كتابة الكود طبقاً للخطوات أعلاه، وإن احتجت مساعدة اضغط زر (إظهار الكود الإرشادي 💡)!</span>
+                        <span class="lang-en">Try coding the solution yourself based on planning steps above! If stuck, click (Show Solution 💡)!</span>
                     </p>
                 </div>
             </div>
@@ -413,9 +716,13 @@
                         </div>
                     </div>
                     <div class="editor-actions">
+                        <button class="solution-code-btn" onclick="loadSolution()"><i class="fa-solid fa-lightbulb"></i> 
+                            <span class="lang-ar">إظهار الكود الإرشادي 💡</span>
+                            <span class="lang-en">Show Solution 💡</span>
+                        </button>
                         <button class="reset-code-btn" onclick="resetEditor()"><i class="fa-solid fa-rotate-left"></i> 
-                            <span class="lang-ar">إعادة الكود الأصلي</span>
-                            <span class="lang-en">Reset Code</span>
+                            <span class="lang-ar">إعادة المحاولة</span>
+                            <span class="lang-en">Reset</span>
                         </button>
                         <button class="run-code-btn" onclick="executePython()"><i class="fa-solid fa-play"></i> 
                             <span class="lang-ar">تشغيل الكود ▶</span>
@@ -424,24 +731,18 @@
                     </div>
                 </div>
 
-                <textarea id="pythonEditor" class="code-textarea" spellcheck="false"># محرر مولد القصص الخيالية - قم بتعديل البطل والمكان واضغط تشغيل!
+                <textarea id="pythonEditor" class="code-textarea" spellcheck="false"># 🎯 تحدي المطور الصغير: حاول كتابة كود مولد القصص الخيالية بنفسك أولاً!
+# 1. استورد مكتبة random
+# 2. أنشئ دالة generate_ai_story(hero, setting, enemy)
+# 3. استخدم random.choice() لتوليد القصة
+
 import random
 
 def generate_ai_story(hero, setting, enemy):
-    intros = [f"في زمن بعيد في {setting}، عاش البطل {hero}.", f"كان {hero} يستكشف {setting} عندما حدثت المفاجأة!"]
-    conflicts = [f"وفجأة ظهر {enemy} ليتحداه في برمجية ذكاء اصطناعي حاسم!", f"اكتشف {hero} أن {enemy} يحاول السيطرة على المعمل!"]
-    climax = [f"استخدم {hero} خوارزمية بايثون وانتصر بسهولة! 🌟"]
-    
-    return f"{random.choice(intros)}
-{random.choice(conflicts)}
-{random.choice(climax)}"
+    # ✍️ اكتب كودك هنا بناءً على خطوات التخطيط أعلاه...
+    pass
 
-# غير الأبطال وجرب التشغيل:
-hero_name = "عمر مهندس المستقبل"
-location = "مدينة الذكاء الاصطناعي"
-villain = "فيلروس الهكر الرقمي"
-
-print(generate_ai_story(hero_name, location, villain))
+print(generate_ai_story("عمر مهندس المستقبل", "مدينة الذكاء الاصطناعي", "فيلروس الهكر"))
 </textarea>
 
                 <div class="terminal-box">
@@ -450,39 +751,120 @@ print(generate_ai_story(hero_name, location, villain))
                         <span class="lang-ar">شاشة المخرجات والشل (Python Console Output)</span>
                         <span class="lang-en">Python Console Output Terminal</span>
                     </div>
-                    <div id="terminalConsole" class="terminal-console"># اضغط زر (تشغيل الكود ▶) لرؤية المخرجات هنا...
-# Click (Run Code ▶) to execute real Python code live...</div>
+                    <div id="terminalConsole" class="terminal-console"># اكتب كودك واضغط زر (تشغيل الكود ▶) لرؤية المخرجات هنا...
+# Write your code and click (Run Code ▶) to view output...</div>
                 </div>
             </div>
         </div>
 
+        <!-- Section 7: Comprehensive Quiz (5 Questions including Code Logic Question) -->
         <div class="section-block">
             <div class="section-header">
                 <div class="section-icon" style="background: rgba(251, 191, 36, 0.15); color: var(--accent-amber); border-color: rgba(251, 191, 36, 0.3);"><i class="fa-solid fa-gamepad"></i></div>
                 <div>
                     <h2>
-                        <span class="lang-ar">اختبر معلوماتك (تحدي السيشن) 🧩</span>
-                        <span class="lang-en">Test Your Knowledge (Session Quiz) 🧩</span>
+                        <span class="lang-ar">7. اختبر معلوماتك (5 أسئلة تفاعلية بينها سؤال كود بايثون) 🧩</span>
+                        <span class="lang-en">7. Test Your Knowledge (5 Questions including Python Code Logic) 🧩</span>
                     </h2>
                 </div>
             </div>
 
+            <!-- Quiz 1 -->
             <div class="quiz-container">
                 <div class="quiz-q">
-                    <span class="lang-ar">ماذا تعني قاعدة C-T-C في صياغة الأوامر (Prompt Engineering)؟</span>
-                    <span class="lang-en">What does the C-T-C rule stand for in Prompt Engineering?</span>
+                    <span class="lang-ar">السؤال 1: ما هو الفرق الجوهري بين الذكاء التوليدي (Generative) والذكاء التمييزي (Discriminative)؟</span>
+                    <span class="lang-en">Q1: What is the core difference between Generative AI and Discriminative AI?</span>
                 </div>
-                <button class="quiz-opt" onclick="checkAnswer(this, false)">
-                    <span class="lang-ar">Computer, Technology, Coding</span>
-                    <span class="lang-en">Computer, Technology, Coding</span>
-                </button>
                 <button class="quiz-opt" onclick="checkAnswer(this, true)">
-                    <span class="lang-ar">Context (السياق) + Task (المهمة) + Constraints (الشروط والقيود)</span>
-                    <span class="lang-en">Context + Task + Constraints</span>
+                    <span class="lang-ar">الذكاء التوليدي يبتكر محتوى جديداً بالكامل، بينما التمييزي يصنف البيانات الموجودة.</span>
+                    <span class="lang-en">Generative AI invents brand-new content, while Discriminative AI classifies existing data.</span>
+                </button>
+                <button class="quiz-opt" onclick="checkAnswer(this, false)">
+                    <span class="lang-ar">الذكاء التمييزي يرسم الصور فقط.</span>
+                    <span class="lang-en">Discriminative AI only draws images.</span>
+                </button>
+            </div>
+
+            <!-- Quiz 2 (Python Code Logic Question) -->
+            <div class="quiz-container">
+                <div class="quiz-q" style="color: var(--accent-amber);">
+                    <i class="fa-brands fa-python"></i>
+                    <span class="lang-ar">السؤال 2 (سؤال الكود 💻): ما وظيفة `random.choice(intros)` في كود مولد القصص الخيالية؟</span>
+                    <span class="lang-en">Q2 (Python Code Logic 💻): What is the role of `random.choice(intros)` in the story generator code?</span>
+                </div>
+                <button class="quiz-opt" onclick="checkAnswer(this, true)">
+                    <span class="lang-ar">اختيار جملة مقدمة واحدة بشكل عشوائي من قائمة الجمل في كل مرة تشغيل.</span>
+                    <span class="lang-en">Selects one random intro phrase from the list on every execution.</span>
+                </button>
+                <button class="quiz-opt" onclick="checkAnswer(this, false)">
+                    <span class="lang-ar">مسح القائمة من الذاكرة.</span>
+                    <span class="lang-en">Clears the list from memory.</span>
+                </button>
+            </div>
+
+            <!-- Quiz 3 -->
+            <div class="quiz-container">
+                <div class="quiz-q">
+                    <span class="lang-ar">السؤال 3: ماذا تعني قاعدة C-T-C في صياغة الأوامر (Prompt Engineering)؟</span>
+                    <span class="lang-en">Q3: What does C-T-C stand for in Prompt Engineering?</span>
+                </div>
+                <button class="quiz-opt" onclick="checkAnswer(this, true)">
+                    <span class="lang-ar">Context (السياق) + Task (المهمة) + Constraints (الشروط والقيود).</span>
+                    <span class="lang-en">Context + Task + Constraints.</span>
+                </button>
+                <button class="quiz-opt" onclick="checkAnswer(this, false)">
+                    <span class="lang-ar">Computer + Technology + Coding.</span>
+                    <span class="lang-en">Computer + Technology + Coding.</span>
+                </button>
+            </div>
+
+            <!-- Quiz 4 -->
+            <div class="quiz-container">
+                <div class="quiz-q">
+                    <span class="lang-ar">السؤال 4: ما هي ظاهرة "الهلوسة الرقمية" (AI Hallucination)؟</span>
+                    <span class="lang-en">Q4: What is AI Hallucination?</span>
+                </div>
+                <button class="quiz-opt" onclick="checkAnswer(this, true)">
+                    <span class="lang-ar">عندما يبتكر الذكاء الاصطناعي معلومات غير صحيحة بثقة شديدة نتيجة التخمين.</span>
+                    <span class="lang-en">When AI confidently invents incorrect facts due to statistical prediction.</span>
+                </button>
+                <button class="quiz-opt" onclick="checkAnswer(this, false)">
+                    <span class="lang-ar">عندما يتوقف لابتوب الطالب عن العمل.</span>
+                    <span class="lang-en">When a laptop screen shuts off.</span>
+                </button>
+            </div>
+
+            <!-- Quiz 5 -->
+            <div class="quiz-container">
+                <div class="quiz-q">
+                    <span class="lang-ar">السؤال 5: كيف نمنع نموذج ChatGPT من التخمين والهلوسة في الإجابة؟</span>
+                    <span class="lang-en">Q5: How do we prevent ChatGPT from hallucinating in responses?</span>
+                </div>
+                <button class="quiz-opt" onclick="checkAnswer(this, true)">
+                    <span class="lang-ar">بإضافة شرط صريح (Constraint): "إذا لم تكن متأكداً، قل لا أعلم ولا تخمن".</span>
+                    <span class="lang-en">By adding explicit constraints: "If uncertain, state 'I don't know' instead of guessing".</span>
+                </button>
+                <button class="quiz-opt" onclick="checkAnswer(this, false)">
+                    <span class="lang-ar">بكتابة كلمات عشوائية طويلة.</span>
+                    <span class="lang-en">By typing random long words.</span>
                 </button>
             </div>
         </div>
 
+        <!-- Section 8: Code Challenge (تحدي الكود المباشر) -->
+        <div class="challenge-box">
+            <div class="challenge-title">
+                <i class="fa-solid fa-trophy"></i>
+                <span class="lang-ar">تحدي المطور الناشئ (Practical Code Challenge) 🏆</span>
+                <span class="lang-en">Junior Developer Code Challenge 🏆</span>
+            </div>
+            <p style="font-size: 1.05rem; color: #f1f5f9; line-height: 1.7;">
+                <span class="lang-ar"><b>المطلوب منك الآن:</b> قم بصعود للمحرر التفاعلي أعلاه، وأضف خياراً جديداً في قائمة الأبطال باسم <code>"سارة مبرمجة الفضاء"</code> وخياراً في الأماكن باسم <code>"كوكب المريخ الرقمي"</code>، واضغط زر <b>(تشغيل الكود ▶)</b> لمشاهدة القصة الخيالية المبتكرة!</span>
+                <span class="lang-en"><b>Your Task:</b> Go up to the live editor, add <code>"Sara Space Coder"</code> to heroes and <code>"Digital Mars Planet"</code> to settings, then click <b>Run Code ▶</b>!</span>
+            </p>
+        </div>
+
+        <!-- Homework & Footer Nav -->
         <div class="hw-card">
             <div class="hw-title">
                 <i class="fa-solid fa-rocket"></i>
@@ -490,20 +872,20 @@ print(generate_ai_story(hero_name, location, villain))
                 <span class="lang-en">Session Homework & Home Project 🏠</span>
             </div>
             <p style="font-size: 1.1rem; color: #f1f5f9; margin-bottom: 12px;">
-                <span class="lang-ar">غير اسم البطل والمكان في محرر كود بايثون التفاعلي وشغل القصة الخيالية المبتكرة! 🚀</span>
-                <span class="lang-en">Change the hero name and setting in the Python editor above and generate your story! 🚀</span>
+                <span class="lang-ar">قم بفتح محرر بايثون أعلاه، عدل القوائم وأضف شخصياتك المفضلين، ثم التقط لقطة شاشة لقصتك الخيالية وشاركها مع أصدقائك ومدربك! 📸✨</span>
+                <span class="lang-en">Open the Python editor above, customize character lists, capture a screenshot of your generated story output, and share it! 📸✨</span>
             </p>
         </div>
 
         <div class="footer-navigation">
             <a href="session1.html" class="nav-link-btn">
                 <i class="fa-solid fa-arrow-right"></i>
-                <span class="lang-ar">السيشن 1</span>
-                <span class="lang-en">Session 1</span>
+                <span class="lang-ar">السيشن 1: مدخل للـ AI</span>
+                <span class="lang-en">Session 1: Intro to AI</span>
             </a>
             <a href="session3.html" class="nav-link-btn primary">
-                <span class="lang-ar">السيشن 3</span>
-                <span class="lang-en">Session 3</span>
+                <span class="lang-ar">السيشن 3: AI Chatbot</span>
+                <span class="lang-en">Session 3: AI Chatbot</span>
                 <i class="fa-solid fa-arrow-left"></i>
             </a>
         </div>
@@ -511,7 +893,43 @@ print(generate_ai_story(hero_name, location, villain))
     </div>
 
     <script>
-        const initialCode = `# محرر مولد القصص الخيالية - قم بتعديل البطل والمكان واضغط تشغيل!\nimport random\n\ndef generate_ai_story(hero, setting, enemy):\n    intros = [f\"في زمن بعيد في {setting}، عاش البطل {hero}.\", f\"كان {hero} يستكشف {setting} عندما حدثت المفاجأة!\"]\n    conflicts = [f\"وفجأة ظهر {enemy} ليتحداه في برمجية ذكاء اصطناعي حاسم!\", f\"اكتشف {hero} أن {enemy} يحاول السيطرة على المعمل!\"]\n    climax = [f\"استخدم {hero} خوارزمية بايثون وانتصر بسهولة! 🌟\"]\n    \n    return f\"{random.choice(intros)}\n{random.choice(conflicts)}\n{random.choice(climax)}\"\n\n# غير الأبطال وجرب التشغيل:\nhero_name = \"عمر مهندس المستقبل\"\nlocation = \"مدينة الذكاء الاصطناعي\"\nvillain = \"فيلروس الهكر الرقمي\"\n\nprint(generate_ai_story(hero_name, location, villain))\n`;
+        const starterCode = `# 🎯 تحدي المطور الصغير: حاول كتابة كود مولد القصص الخيالية بنفسك أولاً!
+# 1. استورد مكتبة random
+# 2. أنشئ دالة generate_ai_story(hero, setting, enemy)
+# 3. استخدم random.choice() لتوليد القصة
+
+import random
+
+def generate_ai_story(hero, setting, enemy):
+    # ✍️ اكتب كودك هنا بناءً على خطوات التخطيط أعلاه...
+    pass
+
+print(generate_ai_story("عمر مهندس المستقبل", "مدينة الذكاء الاصطناعي", "فيلروس الهكر"))
+`;
+
+        const solutionCode = `# 💡 النموذج الإرشادي لكود مولد القصص الخيالية (AI Story Generator)
+import random
+
+def generate_ai_story(hero, setting, enemy):
+    intros = [
+        f"في زمن بعيد في {setting}، عاش البطل الشجاع {hero}.",
+        f"كان {hero} يستكشف {setting} عندما حدثت المفاجأة المذهلة!"
+    ]
+    conflicts = [
+        f"وفجأة ظهر {enemy} ليتحداه في معركة برمجة ذكاء اصطناعي حاسمة!",
+        f"اكتشف {hero} أن {enemy} يحاول السيطرة على المعمل الرقمي!"
+    ]
+    climax = [
+        f"استخدم {hero} خوارزميات بايثون وانتصر وساد السلام! 🌟",
+        f"ابتكر {hero} نموذج ذكاء اصطناعي خارق وحول المشكلة لإنجاز باهر! 🎉"
+    ]
+    
+    story = f"{random.choice(intros)}\\n{random.choice(conflicts)}\\n{random.choice(climax)}"
+    return story
+
+# تشغيل وتوليد القصة:
+print(generate_ai_story("عمر مهندس المستقبل", "مدينة الذكاء الاصطناعي", "فيلروس الهكر الرقمي"))
+`;
 
         function toggleLanguage() {
             const currentLang = document.documentElement.lang || 'ar';
@@ -536,10 +954,34 @@ print(generate_ai_story(hero_name, location, villain))
         });
 
         function resetEditor() {
-            document.getElementById('pythonEditor').value = initialCode;
+            document.getElementById('pythonEditor').value = starterCode;
             document.getElementById('terminalConsole').innerHTML = (document.documentElement.lang === 'ar') 
-                ? "🔄 تم إعادة الكود إلى الحالة الأصلية بنجاح." 
-                : "🔄 Code reset to original template.";
+                ? "🔄 تم إعادة المحرر إلى قالب التحدي الأولي." 
+                : "🔄 Editor reset to challenge template.";
+        }
+
+        function loadSolution() {
+            document.getElementById('pythonEditor').value = solutionCode;
+            document.getElementById('terminalConsole').innerHTML = (document.documentElement.lang === 'ar') 
+                ? "💡 تم تحميل النموذج الإرشادي في المحرر! يمكنك قراءته وتعديله ثم الضغط على (تشغيل الكود ▶)." 
+                : "💡 Solution code loaded in editor! You can modify it and click (Run Code ▶).";
+        }
+
+        function submitMysteryIdea() {
+            const input = document.getElementById('mysteryInput').value.trim();
+            const feedback = document.getElementById('mysteryFeedback');
+            const isAr = (document.documentElement.lang === 'ar');
+
+            if (!input) {
+                feedback.innerHTML = isAr ? "⚠️ من فضلك اكتب فكرة أولاً!" : "⚠️ Please type an idea first!";
+                feedback.style.color = "#f97316";
+                return;
+            }
+
+            feedback.innerHTML = isAr 
+                ? `🎉 فكرة مبهرة يابطل! "${input}" - تم تسجيل ابتكارك في قائمة أبطال الذكاء الاصطناعي!`
+                : `🎉 Brilliant idea! "${input}" - Idea registered in AI Innovators list!`;
+            feedback.style.color = "#22c55e";
         }
 
         function executePython() {
@@ -570,26 +1012,6 @@ print(generate_ai_story(hero_name, location, villain))
             }, function(err) {
                 consoleBox.innerHTML += "\n----------------------------------------\n❌ Exception Error: " + err.toString();
             });
-        }
-
-        function runSim() {
-            const input = document.getElementById('userInputText').value.trim();
-            const resultBox = document.getElementById('resultDisplay');
-            const isAr = (document.documentElement.lang === 'ar');
-            
-            if (!input) {
-                resultBox.innerHTML = isAr ? "⚠️ أدخل نصاً أو أمراً أولاً في الصندوق!" : "⚠️ Please enter text or a command first!";
-                resultBox.style.color = "#f97316";
-                return;
-            }
-            resultBox.innerHTML = isAr ? "🧠 جاري تنفيذ التجربة التفاعلية بواسطة الذكاء الاصطناعي..." : "🧠 Running live AI interactive simulation...";
-            resultBox.style.color = "#fbbf24";
-            setTimeout(() => {
-                resultBox.innerHTML = isAr 
-                    ? `✅ تم التنفيذ بنجاح! المدخل: "${input}" ➔ النتيجة: تم الاستجابة وتوليد النمط الذكي المطلوبة! 🎉`
-                    : `✅ Success! Input: "${input}" ➔ Result: AI pattern response generated! 🎉`;
-                resultBox.style.color = "#22c55e";
-            }, 600);
         }
 
         function checkAnswer(button, isCorrect) {
