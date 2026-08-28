@@ -6,6 +6,11 @@
     <title>Megaminds AI - Session 9</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Skulpt In-Browser Real Python Engine -->
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+
     <style>
         :root {
             --bg-dark: #0f131d;
@@ -89,9 +94,97 @@
         .lab-btn { background: linear-gradient(90deg, var(--accent-orange), var(--accent-orange-bright)); color: white; border: none; padding: 14px 32px; border-radius: 12px; font-size: 1.1rem; font-weight: 800; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(249, 115, 22, 0.4); margin-top: 15px; }
         .lab-btn:hover { transform: scale(1.05); box-shadow: 0 6px 25px rgba(249, 115, 22, 0.6); }
         .demo-result-box { margin-top: 20px; padding: 15px; background: #0b0f19; border-radius: 12px; min-height: 70px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: var(--accent-amber); font-weight: 700; border: 1px solid rgba(249, 115, 22, 0.2); }
+
+        /* VS Code Style Real Code Editor Frame */
+        .editor-frame {
+            background: #0d1117;
+            border: 2px solid var(--accent-orange);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            margin-top: 20px;
+        }
+        .editor-header {
+            background: #161b22;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #30363d;
+        }
+        .editor-dots { display: flex; gap: 8px; align-items: center; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .dot.red { background: #ff5f56; }
+        .dot.yellow { background: #ffbd2e; }
+        .dot.green { background: #27c93f; }
+        .editor-tab {
+            background: #0d1117;
+            color: #fbbf24;
+            padding: 6px 16px;
+            border-radius: 8px 8px 0 0;
+            font-family: monospace;
+            font-size: 0.95rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #30363d;
+            border-bottom: none;
+        }
+        .editor-actions { display: flex; gap: 10px; }
+        .run-code-btn {
+            background: linear-gradient(90deg, #22c55e, #16a34a);
+            color: white; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 800; font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+        }
+        .run-code-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(34, 197, 94, 0.5); }
+        .reset-code-btn {
+            background: rgba(249, 115, 22, 0.15); color: var(--accent-orange); border: 1px solid rgba(249, 115, 22, 0.4); padding: 8px 16px; border-radius: 8px; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;
+        }
+        .reset-code-btn:hover { background: var(--accent-orange); color: white; }
         
-        .code-header { background: #111827; color: #fbbf24; padding: 10px 20px; border-top-left-radius: 12px; border-top-right-radius: 12px; display: flex; justify-content: space-between; align-items: center; font-family: monospace; font-size: 0.9rem; border-bottom: 1px solid #374151; }
-        .code-content { background: #070a10; color: #ffedd5; direction: ltr; text-align: left; padding: 20px; border-bottom-left-radius: 12px; border-bottom-right-radius: 12px; font-family: 'Consolas', 'Courier New', monospace; font-size: 1rem; line-height: 1.6; overflow-x: auto; white-space: pre-wrap; border: 1px solid #1f2937; border-top: none; }
+        .code-textarea {
+            width: 100%;
+            height: 250px;
+            background: #070a10;
+            color: #ffedd5;
+            padding: 20px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            border: none;
+            outline: none;
+            resize: vertical;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .terminal-box {
+            background: #000000;
+            border-top: 2px solid #30363d;
+            padding: 15px 20px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            direction: ltr;
+            text-align: left;
+        }
+        .terminal-header {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+        }
+        .terminal-console {
+            color: #4ade80;
+            font-size: 1rem;
+            min-height: 80px;
+            max-height: 180px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            line-height: 1.5;
+        }
         
         .quiz-container { background: rgba(15, 19, 29, 0.8); border-radius: 16px; padding: 25px; margin-top: 20px; border: 1px solid rgba(249, 115, 22, 0.2); }
         .quiz-q { font-size: 1.2rem; font-weight: 700; color: white; margin-bottom: 15px; }
@@ -190,8 +283,8 @@
         <div class="agenda-item">
             <div class="agenda-num">5</div>
             <div class="agenda-text">
-                <span class="lang-ar">كتابة كود Megaminds Desktop Assistant المتكامل.</span>
-                <span class="lang-en">Writing Megaminds Desktop Assistant Python code.</span>
+                <span class="lang-ar">محرر كود بايثون المباشر للمساعد المكتبي.</span>
+                <span class="lang-en">Interactive Python IDE for Desktop Assistant app.</span>
             </div>
         </div>
         
@@ -290,34 +383,73 @@
             </div>
         </div>
 
+        <!-- Embedded Real Python Code Editor Frame (VS Code Style) -->
         <div class="section-block">
             <div class="section-header">
                 <div class="section-icon"><i class="fa-brands fa-python"></i></div>
                 <div>
                     <h2>
-                        <span class="lang-ar">تطبيق الكود بـ Python 🐍</span>
-                        <span class="lang-en">Python Code Implementation 🐍</span>
+                        <span class="lang-ar">محرر كود بايثون التفاعلي المباشر (Python IDE Frame) 🐍</span>
+                        <span class="lang-en">Interactive Python IDE Code Editor Frame 🐍</span>
                     </h2>
+                    <p style="color: var(--text-muted);">
+                        <span class="lang-ar">يمكن للطالب تعديل الكود الحقيقي بنفسه واختبار النتائج والتشغيل المباشر داخل المتصفح!</span>
+                        <span class="lang-en">Students can edit real Python code, modify parameters, and run it live in the browser!</span>
+                    </p>
                 </div>
             </div>
 
-            <div class="code-header">
-                <span>desktop_assistant.py</span>
-                <span>Python 3.x</span>
-            </div>
-            <div class="code-content">import os
+            <div class="editor-frame">
+                <div class="editor-header">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div class="editor-dots">
+                            <div class="dot red"></div>
+                            <div class="dot yellow"></div>
+                            <div class="dot green"></div>
+                        </div>
+                        <div class="editor-tab">
+                            <i class="fa-brands fa-python" style="color: var(--accent-orange);"></i>
+                            <span>desktop_assistant.py</span>
+                        </div>
+                    </div>
+                    <div class="editor-actions">
+                        <button class="reset-code-btn" onclick="resetEditor()"><i class="fa-solid fa-rotate-left"></i> 
+                            <span class="lang-ar">إعادة الكود الأصلي</span>
+                            <span class="lang-en">Reset Code</span>
+                        </button>
+                        <button class="run-code-btn" onclick="executePython()"><i class="fa-solid fa-play"></i> 
+                            <span class="lang-ar">تشغيل الكود ▶</span>
+                            <span class="lang-en">Run Code ▶</span>
+                        </button>
+                    </div>
+                </div>
 
-def execute_command(cmd):
-    if "حاسبة" in cmd or "calc" in cmd:
-        print("🖥️ جاري فتح الآلة الحاسبة...")
-        os.system("calc")
-    elif "نوت باد" in cmd or "notepad" in cmd:
-        print("📝 جاري فتح المفكرة...")
-        os.system("notepad")
+                <textarea id="pythonEditor" class="code-textarea" spellcheck="false"># محرر بايثون للمساعد المكتبي - جرب تنفيذ الأوامر الكودية!
+def execute_desktop_app(app_name):
+    print(f"🤖 مساعد Megaminds المكتبي يستجيب لك...")
+    
+    if "حاسبة" in app_name or "calc" in app_name:
+        return "🖥️ تم تنفيذ الأمر: فتح الآلة الحاسبة (calc)!"
+    elif "نوت باد" in app_name or "notepad" in app_name:
+        return "📝 تم تنفيذ الأمر: فتح المفكرة (notepad)!"
+    elif "رسام" in app_name or "paint" in app_name:
+        return "🎨 تم تنفيذ الأمر: فتح برنامج الرسام (mspaint)!"
     else:
-        print("🤖 أمر غير معروف لمكتبتك المخصصة!")
+        return "⚠️ أمر غير مدعوم في القائمة الحالية."
 
-execute_command("افتح الحاسبة")</div>
+print(execute_desktop_app("افتح النوت باد"))
+</textarea>
+
+                <div class="terminal-box">
+                    <div class="terminal-header">
+                        <i class="fa-solid fa-terminal" style="color: #4ade80;"></i>
+                        <span class="lang-ar">شاشة المخرجات والشل (Python Console Output)</span>
+                        <span class="lang-en">Python Console Output Terminal</span>
+                    </div>
+                    <div id="terminalConsole" class="terminal-console"># اضغط زر (تشغيل الكود ▶) لرؤية المخرجات هنا...
+# Click (Run Code ▶) to execute real Python code live...</div>
+                </div>
+            </div>
         </div>
 
         <div class="section-block">
@@ -354,8 +486,8 @@ execute_command("افتح الحاسبة")</div>
                 <span class="lang-en">Session Homework & Home Project 🏠</span>
             </div>
             <p style="font-size: 1.1rem; color: #f1f5f9; margin-bottom: 12px;">
-                <span class="lang-ar">أضف أمراً جديداً لمساعدك المكتبي يفتح فيه برنامج الرسام (mspaint) بصوتك! 🎨</span>
-                <span class="lang-en">Add a new command to your desktop assistant that launches Paint (mspaint) via voice! 🎨</span>
+                <span class="lang-ar">أضف أمراً جديداً لـ 'الرسام' في محرر الكود واضغط تشغيل لمشاهدة الاستجابة! 🎨</span>
+                <span class="lang-en">Add a new command for 'Paint' in the code editor and run! 🎨</span>
             </p>
         </div>
 
@@ -375,6 +507,8 @@ execute_command("افتح الحاسبة")</div>
     </div>
 
     <script>
+        const initialCode = `# محرر بايثون للمساعد المكتبي - جرب تنفيذ الأوامر الكودية!\ndef execute_desktop_app(app_name):\n    print(f\"🤖 مساعد Megaminds المكتبي يستجيب لك...\")\n    \n    if \"حاسبة\" in app_name or \"calc\" in app_name:\n        return \"🖥️ تم تنفيذ الأمر: فتح الآلة الحاسبة (calc)!\"\n    elif \"نوت باد\" in app_name or \"notepad\" in app_name:\n        return \"📝 تم تنفيذ الأمر: فتح المفكرة (notepad)!\"\n    elif \"رسام\" in app_name or \"paint\" in app_name:\n        return \"🎨 تم تنفيذ الأمر: فتح برنامج الرسام (mspaint)!\"\n    else:\n        return \"⚠️ أمر غير مدعوم في القائمة الحالية.\"\n\nprint(execute_desktop_app(\"افتح النوت باد\"))\n`;
+
         function toggleLanguage() {
             const currentLang = document.documentElement.lang || 'ar';
             const newLang = (currentLang === 'ar') ? 'en' : 'ar';
@@ -396,6 +530,43 @@ execute_command("افتح الحاسبة")</div>
             const savedLang = localStorage.getItem('megaminds_lang') || 'ar';
             setLanguage(savedLang);
         });
+
+        function resetEditor() {
+            document.getElementById('pythonEditor').value = initialCode;
+            document.getElementById('terminalConsole').innerHTML = (document.documentElement.lang === 'ar') 
+                ? "🔄 تم إعادة الكود إلى الحالة الأصلية بنجاح." 
+                : "🔄 Code reset to original template.";
+        }
+
+        function executePython() {
+            const code = document.getElementById('pythonEditor').value;
+            const consoleBox = document.getElementById('terminalConsole');
+            consoleBox.innerHTML = '';
+
+            function builtinRead(x) {
+                if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
+                    throw "File not found: '" + x + "'";
+                return Sk.builtinFiles["files"][x];
+            }
+
+            Sk.configure({
+                output: function(text) {
+                    consoleBox.innerHTML += text;
+                },
+                read: builtinRead,
+                inputfun: function(promptText) {
+                    return window.prompt(promptText || "أدخل المدخلات (Input):");
+                }
+            });
+
+            Sk.misceval.asyncToPromise(function() {
+                return Sk.importMainWithBody("<stdin>", false, code, true);
+            }).then(function(mod) {
+                consoleBox.innerHTML += "\n----------------------------------------\n✅ [Process Completed Successfully / اكتمل التشغيل بنجاح]";
+            }, function(err) {
+                consoleBox.innerHTML += "\n----------------------------------------\n❌ Exception Error: " + err.toString();
+            });
+        }
 
         function runSim() {
             const input = document.getElementById('userInputText').value.trim();

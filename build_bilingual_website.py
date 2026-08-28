@@ -13,8 +13,8 @@ sessions_data = [
             "ما هو الذكاء الاصطناعي والفرق بينه وبين البرمجة العادية؟",
             "أين نجد الذكاء الاصطناعي في حياتنا اليومية والتطبيقات؟",
             "أبعاد الذكاء الاصطناعي (أنواعه وأخلاقياته ومستقبله).",
-            "تجربة محاكاة تفاعلية مباشرة لتغطية نمط ذكي على الويب.",
-            "كتابة أول برنامج تحليل مشاعر تفاعلي بـ Python.",
+            "تجربة محاكاة تفاعلية مباشرة لنمط ذكي على الويب.",
+            "محرر كود Python تفاعلي مباشر (IDE) لتشغيل الكود الحقيقي.",
             "اختبار المعلومات التفاعلي + تحدي مشروع الحصة!"
         ],
         "agenda_en": [
@@ -22,7 +22,7 @@ sessions_data = [
             "Where do we find AI in our daily lives and apps?",
             "AI dimensions (types, ethics, and future outlook).",
             "Live interactive hands-on AI sentiment simulation.",
-            "Writing your first interactive Python sentiment classifier.",
+            "Embedded Interactive Python IDE Code Editor.",
             "Interactive quiz + session assignment challenge!"
         ],
         "sec1_title_ar": "1. ما هو الذكاء الاصطناعي؟ (الفرق الجوهري)",
@@ -42,10 +42,11 @@ sessions_data = [
         "lab_desc_ar": "اكتب جملة وسيقوم النموذج الذكي بتوقع نبرتك ومحاكاتها فورياً!",
         "lab_desc_en": "Type any sentence and the AI model will detect your sentiment instantly!",
         "code_filename": "sentiment_analyzer.py",
-        "code": """def ai_sentiment_detector(text):
+        "code": """# محرر بايثون التفاعلي - اكتب وكود وغيّر بنفسك وشغل فورياً!
+def ai_sentiment_detector(text):
     text = text.lower()
-    positive = ["سعيد", "رائع", "ممتاز", "أحب", "happy", "great"]
-    negative = ["حزين", "سيء", "غاضب", "صعب", "sad", "bad"]
+    positive = ["سعيد", "رائع", "ممتاز", "أحب", "happy", "great", "awesome"]
+    negative = ["حزين", "سيء", "غاضب", "صعب", "sad", "bad", "angry"]
     
     for word in positive:
         if word in text:
@@ -55,8 +56,11 @@ sessions_data = [
             return "😢 مشاعر حزينة أو محبطة (Negative Mood)"
     return "😐 مشاعر محايدة (Neutral)"
 
-user_input = input("اكتب جملتك للذكاء الاصطناعي: ")
-print(ai_sentiment_detector(user_input))""",
+# اختبر الكود بنفسك واكتب جملتك:
+user_text = "أنا سعيد جدا بكتشاف الذكاء الاصطناعي اليوم"
+print("نص المدخلات:", user_text)
+print("النتيجة:", ai_sentiment_detector(user_text))
+""",
         "quiz_q_ar": "ما هو الفرق الأساسي بين الذكاء الاصطناعي والبرمجة التقليدية؟",
         "quiz_q_en": "What is the main difference between AI and traditional programming?",
         "quiz_opt1_ar": "البرمجة التقليدية أسرع دائماً.",
@@ -64,8 +68,8 @@ print(ai_sentiment_detector(user_input))""",
         "quiz_opt2_ar": "الذكاء الاصطناعي يتعلم الأنماط من البيانات بنفسه بدلاً من كتابة القواعد يدوياً.",
         "quiz_opt2_en": "AI learns patterns from data by itself instead of manual hardcoded rules.",
         "quiz_correct": 2,
-        "hw_ar": "أضف 5 كلمات جديدة إيجابية و 5 كلمات حزينة لكود بايثون، واختبر جمل عائلتك في البيت! 📸",
-        "hw_en": "Add 5 new positive and 5 negative words to your Python code and test family sentences at home! 📸"
+        "hw_ar": "عدل على كود Python في المحرر المباشر أعلاه وأضف 5 كلمات جديدة إيجابية و 5 حزينة واضغط تشغيل الكود! 🚀",
+        "hw_en": "Modify the Python code in the live editor above, add 5 new positive/negative words, and click Run Code! 🚀"
     },
     {
         "num": 2,
@@ -80,7 +84,7 @@ print(ai_sentiment_detector(user_input))""",
             "قواعد هندسة الأوامر (Prompt Engineering C-T-C Framework).",
             "تحدي صياغة الأوامر (Prompt Battles) وتجنب هلوسة الذكاء الاصطناعي.",
             "تجربة محاكي توليد القصص التفاعلي على الويب.",
-            "برمجة مولد القصص الخيالية بـ Python.",
+            "محرر كود بايثون التفاعلي لمولد القصص الخيالية.",
             "تحدي الحصة واختبار المعلومات التفاعلي."
         ],
         "agenda_en": [
@@ -88,7 +92,7 @@ print(ai_sentiment_detector(user_input))""",
             "Prompt Engineering C-T-C Framework (Context, Task, Constraints).",
             "Prompt Battles challenge & avoiding AI hallucinations.",
             "Interactive Story Generator web simulator.",
-            "Programming a Fantasy Story Generator in Python.",
+            "Interactive Python IDE for Fantasy Story Generator.",
             "Interactive quiz & prompt engineering challenge."
         ],
         "sec1_title_ar": "1. الذكاء الاصطناعي التوليدي (Generative AI)",
@@ -108,16 +112,23 @@ print(ai_sentiment_detector(user_input))""",
         "lab_desc_ar": "اختر بطل القصة والمكان والمشكلة، وشاهد كيف يولد الذكاء الاصطناعي قصة فورية!",
         "lab_desc_en": "Pick a hero, setting, and conflict to see AI craft a story live!",
         "code_filename": "ai_story_generator.py",
-        "code": """import random
+        "code": """# محرر مولد القصص الخيالية - قم بتعديل البطل والمكان واضغط تشغيل!
+import random
 
 def generate_ai_story(hero, setting, enemy):
     intros = [f"في زمن بعيد في {setting}، عاش البطل {hero}.", f"كان {hero} يستكشف {setting} عندما حدثت المفاجأة!"]
-    conflicts = [f"وفجأة ظهر {enemy} ليتحداه في اختبار ذكاء اصطناعي حاسم!", f"اكتشف {hero} أن {enemy} يحاول السيطرة على المدينة!"]
-    climax = [f"استخدم {hero} خوارزمية الذكاء الاصطناعي وانتصر بسهولة! 🌟"]
+    conflicts = [f"وفجأة ظهر {enemy} ليتحداه في برمجية ذكاء اصطناعي حاسم!", f"اكتشف {hero} أن {enemy} يحاول السيطرة على المعمل!"]
+    climax = [f"استخدم {hero} خوارزمية بايثون وانتصر بسهولة! 🌟"]
     
     return f"{random.choice(intros)}\n{random.choice(conflicts)}\n{random.choice(climax)}"
 
-print(generate_ai_story("أحمد مهندس الذكاء الاصطناعي", "معمل المستقبل", "الفيروس الرقمي"))""",
+# غير الأبطال وجرب التشغيل:
+hero_name = "عمر مهندس المستقبل"
+location = "مدينة الذكاء الاصطناعي"
+villain = "فيلروس الهكر الرقمي"
+
+print(generate_ai_story(hero_name, location, villain))
+""",
         "quiz_q_ar": "ماذا تعني قاعدة C-T-C في صياغة الأوامر (Prompt Engineering)؟",
         "quiz_q_en": "What does the C-T-C rule stand for in Prompt Engineering?",
         "quiz_opt1_ar": "Computer, Technology, Coding",
@@ -125,8 +136,8 @@ print(generate_ai_story("أحمد مهندس الذكاء الاصطناعي", "
         "quiz_opt2_ar": "Context (السياق) + Task (المهمة) + Constraints (الشروط والقيود)",
         "quiz_opt2_en": "Context + Task + Constraints",
         "quiz_correct": 2,
-        "hw_ar": "اكتب Prompt كامل بطريقة C-T-C واجعله يولد فكرة لعبة جديدة، ثم شغل كود بايثون لتوليد 3 قصص مختلفة! 🚀",
-        "hw_en": "Write a full C-T-C prompt to generate a new game idea, then run Python code to generate 3 unique stories! 🚀"
+        "hw_ar": "غير اسم البطل والمكان في محرر كود بايثون التفاعلي وشغل القصة الخيالية المبتكرة! 🚀",
+        "hw_en": "Change the hero name and setting in the Python editor above and generate your story! 🚀"
     },
     {
         "num": 3,
@@ -141,7 +152,7 @@ print(generate_ai_story("أحمد مهندس الذكاء الاصطناعي", "
             "تصميم شجرة النوايا (Intent Trees & Knowledge Base).",
             "كيف نمنع الشات بوت من الرد بإجابات غريبة عند عدم الفهم؟",
             "تجربة محاكاة شات بوت تفاعلي مباشر داخل الصفحة.",
-            "برمجة Megaminds Custom AI Chatbot بـ Python.",
+            "محرر كود بايثون التفاعلي لبناء الشات بوت الخاص.",
             "اختبار المعلومات وتحدي بناء شات بوت الأكاديمية!"
         ],
         "agenda_en": [
@@ -149,7 +160,7 @@ print(generate_ai_story("أحمد مهندس الذكاء الاصطناعي", "
             "Designing Intent Trees & Knowledge Base.",
             "Handling unknown inputs with fallback responses.",
             "Live interactive chatbot simulator.",
-            "Programming a custom Megaminds AI Chatbot in Python.",
+            "Interactive Python IDE for building custom chatbots.",
             "Interactive quiz & chatbot building challenge!"
         ],
         "sec1_title_ar": "1. التعرف على النوايا (Intent Recognition)",
@@ -169,7 +180,8 @@ print(generate_ai_story("أحمد مهندس الذكاء الاصطناعي", "
         "lab_desc_ar": "تحدث مع الشات بوت في الصندوق التالي واختبر قدرته على فهم التحية، الأسئلة، والمساعدة!",
         "lab_desc_en": "Chat with the bot below to test greetings, course questions, and help!",
         "code_filename": "megaminds_chatbot.py",
-        "code": """import random
+        "code": """# محرر الشات بوت التفاعلي - غير النوايا والإجابات وشغل الكود!
+import random
 
 knowledge_base = {
     "greetings": {
@@ -178,7 +190,7 @@ knowledge_base = {
     },
     "courses": {
         "patterns": ["كورس", "مناهج", "بايثون", "python", "ai"],
-        "responses": ["نحن نتعلم كورس الذكاء الاصطناعي الممتع للتحكم بالكاميرا والألعاب! 🚀"]
+        "responses": ["نحن نتعلم كورس الذكاء الاصطناعي الممتع بـ Python! 🚀"]
     }
 }
 
@@ -190,10 +202,11 @@ def chatbot_response(user_input):
                 return random.choice(data["responses"])
     return "عذراً لم أفهم قصدك جيدا، هل يمكنك إعادة الصياغة؟ 🤔"
 
-while True:
-    msg = input("أنت: ")
-    if msg == "خروج": break
-    print("الروبوت:", chatbot_response(msg))""",
+# اختبار رد الشات بوت:
+test_msg = "مرحبا اريد معرفة كورس بايثون"
+print("المستخدم:", test_msg)
+print("الشات بوت:", chatbot_response(test_msg))
+""",
         "quiz_q_ar": "ماذا يسمى تجميع الكلمات المختلفة مثل (أهلاً، مرحباً، سلام) تحت فكرة واحدة؟",
         "quiz_q_en": "What is it called when different phrases like 'Hi', 'Hello', 'Hey' are grouped under one concept?",
         "quiz_opt1_ar": "Intent Recognition (التعرف على النية)",
@@ -201,8 +214,8 @@ while True:
         "quiz_opt2_ar": "Copy Paste Error",
         "quiz_opt2_en": "Copy Paste Error",
         "quiz_correct": 1,
-        "hw_ar": "أضف نية جديدة (Intent) لشات بوت بايثون تجيب على سؤال 'من أنت؟' وإعطاء رد إبداعي! 💬",
-        "hw_en": "Add a new intent to your Python chatbot answering 'Who are you?' with a creative response! 💬"
+        "hw_ar": "أضف نية جديدة (Intent) لشات بوت بايثون في المحرر المباشر تجيب على سؤال 'من أنت؟'! 💬",
+        "hw_en": "Add a new intent to your Python chatbot answering 'Who are you?' in the live editor! 💬"
     },
     {
         "num": 4,
@@ -217,7 +230,7 @@ while True:
             "تحويل الموجات الصوتية إلى بيانات رقمية يفهمها الكود.",
             "مكتبات الصوت في بايثون: pyttsx3 و SpeechRecognition.",
             "تجربة محاكي المساعد الصوتي على الويب.",
-            "كتابة كود مساعد صوتي يفتح يوتيوب ويخبرك بالوقت بصوته!",
+            "محرر كود بايثون التفاعلي لكتابة المساعد الصوتي الذكي.",
             "اختبار المعلومات وتحدي المساعد الصوتي."
         ],
         "agenda_en": [
@@ -225,7 +238,7 @@ while True:
             "Converting audio waves into digital data.",
             "Python audio libraries: pyttsx3 & SpeechRecognition.",
             "Interactive Voice Synthesizer Simulator.",
-            "Programming a voice assistant opening websites and speaking the time!",
+            "Interactive Python IDE for Smart Voice Assistant.",
             "Interactive quiz & voice assistant challenge."
         ],
         "sec1_title_ar": "1. الصوت الرقمي (Digital Audio)",
@@ -245,27 +258,25 @@ while True:
         "lab_desc_ar": "اكتب جملة واضغط نطق لتقوم الصفحة بقراءتها بصوت الذكاء الاصطناعي المباشر!",
         "lab_desc_en": "Type any sentence and click Speak to hear browser speech synthesis live!",
         "code_filename": "voice_assistant.py",
-        "code": """import pyttsx3
+        "code": """# محرر بايثون للمساعد الصوتي - اضغط تشغيل لمشاهدة الاستجابة!
 import datetime
-import webbrowser
 
-engine = pyttsx3.init()
+def process_voice_command(cmd):
+    cmd = cmd.lower()
+    print(f"🎙️ المساعد استلم الأمر الصوتي: '{cmd}'")
+    
+    if "الوقت" in cmd or "time" in cmd:
+        now = datetime.datetime.now().strftime("%H:%M")
+        return f"🔊 الساعة الآن هي {now}"
+    elif "يوتيوب" in cmd or "youtube" in cmd:
+        return "🔊 جاري فتح موقع يوتيوب لك الآن!"
+    else:
+        return "🔊 عذراً، لم أتلقَ أمراً معرفاً بعد."
 
-def speak(text):
-    print(f"🎙️ المساعد: {text}")
-    engine.say(text)
-    engine.runAndWait()
-
-speak("أهلاً بك يا مهندس المستقبل! أنا مساعدك الصوتي الذكي.")
-
-command = input("أدخل أمرك الصوتي النصي (الوقت / يوتيوب): ")
-
-if "وقت" in command:
-    now = datetime.datetime.now().strftime("%H:%M")
-    speak(f"الساعة الآن هي {now}")
-elif "يوتيوب" in command:
-    speak("جاري فتح يوتيوب لك الآن!")
-    webbrowser.open("https://youtube.com")""",
+# تجربة الأوامر:
+my_command = "ما هو الوقت الآن؟"
+print(process_voice_command(my_command))
+""",
         "quiz_q_ar": "ما هي التقنية المسؤولة عن تحويل النص المكتوب إلى صوت مسموع؟",
         "quiz_q_en": "Which technology converts written text into audible speech?",
         "quiz_opt1_ar": "Text-To-Speech (TTS)",
@@ -273,8 +284,8 @@ elif "يوتيوب" in command:
         "quiz_opt2_ar": "Manual Typing",
         "quiz_opt2_en": "Manual Typing",
         "quiz_correct": 1,
-        "hw_ar": "برمج مساعدك الصوتي ليقوم بالترحيب باسمك وافتتاح موقعك المفضّل عند تشغيله! 🔊",
-        "hw_en": "Program your voice assistant to greet you by name and open your favorite website! 🔊"
+        "hw_ar": "جرب إضافة أمر صوتي جديد لخيار 'موقع الأكاديمية' في محرر كود بايثون واضغط تشغيل! 🔊",
+        "hw_en": "Add a new voice command for 'Academy Website' in the Python editor and run! 🔊"
     },
     {
         "num": 5,
@@ -289,7 +300,7 @@ elif "يوتيوب" in command:
             "مفهوم الفلاتر وتحديد الحواف (Canny Edge Detection).",
             "مكتبة OpenCV وفتح بث الكاميرا الحية باللابتوب.",
             "تجربة محاكي الفلاتر التفاعلي على الويب.",
-            "كتابة كود Python لفتح الكاميرا وتحويلها لألوان رمادية وفلتر حواف.",
+            "محرر كود Python التفاعلي لمحاكاة فلاتر الصور والحواف.",
             "تحدي الحصة واختبار الرؤية الحاسوبية."
         ],
         "agenda_en": [
@@ -297,7 +308,7 @@ elif "يوتيوب" in command:
             "Filter concepts & Canny Edge Detection.",
             "OpenCV library & accessing laptop live camera feed.",
             "Interactive Computer Vision Filter Simulator.",
-            "Writing Python code to convert camera feed to Grayscale & Edge Detection.",
+            "Interactive Python IDE for Image & Edge Filters.",
             "Interactive quiz & computer vision challenge."
         ],
         "sec1_title_ar": "1. الصورة كأرقام (Image Pixels Grid)",
@@ -316,26 +327,26 @@ elif "يوتيوب" in command:
         "lab_title_en": "Computer Vision Filter Simulator",
         "lab_desc_ar": "اضغط على الفلاتر المختلفة لرؤية كيف يتغير تحليل الصورة رقمياً!",
         "lab_desc_en": "Click on different filter buttons to see how image processing changes digital views!",
-        "code_filename": "opencv_filters.py",
-        "code": """import cv2
-
-cap = cv2.VideoCapture(0)
-
-while True:
-    ret, frame = cap.read()
-    if not ret: break
+        "code_filename": "opencv_sim.py",
+        "code": """# محرر الرؤية الحاسوبية - مصفوفة الألوان والـ Pixels الرقمية
+def process_image_pixels(width, height, filter_type):
+    print(f"📸 معالجة صورة بحجم {width}x{height} بفلتر {filter_type}...")
     
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    edges = cv2.Canny(gray, 100, 200)
+    # مصفوفة البكسلات الرمادية
+    pixels_sample = [120, 255, 0, 45, 210]
+    processed = []
     
-    cv2.imshow("Original Camera", frame)
-    cv2.imshow("AI Edge Detection Filter", edges)
-    
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
+    for p in pixels_sample:
+        if filter_type == "GRAY":
+            processed.append(p)
+        elif filter_type == "CANNY_EDGE":
+            processed.append(255 if p > 100 else 0)
+            
+    print("الـ Pixels المعالجة:", processed)
+    return "✅ اكتملت معالجة الصورة بنجاح!"
 
-cap.release()
-cv2.destroyAllWindows()""",
+print(process_image_pixels(640, 480, "CANNY_EDGE"))
+""",
         "quiz_q_ar": "من كم رقم تتكون ألوان كل بكسل في مصفوفة RGB؟",
         "quiz_q_en": "How many values make up each pixel color in an RGB channels matrix?",
         "quiz_opt1_ar": "3 أرقام (Red, Green, Blue)",
@@ -343,8 +354,8 @@ cv2.destroyAllWindows()""",
         "quiz_opt2_ar": "رقم واحد فقط",
         "quiz_opt2_en": "Only 1 single number",
         "quiz_correct": 1,
-        "hw_ar": "قم بتشغيل كود OpenCV وجرب التقاط صورة لك بفلتر الحواف وشاركها في المعمل! 📸",
-        "hw_en": "Run OpenCV python code, capture your photo with edge detection, and share it in class! 📸"
+        "hw_ar": "غير نوع الفلتر من CANNY_EDGE إلى GRAY في محرر بايثون المباشر وشاهد النتيجة! 📸",
+        "hw_en": "Change filter type from CANNY_EDGE to GRAY in the live editor and run! 📸"
     },
     {
         "num": 6,
@@ -359,7 +370,7 @@ cv2.destroyAllWindows()""",
             "تصدير النموذج (Keras / TensorFlow Model).",
             "مفهوم درجة الثقة (Confidence Score %).",
             "تجربة محاكي التعرف على العناصر المباشر.",
-            "ربط نموذج Teachable Machine بكود OpenCV في بايثون.",
+            "محرر كود بايثون لتشغيل النموذج وحساب نسبة الثقة.",
             "تحدي الحصة ونظام التنبيه الذكي."
         ],
         "agenda_en": [
@@ -367,7 +378,7 @@ cv2.destroyAllWindows()""",
             "Exporting model files (Keras / TensorFlow format).",
             "Understanding Confidence Score percentages.",
             "Live object detection confidence simulator.",
-            "Connecting Teachable Machine model to OpenCV in Python.",
+            "Interactive Python IDE for Teachable Machine integration.",
             "Session challenge: Smart object detection alarm!"
         ],
         "sec1_title_ar": "1. التدريب على الويب (Teachable Machine)",
@@ -387,11 +398,21 @@ cv2.destroyAllWindows()""",
         "lab_desc_ar": "اختبر كيف تتغير نسبة ثقة النموذج الذكي فورياً عند رؤية عناصر مختلفة!",
         "lab_desc_en": "Test how AI model confidence changes live when detecting various items!",
         "code_filename": "teachable_python.py",
-        "code": """import cv2
-import numpy as np
-# يتم تحميل نموذج Keras وقراءة الكاميرا
-print("🤖 جاري تشغيل نموذج Teachable Machine داخل Python...")
-print("النتيجة: تم التعرف على الغرض بنسبة ثقة 96.5%!")""",
+        "code": """# محرر نموذج Teachable Machine - قم بتغيير درجة الثقة والنتيجة!
+def predict_object(confidence_score, label):
+    print(f"🤖 النموذج رصد: {label}")
+    print(f"نسبة الثقة: {confidence_score * 100}%")
+    
+    threshold = 0.85 # حد الثقة المطلوب
+    
+    if confidence_score >= threshold:
+        return f"🎯 مؤكد بنسبة عالية! تم تفعيل الإجراء لـ ({label})"
+    else:
+        return "⚠️ نسبة الثقة غير كافية للتأكيد."
+
+# اختبر الكود بتغيير الرقم:
+print(predict_object(0.96, "الهاتف المحمول - Mobile Phone"))
+""",
         "quiz_q_ar": "ماذا يفعل الكود عندما تكون نسبة الثقة (Confidence Score) عالية جداً؟",
         "quiz_q_en": "What does the code do when the model Confidence Score exceeds threshold?",
         "quiz_opt1_ar": "ينفذ القرار المطلوب بثقة عالية.",
@@ -399,8 +420,8 @@ print("النتيجة: تم التعرف على الغرض بنسبة ثقة 96.
         "quiz_opt2_ar": "يغلق البرنامج فوراً.",
         "quiz_opt2_en": "Closes the application immediately.",
         "quiz_correct": 1,
-        "hw_ar": "قم بدراسة نموذج Teachable Machine على الويب ودرب فصلين (مثلاً: نظارة / بدون نظارة)! 👓",
-        "hw_en": "Train a 2-class model on Teachable Machine (e.g., Glasses ON vs OFF) and test it! 👓"
+        "hw_ar": "غير نسبة الثقة في محرر الكود إلى 0.50 وانظر ماذا سيحدث عند تشغيل الكود! 🎯",
+        "hw_en": "Change confidence score in the Python editor to 0.50 and observe execution! 🎯"
     },
     {
         "num": 7,
@@ -415,7 +436,7 @@ print("النتيجة: تم التعرف على الغرض بنسبة ثقة 96.
             "بناء منطق اللعبة والعد التنازلي.",
             "حساب النقاط تلقائياً (Player Score vs AI Score).",
             "تجربة محاكي اللعبة التفاعلي المباشر.",
-            "كتابة كود اللعبة التنافسي بـ Python.",
+            "محرر كود بايثون التنافسي للعبة حجر ورقة مقص.",
             "بطولة القاعة وتحدي هزم الذكاء الاصطناعي!"
         ],
         "agenda_en": [
@@ -423,7 +444,7 @@ print("النتيجة: تم التعرف على الغرض بنسبة ثقة 96.
             "Building game logic & round countdowns.",
             "Automatic score tracking (Player vs AI Score).",
             "Interactive Rock Paper Scissors AI Simulator.",
-            "Writing competitive game code in Python.",
+            "Interactive Python IDE for competitive RPS game.",
             "Class championship: Beat the AI Challenge!"
         ],
         "sec1_title_ar": "1. قراءة إيماءات اليد (Gesture Recognition)",
@@ -443,17 +464,28 @@ print("النتيجة: تم التعرف على الغرض بنسبة ثقة 96.
         "lab_desc_ar": "اختر حركتك وشاهد اختيار الذكاء الاصطناعي ومن سيكسب الجولة!",
         "lab_desc_en": "Choose your gesture and see AI's counter move and who wins the round!",
         "code_filename": "rps_ai_game.py",
-        "code": """import random
+        "code": """# محرر لعبة حجر ورقة مقص بـ Python - العب وضاعف النقاط!
+import random
 
 choices = ["حجر ✊", "ورقة ✋", "مقص ✌️"]
 
-def play_round(user_choice):
-    ai_choice = random.choice(choices)
-    print(f"أنت اخترت: {user_choice} | الـ AI اختار: {ai_choice}")
-    if user_choice == ai_choice: return "تعادل! 🤝"
-    return "مبروك! لقد هزمت الذكاء الاصطناعي! 🎉"
+def play_rps_round(player_move):
+    ai_move = random.choice(choices)
+    print(f"🎮 اختيار اللاعب: {player_move}")
+    print(f"🤖 اختيار الذكاء الاصطناعي: {ai_move}")
+    
+    if player_move == ai_move:
+        return "🤝 النتيجة: تعادل!"
+    elif (player_move == "حجر ✊" and ai_move == "مقص ✌️") or \
+         (player_move == "ورقة ✋" and ai_move == "حجر ✊") or \
+         (player_move == "مقص ✌️" and ai_move == "ورقة ✋"):
+        return "🎉 مبروك! لقد هزمت الذكاء الاصطناعي!"
+    else:
+        return "🤖 الذكاء الاصطناعي كسب هذه الجولة!"
 
-print(play_round("حجر ✊"))""",
+# غير اختياراتك واضغط تشغيل:
+print(play_rps_round("حجر ✊"))
+""",
         "quiz_q_ar": "كيف يحدد البرنامج الحركة الفائزة في لعبة حجر ورقة مقص؟",
         "quiz_q_en": "How does the Python game evaluate the round winner?",
         "quiz_opt1_ar": "بمقارنة حركة المستخدم مع اختيار الـ AI عبر الشروط المنطقية.",
@@ -461,8 +493,8 @@ print(play_round("حجر ✊"))""",
         "quiz_opt2_ar": "بالتخمين العشوائي بدون كود.",
         "quiz_opt2_en": "By random guess without code logic.",
         "quiz_correct": 1,
-        "hw_ar": "شغل كود بايثون للعبة حجر ورقة مقص وتحدى أخاك أو صديقك ورني مين هيكسب! 🏆",
-        "hw_en": "Run your RPS Python game and challenge your friends to beat your AI! 🏆"
+        "hw_ar": "غير الحركة المختار في الكود إلى 'ورقة ✋' واضغط تشغيل لمباراة جديدة ضد الـ AI! 🏆",
+        "hw_en": "Change your player choice to 'Paper' in the code editor and run another round! 🏆"
     },
     {
         "num": 8,
@@ -477,7 +509,7 @@ print(play_round("حجر ✊"))""",
             "مكتبة PyAutoGUI للتحكم بالماوس والأسهم برمجياً.",
             "تحويل موقع اليد إلى أمر (Left Arrow / Right Arrow).",
             "تجربة محاكي التحكم الإشاري على الويب.",
-            "كتابة كود بايثون لتشغيل لعبة سباق باليد بدون لمس الكيبورد!",
+            "محرر كود بايثون لتشغيل أوامر الانعطاف الإشاري.",
             "تحدي الحصة وسباق السيارات الإشاري."
         ],
         "agenda_en": [
@@ -485,7 +517,7 @@ print(play_round("حجر ✊"))""",
             "PyAutoGUI library for controlling mouse & arrow keys.",
             "Mapping hand X-coordinates to Left/Right key presses.",
             "Interactive Gesture Steering Simulator.",
-            "Writing Python code to control car racing without touching keyboard!",
+            "Interactive Python IDE for hand gesture steering code.",
             "Session challenge: Touchless Racing Tournament!"
         ],
         "sec1_title_ar": "1. محاكاة الكيبورد (PyAutoGUI)",
@@ -505,15 +537,20 @@ print(play_round("حجر ✊"))""",
         "lab_desc_ar": "حرك المؤشر يميناً ويساراً لمحاكاة حركة يدك أمام كاميرا لابتوبك!",
         "lab_desc_en": "Move your cursor left and right to simulate hand steering live!",
         "code_filename": "gesture_racing.py",
-        "code": """import pyautogui
-import time
+        "code": """# محرر التحكم الإشاري - قم بمحاكاة انعطاف السيارة!
+def steer_car_by_gesture(hand_position_x, screen_center=320):
+    print(f"🖐️ موقع اليد الكاميرا: X = {hand_position_x}")
+    
+    if hand_position_x < screen_center - 50:
+        return "⬅️ إرسال أمر الكيبورد: LEFT (انعطاف يسار)"
+    elif hand_position_x > screen_center + 50:
+        return "➡️ إرسال أمر الكيبورد: RIGHT (انعطاف يمين)"
+    else:
+        return "⬆️ إرسال أمر الكيبورد: UP (السير للأمام)"
 
-print("🏎️ نظام التحكم بالسباق عبر حركة اليد جاري التشغيل...")
-# عند رصد حركة اليد لليمين:
-# pyautogui.press('right')
-# عند رصد حركة اليد لليسار:
-# pyautogui.press('left')
-print("تم إرسال أمر الانعطاف بنجاح!")""",
+# اختبر الكود بتغيير موقع اليد:
+print(steer_car_by_gesture(120))
+""",
         "quiz_q_ar": "ما هي المكتبة المسؤولة عن إرسال ضغطات الكيبورد برمجياً في بايثون؟",
         "quiz_q_en": "Which Python library automates keyboard key presses?",
         "quiz_opt1_ar": "PyAutoGUI",
@@ -521,8 +558,8 @@ print("تم إرسال أمر الانعطاف بنجاح!")""",
         "quiz_opt2_ar": "Math",
         "quiz_opt2_en": "Math",
         "quiz_correct": 1,
-        "hw_ar": "شغل لعبة سباق بسيطة على الويب واجعل كود بايثون يتحكم فيها بيدك! 🏎️",
-        "hw_en": "Launch a web racing game and control the car with Python hand gestures! 🏎️"
+        "hw_ar": "غير موقع اليد X في محرر الكود إلى 500 واضغط تشغيل لرؤية انعطاف السيارة لليمين! 🏎️",
+        "hw_en": "Change hand X position to 500 in the code editor and run to steer right! 🏎️"
     },
     {
         "num": 9,
@@ -537,7 +574,7 @@ print("تم إرسال أمر الانعطاف بنجاح!")""",
             "مكتبة `os` و `subprocess` في بايثون.",
             "تجميع الصوت + الشات بوت + البرامج في تطبيق واحد.",
             "تجربة محاكي المساعد المكتبي على الويب.",
-            "كتابة كود Megaminds Desktop Assistant المتكامل.",
+            "محرر كود بايثون المباشر للمساعد المكتبي.",
             "تحدي تخصيص المساعد ليخدم عائلتك."
         ],
         "agenda_en": [
@@ -545,7 +582,7 @@ print("تم إرسال أمر الانعطاف بنجاح!")""",
             "Python `os` and `subprocess` modules.",
             "Integrating Voice + Chatbot + OS Controls into 1 app.",
             "Interactive Desktop Assistant Hub Simulator.",
-            "Writing Megaminds Desktop Assistant Python code.",
+            "Interactive Python IDE for Desktop Assistant app.",
             "Customizing assistant for family tasks!"
         ],
         "sec1_title_ar": "1. التفاعل مع نظام التشغيل (OS Commands)",
@@ -565,19 +602,21 @@ print("تم إرسال أمر الانعطاف بنجاح!")""",
         "lab_desc_ar": "اضغط الأوامر لرؤية كيف يستجيب المساعد المكتبي الذكي لكل طلب!",
         "lab_desc_en": "Click desktop commands to test smart assistant responses live!",
         "code_filename": "desktop_assistant.py",
-        "code": """import os
-
-def execute_command(cmd):
-    if "حاسبة" in cmd or "calc" in cmd:
-        print("🖥️ جاري فتح الآلة الحاسبة...")
-        os.system("calc")
-    elif "نوت باد" in cmd or "notepad" in cmd:
-        print("📝 جاري فتح المفكرة...")
-        os.system("notepad")
+        "code": """# محرر بايثون للمساعد المكتبي - جرب تنفيذ الأوامر الكودية!
+def execute_desktop_app(app_name):
+    print(f"🤖 مساعد Megaminds المكتبي يستجيب لك...")
+    
+    if "حاسبة" in app_name or "calc" in app_name:
+        return "🖥️ تم تنفيذ الأمر: فتح الآلة الحاسبة (calc)!"
+    elif "نوت باد" in app_name or "notepad" in app_name:
+        return "📝 تم تنفيذ الأمر: فتح المفكرة (notepad)!"
+    elif "رسام" in app_name or "paint" in app_name:
+        return "🎨 تم تنفيذ الأمر: فتح برنامج الرسام (mspaint)!"
     else:
-        print("🤖 أمر غير معروف لمكتبتك المخصصة!")
+        return "⚠️ أمر غير مدعوم في القائمة الحالية."
 
-execute_command("افتح الحاسبة")""",
+print(execute_desktop_app("افتح النوت باد"))
+""",
         "quiz_q_ar": "ما هي المكتبة المسؤولة عن تشغيل برامج الويندوز مثل الآلة الحاسبة والنوت باد في بايثون؟",
         "quiz_q_en": "Which module launches Windows applications like Calculator in Python?",
         "quiz_opt1_ar": "مكتبة OS",
@@ -585,8 +624,8 @@ execute_command("افتح الحاسبة")""",
         "quiz_opt2_ar": "مكتبة Random",
         "quiz_opt2_en": "Random module",
         "quiz_correct": 1,
-        "hw_ar": "أضف أمراً جديداً لمساعدك المكتبي يفتح فيه برنامج الرسام (mspaint) بصوتك! 🎨",
-        "hw_en": "Add a new command to your desktop assistant that launches Paint (mspaint) via voice! 🎨"
+        "hw_ar": "أضف أمراً جديداً لـ 'الرسام' في محرر الكود واضغط تشغيل لمشاهدة الاستجابة! 🎨",
+        "hw_en": "Add a new command for 'Paint' in the code editor and run! 🎨"
     },
     {
         "num": 10,
@@ -601,7 +640,7 @@ execute_command("افتح الحاسبة")""",
             "رصد التغير في الصورة والإحساس بالحركة الغريبة.",
             "تلوين الشاشة بالأحمر وتشغيل صوت الإنذار التلقائي.",
             "تجربة محاكي نظام الحراسة الذكي على الويب.",
-            "كتابة كود AI Security Guard المباشر بـ Python.",
+            "محرر كود بايثون التفاعلي لنظام الإنذار الأمني.",
             "تحدي تأمين غرفتك في المنزل بالنظام الجديد!"
         ],
         "agenda_en": [
@@ -609,7 +648,7 @@ execute_command("افتح الحاسبة")""",
             "Frame motion change detection & intruder sensing.",
             "Visual red screen flashing & automatic siren audio trigger.",
             "Interactive AI Security Guard Simulator.",
-            "Writing Python AI Security Guard code.",
+            "Interactive Python IDE for AI Alarm System.",
             "Session challenge: Securing your room at home!"
         ],
         "sec1_title_ar": "1. الذكاء الاصطناعي متعدد الوسائط (Multi-modal AI)",
@@ -629,11 +668,20 @@ execute_command("افتح الحاسبة")""",
         "lab_desc_ar": "اضغط زر تفعيل الحراسة واختبر ماذا يحدث عند رصد أي حركة مريبة!",
         "lab_desc_en": "Activate guard mode to test intruder motion alerts live!",
         "code_filename": "ai_security_guard.py",
-        "code": """import cv2
-import winsound
+        "code": """# محرر نظام الحراسة الذكي - قم بتفعيل إنذار الدخلاء!
+def trigger_security_guard(motion_detected, is_known_user):
+    print("🚨 نظام الحارس الذكي يراقب الغرفة...")
+    
+    if motion_detected and not is_known_user:
+        return "⚠️ تحذير عالي: تم رصد حركة دخيل غريب! تشغيل صفارة الإنذار 🚨🔊"
+    elif motion_detected and is_known_user:
+        return "✅ أهلاً بك يا مالك الغرفة! النظام آمن."
+    else:
+        return "🛡️ لا توجد حركة، الغرفة مؤمنة بالكامل."
 
-print("🚨 نظام الحارس الذكي نشط ومستعد للمراقبة...")
-print("⚠️ تنبيه: تم رصد حركة مريبة! جاري تشغيل صفارة الإنذار!")""",
+# اختبر رصد الدخيل:
+print(trigger_security_guard(motion_detected=True, is_known_user=False))
+""",
         "quiz_q_ar": "ماذا يسمى النظام الذي يدمج الكاميرا والصوت معاً لإنشاء نظام ذكي؟",
         "quiz_q_en": "What is an AI system combining vision and sound called?",
         "quiz_opt1_ar": "Multi-modal AI System",
@@ -641,8 +689,8 @@ print("⚠️ تنبيه: تم رصد حركة مريبة! جاري تشغيل �
         "quiz_opt2_ar": "Single Output Code",
         "quiz_opt2_en": "Single Output Code",
         "quiz_correct": 1,
-        "hw_ar": "شغل كود الحراسة الذكي على لابتوبك وجرب الدخول لغرفتك واختبر صفارة الإنذار! 🚨",
-        "hw_en": "Run your AI guard python code and test your room security siren at home! 🚨"
+        "hw_ar": "غير قيمة `is_known_user` إلى True في محرر بايثون المباشر وشاهد تغير استجابة النظام! 🚨",
+        "hw_en": "Change `is_known_user` to True in the Python editor and see security response! 🚨"
     },
     {
         "num": 11,
@@ -657,7 +705,7 @@ print("⚠️ تنبيه: تم رصد حركة مريبة! جاري تشغيل �
             "كتابة وتجميع المكتبات بمساعدة المدرب في الورشة.",
             "معالجة المشاكل (Debugging & Testing).",
             "تجربة محاكي قائمة تجهيز المشروع (Checklist).",
-            "تجهيز عرض السلايدز للتحدث بثقة أمام أولياء الأمور.",
+            "محرر كود بايثون التفاعلي لمشروع التخرج النهائي.",
             "التجهيز النهائي لـ Demo Day!"
         ],
         "agenda_en": [
@@ -665,7 +713,7 @@ print("⚠️ تنبيه: تم رصد حركة مريبة! جاري تشغيل �
             "Code integration & library assembly with instructor support.",
             "Debugging, error handling, and testing.",
             "Interactive Capstone Readiness Checklist Simulator.",
-            "Preparing presentation slides for parents showcase.",
+            "Interactive Python IDE for final Capstone code.",
             "Final rehearsal for Demo Day!"
         ],
         "sec1_title_ar": "1. اختيار الفكرة المميزة",
@@ -684,10 +732,21 @@ print("⚠️ تنبيه: تم رصد حركة مريبة! جاري تشغيل �
         "lab_title_en": "Capstone Readiness Checklist Simulator",
         "lab_desc_ar": "علم على الخيارات لتتحقق من اكتمال مشروعك الجاهز للعرض!",
         "lab_desc_en": "Check off items to verify your project is 100% presentation-ready!",
-        "code_filename": "capstone_template.py",
-        "code": """# مشروع التخرج البطل - Megaminds AI Capstone Project
-print("🌟 أهلاً بكم في عرض مشروع تخرجي للذكاء الاصطناعي!")
-print("جاري تشغيل النظام الذكي الخاص بي...")""",
+        "code_filename": "capstone_project.py",
+        "code": """# محرر كود مشروع التخرج - اكتب واضبط مشروعك النهائي!
+class CapstoneAIProject:
+    def __init__(self, student_name, project_title):
+        self.student_name = student_name
+        self.project_title = project_title
+        
+    def run_demo(self):
+        print(f"🌟 مشروع التخرج المقدم من المهندس(ة): {self.student_name}")
+        print(f"🚀 عنوان المشروع: {self.project_title}")
+        return "✅ تم تشغيل نظام الذكاء الاصطناعي المباشر بنجاح 100%!"
+
+my_project = CapstoneAIProject("أحمد المبتكر", "مساعد الرؤية والصوت الذكي")
+print(my_project.run_demo())
+""",
         "quiz_q_ar": "ما هي أهم خطوة قبل تقديم مشروعك في يوم التخرج Demo Day؟",
         "quiz_q_en": "What is the most crucial step before presenting your project on Demo Day?",
         "quiz_opt1_ar": "اختبار الكود جيداً والتأكد من عمل الكاميرا والصوت وتجهيز طريقة الشرح.",
@@ -695,8 +754,8 @@ print("جاري تشغيل النظام الذكي الخاص بي...")""",
         "quiz_opt2_ar": "مسح الكود وإعادته من الصفر قبل الحفلة بدقيقة.",
         "quiz_opt2_en": "Deleting code and rewriting from scratch 1 minute before event.",
         "quiz_correct": 1,
-        "hw_ar": "ضع اللمسات الأخيرة على مشروعك، واطبعه أو احفظه على فلاشة واكتب ملخص الشرح! 🎓",
-        "hw_en": "Finalize your project code, save to USB drive, and write presentation notes! 🎓"
+        "hw_ar": "اكتب اسمك وعنوان مشروعك في كود بايثون المباشر واضغط تشغيل للتأكد من جاهزيته! 🎓",
+        "hw_en": "Write your name and project title in the Python editor and run to verify readiness! 🎓"
     },
     {
         "num": 12,
@@ -738,10 +797,17 @@ print("جاري تشغيل النظام الذكي الخاص بي...")""",
         "lab_title_en": "Graduation Celebration Portal",
         "lab_desc_ar": "اضغط على زر إطلاق الألعاب النارية والاحتفال بتخرج أبطال الذكاء الاصطناعي!",
         "lab_desc_en": "Click the fireworks button to celebrate our Junior AI Developer graduates!",
-        "code_filename": "graduation_celebration.py",
-        "code": """print("🎉 ألف مبروك لتخرج أبطال مهندسي الذكاء الاصطناعي الصغار في Megaminds!")
-print("📜 شهادة المطور الصغير المعتمد جاهزة للتسليم!")
-print("🚀 نتمنى لكم رحلة مستقبلية مليئة بالابتكار والنجاح!")""",
+        "code_filename": "graduation_ceremony.py",
+        "code": """# كود الاحتفال بتخرج أبطال الذكاء الاصطناعي!
+def print_graduation_certificate(graduate_name):
+    print("=" * 55)
+    print(f"🎉 ألف مبروك للبطل المهندس(ة): {graduate_name}")
+    print("📜 شهادة مطور الذكاء الاصطناعي الناشئ (Junior AI Developer)")
+    print("🚀 Megaminds Academy - 12 Sessions Completed!")
+    print("=" * 55)
+
+print_graduation_certificate("بطل أكاديمية Megaminds")
+""",
         "quiz_q_ar": "ماذا أصبح الطالب قادر على فعله بعد إتمام هذا الكورس التفاعلي؟",
         "quiz_q_en": "What can students build after completing this interactive AI course?",
         "quiz_opt1_ar": "بناء تطبيقات ومساعدات ذكاء اصطناعي تفاعلية بنفسه بـ Python وتحكم الكاميرا والصوت.",
@@ -749,8 +815,8 @@ print("🚀 نتمنى لكم رحلة مستقبلية مليئة بالابت�
         "quiz_opt2_ar": "مجرد نقل الأكواد دون فهم.",
         "quiz_opt2_en": "Just copy-pasting code without understanding.",
         "quiz_correct": 1,
-        "hw_ar": "احتفل بنجاحك مع عائلتك وشارك صور وفيديوهات مشروعك بكل فخر! 📸🎓✨",
-        "hw_en": "Celebrate your graduation with family and proudly share your project video! 📸🎓✨"
+        "hw_ar": "اكتب اسمك في كود التخرج بـ Python واضغط تشغيل لمشاهدة شهادتك الرقمية! 📸🎓✨",
+        "hw_en": "Write your name in the Python graduation code and click Run to see your digital certificate! 📸🎓✨"
     }
 ]
 
@@ -762,6 +828,11 @@ html_template = """<!DOCTYPE html>
     <title>Megaminds AI - Session {session_num}</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Skulpt In-Browser Real Python Engine -->
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+
     <style>
         :root {{
             --bg-dark: #0f131d;
@@ -845,9 +916,97 @@ html_template = """<!DOCTYPE html>
         .lab-btn {{ background: linear-gradient(90deg, var(--accent-orange), var(--accent-orange-bright)); color: white; border: none; padding: 14px 32px; border-radius: 12px; font-size: 1.1rem; font-weight: 800; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(249, 115, 22, 0.4); margin-top: 15px; }}
         .lab-btn:hover {{ transform: scale(1.05); box-shadow: 0 6px 25px rgba(249, 115, 22, 0.6); }}
         .demo-result-box {{ margin-top: 20px; padding: 15px; background: #0b0f19; border-radius: 12px; min-height: 70px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: var(--accent-amber); font-weight: 700; border: 1px solid rgba(249, 115, 22, 0.2); }}
+
+        /* VS Code Style Real Code Editor Frame */
+        .editor-frame {{
+            background: #0d1117;
+            border: 2px solid var(--accent-orange);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            margin-top: 20px;
+        }}
+        .editor-header {{
+            background: #161b22;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #30363d;
+        }}
+        .editor-dots {{ display: flex; gap: 8px; align-items: center; }}
+        .dot {{ width: 12px; height: 12px; border-radius: 50%; }}
+        .dot.red {{ background: #ff5f56; }}
+        .dot.yellow {{ background: #ffbd2e; }}
+        .dot.green {{ background: #27c93f; }}
+        .editor-tab {{
+            background: #0d1117;
+            color: #fbbf24;
+            padding: 6px 16px;
+            border-radius: 8px 8px 0 0;
+            font-family: monospace;
+            font-size: 0.95rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #30363d;
+            border-bottom: none;
+        }}
+        .editor-actions {{ display: flex; gap: 10px; }}
+        .run-code-btn {{
+            background: linear-gradient(90deg, #22c55e, #16a34a);
+            color: white; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 800; font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+        }}
+        .run-code-btn:hover {{ transform: translateY(-2px); box-shadow: 0 6px 18px rgba(34, 197, 94, 0.5); }}
+        .reset-code-btn {{
+            background: rgba(249, 115, 22, 0.15); color: var(--accent-orange); border: 1px solid rgba(249, 115, 22, 0.4); padding: 8px 16px; border-radius: 8px; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;
+        }}
+        .reset-code-btn:hover {{ background: var(--accent-orange); color: white; }}
         
-        .code-header {{ background: #111827; color: #fbbf24; padding: 10px 20px; border-top-left-radius: 12px; border-top-right-radius: 12px; display: flex; justify-content: space-between; align-items: center; font-family: monospace; font-size: 0.9rem; border-bottom: 1px solid #374151; }}
-        .code-content {{ background: #070a10; color: #ffedd5; direction: ltr; text-align: left; padding: 20px; border-bottom-left-radius: 12px; border-bottom-right-radius: 12px; font-family: 'Consolas', 'Courier New', monospace; font-size: 1rem; line-height: 1.6; overflow-x: auto; white-space: pre-wrap; border: 1px solid #1f2937; border-top: none; }}
+        .code-textarea {{
+            width: 100%;
+            height: 250px;
+            background: #070a10;
+            color: #ffedd5;
+            padding: 20px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            border: none;
+            outline: none;
+            resize: vertical;
+            direction: ltr;
+            text-align: left;
+        }}
+
+        .terminal-box {{
+            background: #000000;
+            border-top: 2px solid #30363d;
+            padding: 15px 20px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            direction: ltr;
+            text-align: left;
+        }}
+        .terminal-header {{
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+        }}
+        .terminal-console {{
+            color: #4ade80;
+            font-size: 1rem;
+            min-height: 80px;
+            max-height: 180px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            line-height: 1.5;
+        }}
         
         .quiz-container {{ background: rgba(15, 19, 29, 0.8); border-radius: 16px; padding: 25px; margin-top: 20px; border: 1px solid rgba(249, 115, 22, 0.2); }}
         .quiz-q {{ font-size: 1.2rem; font-weight: 700; color: white; margin-bottom: 15px; }}
@@ -998,22 +1157,59 @@ html_template = """<!DOCTYPE html>
             </div>
         </div>
 
+        <!-- Embedded Real Python Code Editor Frame (VS Code Style) -->
         <div class="section-block">
             <div class="section-header">
                 <div class="section-icon"><i class="fa-brands fa-python"></i></div>
                 <div>
                     <h2>
-                        <span class="lang-ar">تطبيق الكود بـ Python 🐍</span>
-                        <span class="lang-en">Python Code Implementation 🐍</span>
+                        <span class="lang-ar">محرر كود بايثون التفاعلي المباشر (Python IDE Frame) 🐍</span>
+                        <span class="lang-en">Interactive Python IDE Code Editor Frame 🐍</span>
                     </h2>
+                    <p style="color: var(--text-muted);">
+                        <span class="lang-ar">يمكن للطالب تعديل الكود الحقيقي بنفسه واختبار النتائج والتشغيل المباشر داخل المتصفح!</span>
+                        <span class="lang-en">Students can edit real Python code, modify parameters, and run it live in the browser!</span>
+                    </p>
                 </div>
             </div>
 
-            <div class="code-header">
-                <span>{code_filename}</span>
-                <span>Python 3.x</span>
+            <div class="editor-frame">
+                <div class="editor-header">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div class="editor-dots">
+                            <div class="dot red"></div>
+                            <div class="dot yellow"></div>
+                            <div class="dot green"></div>
+                        </div>
+                        <div class="editor-tab">
+                            <i class="fa-brands fa-python" style="color: var(--accent-orange);"></i>
+                            <span>{code_filename}</span>
+                        </div>
+                    </div>
+                    <div class="editor-actions">
+                        <button class="reset-code-btn" onclick="resetEditor()"><i class="fa-solid fa-rotate-left"></i> 
+                            <span class="lang-ar">إعادة الكود الأصلي</span>
+                            <span class="lang-en">Reset Code</span>
+                        </button>
+                        <button class="run-code-btn" onclick="executePython()"><i class="fa-solid fa-play"></i> 
+                            <span class="lang-ar">تشغيل الكود ▶</span>
+                            <span class="lang-en">Run Code ▶</span>
+                        </button>
+                    </div>
+                </div>
+
+                <textarea id="pythonEditor" class="code-textarea" spellcheck="false">{code}</textarea>
+
+                <div class="terminal-box">
+                    <div class="terminal-header">
+                        <i class="fa-solid fa-terminal" style="color: #4ade80;"></i>
+                        <span class="lang-ar">شاشة المخرجات والشل (Python Console Output)</span>
+                        <span class="lang-en">Python Console Output Terminal</span>
+                    </div>
+                    <div id="terminalConsole" class="terminal-console"># اضغط زر (تشغيل الكود ▶) لرؤية المخرجات هنا...
+# Click (Run Code ▶) to execute real Python code live...</div>
+                </div>
             </div>
-            <div class="code-content">{code}</div>
         </div>
 
         <div class="section-block">
@@ -1071,6 +1267,8 @@ html_template = """<!DOCTYPE html>
     </div>
 
     <script>
+        const initialCode = `{code_js_escaped}`;
+
         function toggleLanguage() {{
             const currentLang = document.documentElement.lang || 'ar';
             const newLang = (currentLang === 'ar') ? 'en' : 'ar';
@@ -1092,6 +1290,43 @@ html_template = """<!DOCTYPE html>
             const savedLang = localStorage.getItem('megaminds_lang') || 'ar';
             setLanguage(savedLang);
         }});
+
+        function resetEditor() {{
+            document.getElementById('pythonEditor').value = initialCode;
+            document.getElementById('terminalConsole').innerHTML = (document.documentElement.lang === 'ar') 
+                ? "🔄 تم إعادة الكود إلى الحالة الأصلية بنجاح." 
+                : "🔄 Code reset to original template.";
+        }}
+
+        function executePython() {{
+            const code = document.getElementById('pythonEditor').value;
+            const consoleBox = document.getElementById('terminalConsole');
+            consoleBox.innerHTML = '';
+
+            function builtinRead(x) {{
+                if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
+                    throw "File not found: '" + x + "'";
+                return Sk.builtinFiles["files"][x];
+            }}
+
+            Sk.configure({{
+                output: function(text) {{
+                    consoleBox.innerHTML += text;
+                }},
+                read: builtinRead,
+                inputfun: function(promptText) {{
+                    return window.prompt(promptText || "أدخل المدخلات (Input):");
+                }}
+            }});
+
+            Sk.misceval.asyncToPromise(function() {{
+                return Sk.importMainWithBody("<stdin>", false, code, true);
+            }}).then(function(mod) {{
+                consoleBox.innerHTML += "\\n----------------------------------------\\n✅ [Process Completed Successfully / اكتمل التشغيل بنجاح]";
+            }}, function(err) {{
+                consoleBox.innerHTML += "\\n----------------------------------------\\n❌ Exception Error: " + err.toString();
+            }});
+        }}
 
         function runSim() {{
             const input = document.getElementById('userInputText').value.trim();
@@ -1160,6 +1395,8 @@ for i, s in enumerate(sessions_data, start=1):
     quiz_opt1_correct = "true" if s["quiz_correct"] == 1 else "false"
     quiz_opt2_correct = "true" if s["quiz_correct"] == 2 else "false"
     
+    code_escaped = s["code"].replace("`", "\\`").replace("\n", "\\n").replace('"', '\\"')
+
     rendered_html = html_template.format(
         session_num=s["num"],
         title_ar=s["title_ar"],
@@ -1187,6 +1424,7 @@ for i, s in enumerate(sessions_data, start=1):
         lab_desc_en=s["lab_desc_en"],
         code_filename=s["code_filename"],
         code=s["code"],
+        code_js_escaped=code_escaped,
         quiz_q_ar=s["quiz_q_ar"],
         quiz_q_en=s["quiz_q_en"],
         quiz_opt1_ar=s["quiz_opt1_ar"],
@@ -1208,4 +1446,4 @@ for i, s in enumerate(sessions_data, start=1):
     filepath = os.path.join(target_dir, f"session{i}.html")
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(rendered_html)
-    print(f"Generated Megaminds Orange Theme {filepath}")
+    print(f"Generated Interactive Python IDE Frame {filepath}")
