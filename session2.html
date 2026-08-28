@@ -90,17 +90,84 @@
         .section-icon { background: rgba(249, 115, 22, 0.15); color: var(--accent-orange); width: 50px; height: 50px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 1px solid rgba(249, 115, 22, 0.3); }
         .section-header h2 { font-size: 1.7rem; font-weight: 800; color: white; }
 
-        /* C-T-C Prompt Engineering Cards */
-        .ctc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
-        .ctc-card {
+        /* Multiple Prompting Framework Cards Grid */
+        .frameworks-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
+        .framework-card {
             background: rgba(15, 19, 29, 0.7);
             border: 1px solid var(--card-border);
             border-radius: 16px;
-            padding: 25px;
+            padding: 22px;
             transition: all 0.3s ease;
         }
-        .ctc-card:hover { transform: translateY(-5px); border-color: var(--accent-orange); }
-        .ctc-badge { display: inline-block; padding: 4px 14px; border-radius: 12px; font-weight: 900; font-size: 0.9rem; margin-bottom: 12px; }
+        .framework-card:hover { transform: translateY(-5px); border-color: var(--accent-amber); box-shadow: 0 10px 25px rgba(251, 191, 36, 0.2); }
+        .framework-tag { display: inline-block; padding: 4px 14px; border-radius: 12px; font-weight: 900; font-size: 0.88rem; margin-bottom: 10px; }
+
+        /* Embedded Gemini/ChatGPT Simulator Frame */
+        .gemini-sandbox-frame {
+            background: #0d111a;
+            border: 2px solid var(--accent-purple);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(192, 132, 252, 0.25);
+            margin-top: 25px;
+        }
+        .gemini-header {
+            background: #161b26;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #2e384e;
+        }
+        .gemini-avatar {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-orange));
+            display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(192, 132, 252, 0.4);
+        }
+        .gemini-chat-area {
+            padding: 25px;
+            min-height: 220px;
+            max-height: 350px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background: #080b12;
+        }
+        .chat-bubble {
+            max-width: 85%;
+            padding: 14px 20px;
+            border-radius: 16px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .chat-bubble.user {
+            align-self: flex-start;
+            background: rgba(249, 115, 22, 0.2);
+            border: 1px solid rgba(249, 115, 22, 0.4);
+            color: #fff;
+            border-bottom-right-radius: 4px;
+        }
+        html[lang="en"] .chat-bubble.user { align-self: flex-end; border-bottom-right-radius: 16px; border-bottom-left-radius: 4px; }
+        
+        .chat-bubble.ai {
+            align-self: flex-end;
+            background: rgba(192, 132, 252, 0.15);
+            border: 1px solid rgba(192, 132, 252, 0.4);
+            color: #e2e8f0;
+            border-bottom-left-radius: 4px;
+        }
+        html[lang="en"] .chat-bubble.ai { align-self: flex-start; border-bottom-left-radius: 16px; border-bottom-right-radius: 4px; }
+
+        .gemini-input-bar {
+            background: #161b26;
+            padding: 15px 20px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            border-top: 1px solid #2e384e;
+        }
 
         /* Application Cards Grid (8 Standard Applications + 1 Mystery Card) */
         .apps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 20px; }
@@ -316,8 +383,8 @@
                 <span class="lang-en">Generative AI & Prompt Engineering 🎨✍️</span>
             </h1>
             <p>
-                <span class="lang-ar">كيف تجعل الذكاء الاصطناعي يكتب القصص ويرسم الأفكار بقاعدة C-T-C وبناء مولد القصص الخيالية الذكي بـ Python؟</span>
-                <span class="lang-en">How to make AI write stories and draw ideas using the C-T-C rule and build a Python fantasy story generator?</span>
+                <span class="lang-ar">فن صياغة الأوامر الاحترافية (C-T-C & R-T-F) ومحاكي Gemini التفاعلي مع بناء مولد القصص الخيالية بـ Python!</span>
+                <span class="lang-en">Master Prompt Engineering techniques (C-T-C & R-T-F), try the interactive Gemini sandbox, and build Python AI story generators!</span>
             </p>
         </div>
 
@@ -332,28 +399,28 @@
                 <div class="agenda-item">
                     <div class="agenda-num">1</div>
                     <div class="agenda-text">
-                        <span class="lang-ar">مفهوم الذكاء الاصطناعي التوليدي مقابل التمييزي (Generative vs Discriminative AI).</span>
+                        <span class="lang-ar">الذكاء الاصطناعي التوليدي مقابل التمييزي (Generative vs Discriminative AI).</span>
                         <span class="lang-en">Generative AI vs Discriminative AI concepts & differences.</span>
                     </div>
                 </div>
                 <div class="agenda-item">
                     <div class="agenda-num">2</div>
                     <div class="agenda-text">
-                        <span class="lang-ar">قاعدة C-T-C لهندسة الأوامر الاحترافية (Context, Task, Constraints).</span>
-                        <span class="lang-en">The C-T-C Prompt Engineering Framework (Context, Task, Constraints).</span>
+                        <span class="lang-ar">طرق صياغة الأوامر الاحترافية: C-T-C، R-T-F، Few-Shot، و Chain-of-Thought.</span>
+                        <span class="lang-en">Multiple Prompt Frameworks: C-T-C, R-T-F, Few-Shot, & Chain-of-Thought.</span>
                     </div>
                 </div>
                 <div class="agenda-item">
                     <div class="agenda-num">3</div>
                     <div class="agenda-text">
-                        <span class="lang-ar">ظاهرة الهلوسة الرقمية (AI Hallucinations) وكيف نتجنب الأخطاء بالشروط.</span>
-                        <span class="lang-en">AI Hallucinations & avoiding errors using strict constraints.</span>
+                        <span class="lang-ar">محاكي Gemini / ChatGPT المباشر للتجربة بالصفحة ورؤية الفرق بين البرومبت الضعيف والقوي.</span>
+                        <span class="lang-en">Embedded Gemini/ChatGPT Sandbox Frame testing Bad vs Good Prompts.</span>
                     </div>
                 </div>
                 <div class="agenda-item">
                     <div class="agenda-num">4</div>
                     <div class="agenda-text">
-                        <span class="lang-ar">تطبيقات الذكاء التوليدي الـ 8 في العالم + تحدي التطبيق المجهول ❓</span>
+                        <span class="lang-ar">تطبيقات الذكاء التوليدي الـ 8 + تحدي التطبيق المجهول ❓</span>
                         <span class="lang-en">8 Real-World Generative AI Apps + Mystery AI Application Challenge ❓</span>
                     </div>
                 </div>
@@ -422,67 +489,118 @@
             </div>
         </div>
 
-        <!-- Section 2: Prompt Engineering & C-T-C Rule -->
+        <!-- Section 2: Deep Dive Prompt Engineering & Multiple Techniques -->
         <div class="section-block">
             <div class="section-header">
-                <div class="section-icon" style="background: rgba(251, 191, 36, 0.15); color: var(--accent-amber); border-color: rgba(251, 191, 36, 0.3);"><i class="fa-solid fa-terminal"></i></div>
+                <div class="section-icon" style="background: rgba(251, 191, 36, 0.15); color: var(--accent-amber); border-color: rgba(251, 191, 36, 0.3);"><i class="fa-solid fa-sliders"></i></div>
                 <div>
                     <h2>
-                        <span class="lang-ar">2. قاعدة C-T-C لصياغة الأوامر الاحترافية (Prompt Engineering) ✍️</span>
-                        <span class="lang-en">2. The C-T-C Prompt Engineering Framework ✍️</span>
+                        <span class="lang-ar">2. مفهوم وطرق صياغة الأوامر الاحترافية (Prompt Engineering Techniques) ✍️</span>
+                        <span class="lang-en">2. Prompt Engineering Concepts & Advanced Techniques ✍️</span>
                     </h2>
                 </div>
             </div>
 
-            <p style="font-size: 1.15rem; margin-bottom: 15px;">
-                <span class="lang-ar">الـ Prompt هو الأمر أو السؤال الذي تكتبه للذكاء الاصطناعي. للحصول على أفضل نتيجة من ChatGPT أو Midjourney، استخدم قاعدة <b>C-T-C الثلاثية</b>:</span>
-                <span class="lang-en">A prompt is the instruction you write for AI. To get the best results from ChatGPT, follow the <b>C-T-C Framework</b>:</span>
+            <p style="font-size: 1.15rem; margin-bottom: 20px;">
+                <span class="lang-ar"><b>هندسة الأوامر (Prompt Engineering):</b> هي دِفَة القيادة وتوجيه الذكاء الاصطناعي! الذكاء الاصطناعي مثل سفينة ذات محرك نفاث خارق، والبرومبت الصريح هو بوصلة القبطان التي تحول إجابات الآلة من إجابات سطحية إلى إبداع حقيقي! إليك 4 صيغ احترافية لكتابة الأوامر:</span>
+                <span class="lang-en"><b>Prompt Engineering</b> is the steering wheel of AI! Learn 4 professional framework techniques to guide AI models effectively:</span>
             </p>
 
-            <div class="ctc-grid">
-                <div class="ctc-card">
-                    <span class="ctc-badge" style="background: rgba(249, 115, 22, 0.2); color: var(--accent-orange);">1. C - Context (السياق)</span>
-                    <h3 style="color: white; font-size: 1.1rem; margin-bottom: 8px;">من أنت وما هي شخصية الـ AI؟</h3>
-                    <p style="font-size: 0.95rem; color: #cbd5e1;">"تخيل أنك كاتب قصص خيالية للأطفال ومطور ذكاء اصطناعي محترف..."</p>
+            <div class="frameworks-grid">
+                <!-- Framework 1: C-T-C -->
+                <div class="framework-card">
+                    <span class="framework-tag" style="background: rgba(249, 115, 22, 0.2); color: var(--accent-orange);">1. قاعدة C-T-C</span>
+                    <h3 style="color: white; font-size: 1.1rem; margin-bottom: 8px;">Context + Task + Constraints</h3>
+                    <p style="font-size: 0.93rem; color: #cbd5e1; margin-bottom: 10px;"><b>السياق + المهمة + الشروط والقيود:</b></p>
+                    <div style="background: #090d16; padding: 10px; border-radius: 8px; font-size: 0.88rem; color: #fbbf24;">
+                        "تخيل أنك معلم ذكاء اصطناعي (Context). اشرح لي كيف يتعلم الحاسوب (Task). في 3 نقاط محددة ولا تتجاوز 50 كلمة (Constraints)."
+                    </div>
                 </div>
 
-                <div class="ctc-card">
-                    <span class="ctc-badge" style="background: rgba(251, 191, 36, 0.2); color: var(--accent-amber);">2. T - Task (المهمة)</span>
-                    <h3 style="color: white; font-size: 1.1rem; margin-bottom: 8px;">ما الذي تريده بدقة؟</h3>
-                    <p style="font-size: 0.95rem; color: #cbd5e1;">"اكتب قصة مشوقة عن روبوت يدعى بيكسل يتعلم رسم النجوم في السماء..."</p>
+                <!-- Framework 2: R-T-F -->
+                <div class="framework-card">
+                    <span class="framework-tag" style="background: rgba(251, 191, 36, 0.2); color: var(--accent-amber);">2. قاعدة R-T-F</span>
+                    <h3 style="color: white; font-size: 1.1rem; margin-bottom: 8px;">Role + Task + Format</h3>
+                    <p style="font-size: 0.93rem; color: #cbd5e1; margin-bottom: 10px;"><b>الدور + المهمة + صيغة وشكل المخرجات:</b></p>
+                    <div style="background: #090d16; padding: 10px; border-radius: 8px; font-size: 0.88rem; color: #f59e0b;">
+                        "أنت طبيب باحث (Role). قارن بين الأطعمة الصحية والوجبات السريعة (Task). واعرض النتيجة في جدول مكون من عمودين (Format)."
+                    </div>
                 </div>
 
-                <div class="ctc-card">
-                    <span class="ctc-badge" style="background: rgba(192, 132, 252, 0.2); color: var(--accent-purple);">3. C - Constraints (الشروط)</span>
-                    <h3 style="color: white; font-size: 1.1rem; margin-bottom: 8px;">ما هي القيود والحدود؟</h3>
-                    <p style="font-size: 0.95rem; color: #cbd5e1;">"ألا تتجاوز القصة 100 كلمة، واستخدم نبرة مرحة، وأضف رموزاً تعبيرية 🌟"</p>
+                <!-- Framework 3: Few-Shot Prompting -->
+                <div class="framework-card">
+                    <span class="framework-tag" style="background: rgba(192, 132, 252, 0.2); color: var(--accent-purple);">3. التعلم بالأمثلة (Few-Shot)</span>
+                    <h3 style="color: white; font-size: 1.1rem; margin-bottom: 8px;">Giving 1-2 Input-Output Examples</h3>
+                    <p style="font-size: 0.93rem; color: #cbd5e1; margin-bottom: 10px;"><b>تقديم أمثلة إرشادية للـ AI ليفهم المطلوب:</b></p>
+                    <div style="background: #090d16; padding: 10px; border-radius: 8px; font-size: 0.88rem; color: #c084fc;">
+                        "حول النص إلى إيموجي: تفاح ➔ 🍎، سيارة ➔ 🚗، كمبيوتر ➔ ؟" (يفهم الـ AI النمط فورياً ويرجع 💻!).
+                    </div>
+                </div>
+
+                <!-- Framework 4: Chain-of-Thought -->
+                <div class="framework-card">
+                    <span class="framework-tag" style="background: rgba(34, 197, 94, 0.2); color: var(--accent-green);">4. التفكير الخطوي (Chain-of-Thought)</span>
+                    <h3 style="color: white; font-size: 1.1rem; margin-bottom: 8px;">Step-by-Step Reasoning</h3>
+                    <p style="font-size: 0.93rem; color: #cbd5e1; margin-bottom: 10px;"><b>طلب إظهار خطوات التفكير والمنطق:</b></p>
+                    <div style="background: #090d16; padding: 10px; border-radius: 8px; font-size: 0.88rem; color: #4ade80;">
+                        "حل مسألة الرياضيات التالية: (2x + 10 = 20) واشرح خطوة بخطوة كيف وصلت للنتيجة قبل إعطاء الناتج النهائي."
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Section 3: AI Hallucinations -->
+        <!-- Section 3: Embedded Gemini / ChatGPT Interactive Prompt Sandbox Frame -->
         <div class="section-block">
             <div class="section-header">
-                <div class="section-icon" style="background: rgba(239, 68, 68, 0.15); color: #ef4444; border-color: rgba(239, 68, 68, 0.3);"><i class="fa-solid fa-ghost"></i></div>
+                <div class="section-icon" style="background: rgba(192, 132, 252, 0.15); color: var(--accent-purple); border-color: rgba(192, 132, 252, 0.3);"><i class="fa-solid fa-comments"></i></div>
                 <div>
                     <h2>
-                        <span class="lang-ar">3. ظاهرة الهلوسة الرقمية (AI Hallucination) 👻👻</span>
-                        <span class="lang-en">3. Understanding AI Hallucinations 👻</span>
+                        <span class="lang-ar">3. محاكي Gemini & ChatGPT المباشر لتجربة الأوامر 💬✨</span>
+                        <span class="lang-en">3. Live Gemini & ChatGPT Prompt Sandbox Frame 💬✨</span>
                     </h2>
+                    <p style="color: var(--text-muted);">
+                        <span class="lang-ar">جرب بنفسك الآن وشاهد الفرق الهائل في النتائج بين البرومبت الضعيف والبرومبت الاحترافي!</span>
+                        <span class="lang-en">Test live and observe the massive difference between a Weak Prompt vs a Master Prompt!</span>
+                    </p>
                 </div>
             </div>
 
-            <p style="font-size: 1.1rem; margin-bottom: 15px;">
-                <span class="lang-ar">أحياناً يبتكر الذكاء الاصطناعي معلومات أو تواريخ غير صحيحة بثقة شديدة! يسمى ذلك <b>"الهلوسة الرقمية" (Hallucination)</b> لأن النموذج يحاول إكمال الكلمات الأكثر احتمالية حتى لو لم يمتلك معلومة مؤكدة.</span>
-                <span class="lang-en">Sometimes AI invents false facts with high confidence! This is called <b>AI Hallucination</b> because models predict probable words even without verified data.</span>
-            </p>
+            <!-- Embedded Sandbox Frame -->
+            <div class="gemini-sandbox-frame">
+                <div class="gemini-header">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div class="gemini-avatar"><i class="fa-solid fa-sparkles"></i></div>
+                        <div>
+                            <div style="font-weight: 800; color: white; font-size: 1.1rem;">Gemini AI Assistant Simulator</div>
+                            <div style="font-size: 0.85rem; color: #22c55e;">● نشط وجاهز لاستقبال الأوامر (Active & Ready)</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <button onclick="presetBadPrompt()" style="background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid #ef4444; padding: 6px 14px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; cursor: pointer;">
+                            <span class="lang-ar">⚠️ تجربة البرومبت الضعيف</span>
+                            <span class="lang-en">⚠️ Test Weak Prompt</span>
+                        </button>
+                        <button onclick="presetGoodPrompt()" style="background: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid #22c55e; padding: 6px 14px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; cursor: pointer;">
+                            <span class="lang-ar">✨ تجربة البرومبت الاحترافي (C-T-C)</span>
+                            <span class="lang-en">✨ Test Master Prompt</span>
+                        </button>
+                    </div>
+                </div>
 
-            <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); padding: 20px; border-radius: 16px;">
-                <h4 style="color: #fca5a5; font-size: 1.1rem; margin-bottom: 8px;"><i class="fa-solid fa-shield-halved"></i> كيف نتجنب الهلوسة الرقمية كمطورين؟</h4>
-                <ul style="margin-right: 25px; color: #e2e8f0; font-size: 0.98rem; line-height: 1.8;">
-                    <li>أضف شرطاً في البرومبت: <i>"إذا لم تكن متأكداً من المعلومة، قل لا أعلم بدلاً من التخمين."</i></li>
-                    <li>راجع دائماً الأرقام والمصادر المهمة بنفسك قبل الاعتماد عليها.</li>
-                </ul>
+                <div class="gemini-chat-area" id="chatArea">
+                    <div class="chat-bubble ai">
+                        <span class="lang-ar">أهلاً بك يا بطل! أنا مساعدك الذكي في أكاديمية Megaminds 🤖<br>أنا جاهز لاختبار الأوامر المختلفة معك. يمكنك كتابة أمرك أو الضغط على أزرار المقارنة أعلاه لرؤية الاستجابة!</span>
+                        <span class="lang-en">Welcome champion! I am your AI assistant. Type your prompt below or click the preset buttons to observe how prompt structure transforms AI outputs!</span>
+                    </div>
+                </div>
+
+                <div class="gemini-input-bar">
+                    <input type="text" id="geminiPromptInput" placeholder="اكتب أمرك للذكا الاصطناعي هنا... / Type your AI prompt here..." style="flex: 1; padding: 12px 18px; border-radius: 12px; border: 1px solid var(--accent-purple); background: #070a10; color: white; font-size: 1rem; outline: none;">
+                    <button onclick="sendGeminiPrompt()" style="background: linear-gradient(90deg, var(--accent-purple), var(--accent-orange)); color: white; border: none; padding: 12px 24px; border-radius: 12px; font-weight: 800; font-size: 1rem; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                        <span class="lang-ar">إرسال 🚀</span>
+                        <span class="lang-en">Send 🚀</span>
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -757,7 +875,7 @@ print(generate_ai_story("عمر مهندس المستقبل", "مدينة الذ
             </div>
         </div>
 
-        <!-- Section 7: Comprehensive Quiz (5 Questions including Code Logic Question) -->
+        <!-- Section 7: Comprehensive Quiz (5 Questions including Code Logic & Prompting) -->
         <div class="section-block">
             <div class="section-header">
                 <div class="section-icon" style="background: rgba(251, 191, 36, 0.15); color: var(--accent-amber); border-color: rgba(251, 191, 36, 0.3);"><i class="fa-solid fa-gamepad"></i></div>
@@ -805,48 +923,48 @@ print(generate_ai_story("عمر مهندس المستقبل", "مدينة الذ
             <!-- Quiz 3 -->
             <div class="quiz-container">
                 <div class="quiz-q">
-                    <span class="lang-ar">السؤال 3: ماذا تعني قاعدة C-T-C في صياغة الأوامر (Prompt Engineering)؟</span>
-                    <span class="lang-en">Q3: What does C-T-C stand for in Prompt Engineering?</span>
+                    <span class="lang-ar">السؤال 3: ماذا تعني قاعدة R-T-F في صياغة الأوامر (Prompt Engineering)؟</span>
+                    <span class="lang-en">Q3: What does R-T-F stand for in Prompt Engineering?</span>
                 </div>
                 <button class="quiz-opt" onclick="checkAnswer(this, true)">
-                    <span class="lang-ar">Context (السياق) + Task (المهمة) + Constraints (الشروط والقيود).</span>
-                    <span class="lang-en">Context + Task + Constraints.</span>
+                    <span class="lang-ar">Role (الدور) + Task (المهمة) + Format (شكل وصيغة المخرجات).</span>
+                    <span class="lang-en">Role + Task + Format.</span>
                 </button>
                 <button class="quiz-opt" onclick="checkAnswer(this, false)">
-                    <span class="lang-ar">Computer + Technology + Coding.</span>
-                    <span class="lang-en">Computer + Technology + Coding.</span>
+                    <span class="lang-ar">Read + Type + Finish.</span>
+                    <span class="lang-en">Read + Type + Finish.</span>
                 </button>
             </div>
 
             <!-- Quiz 4 -->
             <div class="quiz-container">
                 <div class="quiz-q">
-                    <span class="lang-ar">السؤال 4: ما هي ظاهرة "الهلوسة الرقمية" (AI Hallucination)؟</span>
-                    <span class="lang-en">Q4: What is AI Hallucination?</span>
+                    <span class="lang-ar">السؤال 4: ما هي تقنية Few-Shot Prompting في هندسة الأوامر؟</span>
+                    <span class="lang-en">Q4: What is Few-Shot Prompting?</span>
                 </div>
                 <button class="quiz-opt" onclick="checkAnswer(this, true)">
-                    <span class="lang-ar">عندما يبتكر الذكاء الاصطناعي معلومات غير صحيحة بثقة شديدة نتيجة التخمين.</span>
-                    <span class="lang-en">When AI confidently invents incorrect facts due to statistical prediction.</span>
+                    <span class="lang-ar">تقديم مثال أو مثالين للذكاء الاصطناعي داخل الأمر ليفهم المطلوب بدقة.</span>
+                    <span class="lang-en">Providing 1 or 2 input-output examples inside the prompt to guide the AI.</span>
                 </button>
                 <button class="quiz-opt" onclick="checkAnswer(this, false)">
-                    <span class="lang-ar">عندما يتوقف لابتوب الطالب عن العمل.</span>
-                    <span class="lang-en">When a laptop screen shuts off.</span>
+                    <span class="lang-ar">إغلاق التطبيق فجأة.</span>
+                    <span class="lang-en">Shutting down the app.</span>
                 </button>
             </div>
 
             <!-- Quiz 5 -->
             <div class="quiz-container">
                 <div class="quiz-q">
-                    <span class="lang-ar">السؤال 5: كيف نمنع نموذج ChatGPT من التخمين والهلوسة في الإجابة؟</span>
-                    <span class="lang-en">Q5: How do we prevent ChatGPT from hallucinating in responses?</span>
+                    <span class="lang-ar">السؤال 5: كيف نضمن الحصول على أدق إجابة في الرياضيات أو البرمجة باستخدام Chain-of-Thought؟</span>
+                    <span class="lang-en">Q5: How do we get accurate answers using Chain-of-Thought Prompting?</span>
                 </div>
                 <button class="quiz-opt" onclick="checkAnswer(this, true)">
-                    <span class="lang-ar">بإضافة شرط صريح (Constraint): "إذا لم تكن متأكداً، قل لا أعلم ولا تخمن".</span>
-                    <span class="lang-en">By adding explicit constraints: "If uncertain, state 'I don't know' instead of guessing".</span>
+                    <span class="lang-ar">بطلب إظهار خطوات التفكير والمنطق خطوة بخطوة قبل إعطاء النتيجة النهائية.</span>
+                    <span class="lang-en">By asking the AI to show its step-by-step reasoning before giving the final answer.</span>
                 </button>
                 <button class="quiz-opt" onclick="checkAnswer(this, false)">
-                    <span class="lang-ar">بكتابة كلمات عشوائية طويلة.</span>
-                    <span class="lang-en">By typing random long words.</span>
+                    <span class="lang-ar">بكتابة السؤال بدون أي توضيح.</span>
+                    <span class="lang-en">By typing a vague question.</span>
                 </button>
             </div>
         </div>
@@ -982,6 +1100,54 @@ print(generate_ai_story("عمر مهندس المستقبل", "مدينة الذ
                 ? `🎉 فكرة مبهرة يابطل! "${input}" - تم تسجيل ابتكارك في قائمة أبطال الذكاء الاصطناعي!`
                 : `🎉 Brilliant idea! "${input}" - Idea registered in AI Innovators list!`;
             feedback.style.color = "#22c55e";
+        }
+
+        /* Gemini Sandbox Interactions */
+        function presetBadPrompt() {
+            document.getElementById('geminiPromptInput').value = "اكتب لي عن الذكاء الاصطناعي";
+            sendGeminiPrompt();
+        }
+
+        function presetGoodPrompt() {
+            document.getElementById('geminiPromptInput').value = "تخيل أنك معلم ذكاء اصطناعي لأطفال بعمر 12 سنة. اشرح لي في 3 نقاط ممتعة ما هو الذكاء التوليدي واستخدم إيموجي 🚀";
+            sendGeminiPrompt();
+        }
+
+        function sendGeminiPrompt() {
+            const inputEl = document.getElementById('geminiPromptInput');
+            const text = inputEl.value.trim();
+            const chatArea = document.getElementById('chatArea');
+            const isAr = (document.documentElement.lang === 'ar');
+
+            if (!text) return;
+
+            // Append User Message
+            const userMsgDiv = document.createElement('div');
+            userMsgDiv.className = 'chat-bubble user';
+            userMsgDiv.innerHTML = `<b>👤 انت (Prompt):</b><br>${text}`;
+            chatArea.appendChild(userMsgDiv);
+
+            inputEl.value = '';
+            chatArea.scrollTop = chatArea.scrollHeight;
+
+            // Generate AI Response based on Prompt Quality
+            setTimeout(() => {
+                const aiMsgDiv = document.createElement('div');
+                aiMsgDiv.className = 'chat-bubble ai';
+
+                if (text.includes("معلم") || text.includes("3 نقاط") || text.includes("إيموجي") || text.includes("تخيل")) {
+                    aiMsgDiv.innerHTML = isAr 
+                        ? `<b>🤖 Gemini AI (استجابة برومبت احترافي ✨):</b><br>أهلاً يا بطل المستقبل! 🚀 إليك الذكاء الاصطناعي التوليدي في 3 نقاط ممتعة:<br>1. 🎨 <b>الرسام السحري:</b> يستطيع تحويل كلماتك إلى لوحات ثلاثية الأبعاد مذهلة!<br>2. ✍️ <b>المؤلف الذكي:</b> يكتب معك قصصاً خيالية ومغامرات لا تنتهي!<br>3. 🤖 <b>المبرمج المساعد:</b> يساعدنا في كتابة أكواد بايثون وتصحيح الأخطاء!`
+                        : `<b>🤖 Gemini AI (Master Prompt Response ✨):</b><br>Hello future innovator! 🚀 Here is Generative AI in 3 fun points:<br>1. 🎨 <b>Magic Artist:</b> Turns your text words into 3D art!<br>2. ✍️ <b>Smart Author:</b> Co-writes fantasy stories with you!<br>3. 🤖 <b>Coding Assistant:</b> Helps us write Python code!`;
+                } else {
+                    aiMsgDiv.innerHTML = isAr
+                        ? `<b>🤖 Gemini AI (استجابة برومبت عام/ضعيف ⚠️):</b><br>الذكاء الاصطناعي هو فرع من علوم الحاسوب يهدف لإنشاء آلات قادرة على المحاكاة... (نص طويل وعام وغير محدد التفاصيل بسبب غياب السياق والشروط!).<br>💡 <i>تلميح: جرب استخدام قاعدة C-T-C للحصول على استجابة منظمة ومبهرة!</i>`
+                        : `<b>🤖 Gemini AI (Generic/Weak Prompt Response ⚠️):</b><br>Artificial intelligence is a branch of computer science aiming to build machines... (Long generic text because no context or constraints were specified!).<br>💡 <i>Tip: Try using the C-T-C framework for structured results!</i>`;
+                }
+
+                chatArea.appendChild(aiMsgDiv);
+                chatArea.scrollTop = chatArea.scrollHeight;
+            }, 500);
         }
 
         function executePython() {
